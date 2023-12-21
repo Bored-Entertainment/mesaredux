@@ -14,6 +14,10 @@ RUN npm run build
 # Stage 2: Use Apache to serve the built files
 FROM httpd:alpine
 
+# Enable mod_proxy
+RUN sed -i '/#LoadModule proxy_module/s/^#//g' /usr/local/apache2/conf/httpd.conf
+RUN sed -i '/#LoadModule proxy_http_module/s/^#//g' /usr/local/apache2/conf/httpd.conf
+
 # Copy the built files from the previous stage to the Apache web server's document root
 COPY --from=builder /app/.next /usr/local/apache2/htdocs
 
