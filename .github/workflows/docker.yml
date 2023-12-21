@@ -26,4 +26,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: greymesa/projects:latest
+          tags: greymesa/mesaredux:latest
