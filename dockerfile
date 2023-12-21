@@ -11,8 +11,6 @@ COPY . .
 
 RUN npm run build
 
-RUN npm run start
-
 # Stage 2: Use Apache to serve the built files
 FROM httpd:alpine
 
