@@ -1,23 +1,28 @@
-# Use the official Node.js image as the base image
-FROM node:20-alpine
+# Stage 1: Build Next.js application
+FROM node:20-alpine AS builder
 
-# Set the working directory inside the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
-# Install project dependencies
 RUN npm install
 
-# Copy the rest of the application code to the working directory
 COPY . .
 
-# Build the Next.js application
 RUN npm run build
 
-# Expose the port that the Next.js app will run on
-EXPOSE 3000
+# Stage 2: Use Apache to serve the built files
+FROM httpd:alpine
 
-# Command to run the application
-CMD ["npm", "start"]
+# Copy the built files from the previous stage to the Apache web server's document root
+COPY --from=builder /app/.next /usr/local/apache2/htdocs
+
+# Configure Apache to proxy requests to the Next.js application running on port 3000
+RUN echo "ProxyPass / http://localhost:3000/" >> /usr/local/apache2/conf/httpd.conf
+RUN echo "ProxyPassReverse / http://localhost:3000/" >> /usr/local/apache2/conf/httpd.conf
+
+# Expose the port that Apache will run on
+EXPOSE 80
+
+# Start Apache
+CMD ["httpd", "-D", "FOREGROUND"]
