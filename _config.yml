@@ -3,3 +3,11 @@ baseurl: "" # the subpath of your site, e.g. /blog
 title: "mesaredux" # the name of your site, e.g. ACME Corp.
 excerpt_separator: <!--ex-->
 repository: Bored-Entertainment/mesaredux
+collections:
+  games:
+    output: true
+    permalink: /games/:path/
+plugins:
+  - _plugins/nested_collections.rb
+
+
