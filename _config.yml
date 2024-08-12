@@ -1,0 +1,5 @@
+url: "https://mesagrey.ca" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+title: "mesagrey.ca" # the name of your site, e.g. ACME Corp.
+excerpt_separator: <!--ex-->
+repository: greymesa/greymesa.github.io
