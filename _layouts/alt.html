@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-CA" }}">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <link rel="stylesheet" href="{{ "assets/css/alt.css" | relative_url }}">
+    <script type="text/javascript" src="/assets/js/randoText404.js"></script>
+    <script type="text/javascript" src="/assets/js/BGM.js"></script>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | relative_url }}" />
+    <!-- Primary Meta Tags -->
+    <title>mesagrey.ca - follow freeman</title>
+    <meta name="title" content="mesagrey.ca - follow freeman" />
+    <meta name="description" content="-greymesa-" />
+    <meta http-equiv="onion-location" content="http://grey22mpsbw5m7ojybkoxymo4vkzafva5mlm3laukwa3apbsuqgp2eyd.onion" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://mesagrey.ca/" />
+    <meta property="og:title" content="mesagrey.ca - follow freeman" />
+    <meta property="og:description" content="-greymesa-" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="http://mesagrey.ca/" />
+    <meta property="twitter:title" content="mesagrey.ca - follow freeman" />
+    <meta property="twitter:description" content="-greymesa-" />
+
+    <!-- Meta Tags Generated with https://metatags.io -->
+</head>
+<body>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K7MJH1Z6XD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-K7MJH1Z6XD');
+    </script>
+    {% if page.title == "404" %}
+    <audio id="BGM" loop>
+        Your browser does not support the audio element.
+    </audio>
+    {% endif %}
+    <div class="container">
+        <div class="box">
+            {{ content }}
+        </div>
+    </div>
+    <div id="background" class="background"></div>
+    <div id="background2" class="background"></div>
+</body>
+</html>
