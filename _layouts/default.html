@@ -1,159 +1,172 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-CA" }}">
+
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
-    <title>{{ page.title }} - {{ site.title }}</title>
-    <link rel="stylesheet" href="{{ "assets/css/main.css" | relative_url }}">
-    <script type="text/javascript" src="/assets/js/randoText.js"></script>
-    <script type="text/javascript" src="/assets/js/musicPlayer.js"></script>
-    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | relative_url }}" />
-    <!-- Primary Meta Tags -->
-    <title>mesagrey.ca - bloggish blog</title>
-    <meta name="title" content="mesagrey.ca - bloggish blog" />
-    <meta name="description" content="-greymesa-" />
-    <meta http-equiv="onion-location" content="http://grey22mpsbw5m7ojybkoxymo4vkzafva5mlm3laukwa3apbsuqgp2eyd.onion" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>{{ page.title }} - {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ "assets/css/main.css" | relative_url }}">
+  <script type="text/javascript" src="/assets/js/randoText.js"></script>
+  <script type="text/javascript" src="/assets/js/musicPlayer.js"></script>
+  <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}"
+    href="{{ "/feed.xml" | relative_url }}" />
+  <!-- Primary Meta Tags -->
+  <title>mesaredux - unblocked games and emulators</title>
+  <meta name="title" content="mesaredux - unblocked games and emulators and emulators" />
+  <meta name="description" content="unblocked games and emulators for the masses!!" />
+  <meta http-equiv="onion-location" content="http://grey22mpsbw5m7ojybkoxymo4vkzafva5mlm3laukwa3apbsuqgp2eyd.onion" />
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://mesagrey.ca/" />
-    <meta property="og:title" content="mesagrey.ca - bloggish blog" />
-    <meta property="og:description" content="-greymesa-" />
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="http://mesaredux.mesagrey.ca/" />
+  <meta property="og:title" content="mesaredux - unblocked games and emulators" />
+  <meta property="og:description" content="unblocked games and emulators for the masses!!" />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="http://mesagrey.ca/" />
-    <meta property="twitter:title" content="mesagrey.ca - bloggish blog" />
-    <meta property="twitter:description" content="-greymesa-" />
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="http://mesaredux.mesagrey.ca/" />
+  <meta property="twitter:title" content="mesaredux - unblocked games and emulators" />
+  <meta property="twitter:description" content="unblocked games and emulators for the masses!!" />
 
-    <!-- Meta Tags Generated with https://metatags.io -->
+  <!-- Meta Tags Generated with https://metatags.io -->
 </head>
+
 <body>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K7MJH1Z6XD"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-K7MJH1Z6XD');
-    </script>
-  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K7MJH1Z6XD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-K7MJH1Z6XD');
+  </script>
+
   <div class="banner">
-      </div>
-      
-      
-      
-      <div class="navigation" style="position:absolute;top:213px;left:295px;">
+  </div>
+
+
+
+  <div class="navigation" style="position:absolute;top:213px;left:295px;">
     <ul id="navigation">
-          <li><a href="">home</a></li>
-    
-    <li><a href="/games">games</a></li>
-    
-    <li><a href="">link</a></li>
-    
-    <li><a href="">link</a></li>
-    
-    <li><a href="">link</a></li>
-    
-    <li><a href="">link</a></li>
-    
-    
-    
-    
-       </ul>
-    
+      <li><a href="/">home</a></li>
+
+      <li><a href="/games">games</a></li>
+
+      <li><a href="">link</a></li>
+
+      <li><a href="">link</a></li>
+
+      <li><a href="">link</a></li>
+
+      <li><a href="">link</a></li>
+
+
+
+
+    </ul>
+
+  </div>
+
+
+
+
+
+
+
+  <div style="position:absolute;top:245px;left:300px;width:300px;">
+    <div class="title"> Welcome! <3 </div>
+        <div class="box">
+          {{ content }}
+        </div>
+        <div style="position:absolute;bottom:-20px;left:488px;width:88px;">
+          <marquee scrollamount="10" direction="up" height="560px">
+            {% for image in site.static_files %}
+            {% if image.path contains '/assets/images/badges' %}
+            <img id="badge" src="{{ image.path }}" alt="{{ image.name }}">
+            {% endif %}
+            {% endfor %}
+          </marquee>
+        </div>
+
+        <br>
+        <center>
+          Bored Entertainment 2024 </center>
     </div>
-    
-      
-      
-      
-      
-      
-      
-      <div style="position:absolute;top:245px;left:300px;width:300px;">
-       <div class="title"> Welcome! <3 </div>
+
+
+
+
+
+
+
+
+
+    <div style="position:absolute;top:245px;left:120px;width:170px;">
+      <div class="title"> title</div>
       <div class="box">
-        {{ content }}
+        Aenean sodales suscipit ipsum, eget sodales nisl malesuada placerat. Curabitur rutrum egestas enim ut convallis.
+        Vestibulum erat est, elementum eget sem quis, fringilla finibus diam. Aenean purus felis, ullamcorper at
+        tristique pharetra, semper eget massa. Ut egestas ante sed quam facilisis, eu posuere dolor lobortis.
       </div>
-      <div style="position:absolute;bottom:-20px;left:488px;width:88px;">
-      <marquee scrollamount="10" direction="up" height="560px">
-        {% for image in site.static_files %}
-        {% if image.path contains '/assets/images/badges' %}
-        <img id="badge" src="{{ image.path }}" alt="{{ image.name }}">
-        {% endif %}
-        {% endfor %}
-    </marquee>
-    </div>
-      
-      <br><center>
-    Bored Entertainment 2024 </center>
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <div style="position:absolute;top:245px;left:120px;width:170px;">
-       <div class="title"> title</div>
-      <div class="box">
-      Aenean sodales suscipit ipsum, eget sodales nisl malesuada placerat. Curabitur rutrum egestas enim ut convallis. Vestibulum erat est, elementum eget sem quis, fringilla finibus diam. Aenean purus felis, ullamcorper at tristique pharetra, semper eget massa. Ut egestas ante sed quam facilisis, eu posuere dolor lobortis.
-      </div>
-      
-      
+
+
       <div class="title">Site Credits</div>
       <div class="box">
-      GreyMesa
-      Vivian Gee
-      ???
-      ?????
+        GreyMesa
+        Vivian Gee
+        ???
+        ?????
       </div>
-      
-      
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <div style="position:absolute;top:245px;left:610px;width:170px;">
-        <div class="title"> updates</div>
-      <div class="box">
-      <b>22.02.2024</b> Update here
-      </div>
-      
-      <div class="title"> title</div>
-      <div class="box">
-       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec eros eget enim posuere tempor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam condimentum, ante id pulvinar convallis, leo nunc iaculis nulla, in tincidunt dui neque ut nulla. Aenean sodales suscipit ipsum, eget sodales nisl malesuada placerat. 
-      </div>
-      
-      <div class="title"> title</div>
-      <div class="box">
-      Aenean sodales suscipit ipsum, eget sodales nisl malesuada placerat. Curabitur rutrum egestas enim ut convallis. Vestibulum erat est, elementum eget sem quis, fringilla finibus diam. Aenean purus felis, ullamcorper at tristique pharetra, semper eget massa. Ut egestas ante sed quam facilisis, eu posuere dolor lobortis.
-      </div>
-      
-      
-    </div>
-    
-    
-    
-    
-    
-    
-    
-        </body>
-        </html>
 
-               
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <div style="position:absolute;top:245px;left:610px;width:170px;">
+      <div class="title"> updates</div>
+      <div class="box">
+        <b>22.02.2024</b> Update here
+      </div>
+
+      <div class="title"> title</div>
+      <div class="box">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec eros eget enim posuere tempor. Vestibulum
+        ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam condimentum, ante id pulvinar
+        convallis, leo nunc iaculis nulla, in tincidunt dui neque ut nulla. Aenean sodales suscipit ipsum, eget sodales
+        nisl malesuada placerat.
+      </div>
+
+      <div class="title"> title</div>
+      <div class="box">
+        Aenean sodales suscipit ipsum, eget sodales nisl malesuada placerat. Curabitur rutrum egestas enim ut convallis.
+        Vestibulum erat est, elementum eget sem quis, fringilla finibus diam. Aenean purus felis, ullamcorper at
+        tristique pharetra, semper eget massa. Ut egestas ante sed quam facilisis, eu posuere dolor lobortis.
+      </div>
+
+
+    </div>
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-CA" }}">
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
@@ -10,7 +11,8 @@
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | relative_url }}" />
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}"
+        href="{{ "/feed.xml" | relative_url }}" />
     <!-- Primary Meta Tags -->
     <title>mesagrey.ca - follow freeman</title>
     <meta name="title" content="mesagrey.ca - follow freeman" />
@@ -31,12 +33,16 @@
 
     <!-- Meta Tags Generated with https://metatags.io -->
 </head>
+
 <body>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-K7MJH1Z6XD"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
         gtag('js', new Date());
         gtag('config', 'G-K7MJH1Z6XD');
     </script>
@@ -50,7 +56,10 @@
             {{ content }}
         </div>
     </div>
+    {% if page.title == "404" %}
     <div id="background" class="background"></div>
     <div id="background2" class="background"></div>
+    {% endif %}
 </body>
+
 </html>
