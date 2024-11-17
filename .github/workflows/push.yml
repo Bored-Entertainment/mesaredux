@@ -48,16 +48,7 @@ jobs:
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
-          
-      - name: Deploy to Neocities
-        # Don't use master, use a full 40 character commit hash, e.g.,
-        # jonchang/deploy-neocities@deadbeef...
-        uses: jonchang/deploy-neocities@master
-        with:
-              key: ${{ secrets.NEOCITIES_KEY }}
-              dir: ./_site
-              clean: false
-          
+           
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v3
