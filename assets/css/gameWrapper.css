@@ -1,0 +1,19 @@
+.fullscreen-center-wrapper:fullscreen {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Ensure iframe can be absolutely positioned inside wrapper */
+.fullscreen-center-wrapper {
+    position: relative;
+}
+
+/* Smoother scaling */
+#game-iframe { will-change: transform; }
+
