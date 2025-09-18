@@ -157,6 +157,7 @@ strong {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    min-width: 100vw;
     padding: 10px;
     box-sizing: border-box;
 }
@@ -218,4 +219,3 @@ a {
     text-align: center;
     margin: 0 auto;
 }
-

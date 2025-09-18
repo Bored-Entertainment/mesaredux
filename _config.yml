@@ -7,7 +7,6 @@ collections:
   games:
     output: true
     permalink: /games/:path/
+
 plugins:
   - _plugins/nested_collections.rb
-
-

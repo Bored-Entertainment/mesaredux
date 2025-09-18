@@ -1,12 +1,7 @@
 ---
 layout: alt
 title: "Bowman 2"
+flash: true
+aspectRatio: "4:3"
+description: "shoot peopl with bow 2"
 ---
-
-<object width="100" height="100">
-    <embed src="src/bowman2.swf" flashvars="" base="" quality="high" allowscriptaccess="always" allowfullscreen="true" wmode="window" width="400" height="300" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
-</object>
-
-<br>
-
-<a href="src/bowman2.swf" download class="btn btn-secondary">Download</a>
