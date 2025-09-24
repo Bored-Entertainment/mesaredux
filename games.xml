@@ -1,0 +1,22 @@
+---
+layout: null
+permalink: /games.xml
+sitemap: false
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<games exported_at="{{ site.time | date_to_xmlschema }}" site="{{ site.title | xml_escape }}" url="{{ site.url | default: '' }}{{ site.baseurl }}">
+  {% assign games = site.games | sort: 'title' %}
+  {% for game in games %}
+  <game>
+    <id>{{ game.id | xml_escape }}</id>
+    <title>{{ game.title | xml_escape }}</title>
+    <url>{{ game.url | absolute_url | xml_escape }}</url>
+    <path>{{ game.path | xml_escape }}</path>
+    <slug>{{ game.slug | xml_escape }}</slug>
+    <collection>{{ game.collection.label | default: 'games' | xml_escape }}</collection>
+    <flash>{{ game.flash | default: false }}</flash>
+    <aspect_ratio>{{ game.aspectRatio | xml_escape }}</aspect_ratio>
+    <description>{{ game.description | xml_escape }}</description>
+  </game>
+  {% endfor %}
+</games>
