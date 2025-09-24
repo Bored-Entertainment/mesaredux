@@ -98,6 +98,10 @@ strong {
     padding: 10px;
 }
 
+#game-iframe {
+    border: 1px solid #ff4500;
+}
+
 /* CSS for extras */
 
 #topBar {
