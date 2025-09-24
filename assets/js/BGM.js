@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const audio = document.getElementById('BGM');
-    const baseUrl = 'https://mesagrey.ca/';
+    const baseUrl = 'https://mesareudx.mesagrey.ca/';
     const localSrc = '/assets/music/whosthere.mp3';
     const remoteSrc = baseUrl + localSrc;
 
