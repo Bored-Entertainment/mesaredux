@@ -4,23 +4,40 @@ title: "games"
 header: "* GAMES: *"
 ---
 
-<input type="text" id="gameSearch" placeholder="search games">
+<div style="display: flex; justify-content: center; align-items: center; width: 100%; margin: 2em 0 1em 0;">
+  <input type="text" id="gameSearch" placeholder="search games" aria-label="Search games"
+    onfocus="this.style.borderColor='#FF4500';this.style.boxShadow='0 0 0 2px #531600ff';"
+    onblur="this.style.borderColor='#bbb';this.style.boxShadow='0 2px 12px 0 rgba(0,0,0,0.08)';"
+  />
+</div>
 <div id="noResults" style="display:none; color: #888; margin: 1em 0; font-style: italic;">No results found.</div>
-<ul id="gamesList">
-  {% assign directories = site.games | group_by: 'parent_dir' %}
-  {% for directory in directories %}
-    <li class="directory">
-      <ul>
-        {% for item in directory.items %}
-          <li class="game-item">
-            <a href="{{ item.url }}">{{ item.title }}</a><br>
-              <!-- <img src="{{ item.url | append: '/thumb.png' }}" alt="{{ item.title }} thumbnail" style="max-width:120px; max-height:90px; margin-top:4px; display:block;"> -->
-          </li>
-        {% endfor %}
-      </ul>
-    </li>
+
+<!--
+  Gallery can be forced to a single, horizontally scrollable row by adding the class 'one-row'
+  to the container below: class="games-gallery one-row"
+-->
+<div style="max-height: 70vh; overflow-y: auto;" id="gamesScroll">
+  <div id="gamesGrid" class="games-gallery">
+  {% assign games = site.games | sort: 'title' %}
+  {% for item in games %}
+    {% assign thumb = item.url | append: 'thumb.png' %}
+    <a class="game-card" href="{{ item.url }}" data-title="{{ item.title | downcase }}">
+      <div class="thumb-wrap">
+        <img src="{{ thumb }}"
+             alt="{{ item.title }} thumbnail"
+             loading="lazy"
+             onerror="this.onerror=null;this.src='/assets/images/placeholder.png';" />
+      </div>
+      <div class="game-meta">
+        <div class="game-title">{{ item.title }}</div>
+      </div>
+    </a>
   {% endfor %}
-</ul>
+  
+
+  </div>
+</div>
+
 <script src="/assets/js/gameSearch.js"></script>
 
 

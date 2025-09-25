@@ -6,7 +6,36 @@
   <title>{{ page.title }} - {{ site.title }}</title>
   <link rel="stylesheet" href="{{ "assets/css/main.css" | relative_url }}">
   <script type="text/javascript" src="/assets/js/randoText.js"></script>
-  <script type="text/javascript" src="/assets/js/musicPlayer.js"></script>
+  <script type="text/javascript" src="/assets/js/updates.js"></script>
+  <script>
+    function loadJSON(src) {
+      return fetch(src).then(res => {
+        if (!res.ok) throw new Error(`Failed to load ${src}`);
+        return res.json();
+      });
+    }
+
+    // Wait for both JSON files to load before continuing
+    Promise.all([
+      loadJSON('/assets/js/json/updates.json'),
+      loadJSON('/assets/js/json/lines.json')
+    ]).then(([updates, lines]) => {
+      window.updatesData = updates;
+      window.linesData = lines;
+      // Now load the rest of the scripts
+      var scripts = [
+        '/assets/js/randoText.js',
+        '/assets/js/updates.js'
+      ];
+      scripts.forEach(function(src) {
+        var s = document.createElement('script');
+        s.src = src;
+        document.head.appendChild(s);
+      });
+    }).catch(err => {
+      console.error('Error loading JSON:', err);
+    });
+  </script>
   <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,13 +43,13 @@
     href="{{ "/feed.xml" | relative_url }}" />
   {% include meta.html %}
   </head>
-  <body cz-shortcut-listen="true">
+  {% include gtag.html %}
+  <body>
   
   <div class="wrapper">
-  
   <div class="header">
   <div class="header-shadow">
-  <img src="/assets/images/image.png" alt="header image">
+  <img src="/assets/images/banner.png" alt="header image">
   </div>
   </div>
   
@@ -38,10 +67,10 @@
     <ul id="navigation">
       <li><a href="/">home</a></li>
       <li><a href="/games">games</a></li>
-      <li><a href="/emulators">emulators</a></li>
-      <li><a href="/about">about</a></li>
-      <li><a href="/guestbook">guestbook</a></li>
-      <li><a href="https://neocities.org/">github</a></li>
+      <li><a href="#">emulators</a></li>
+      <li><a href="#">about</a></li>
+      <li><a href="#">guestbook</a></li>
+      <li><a href="#">github</a></li>
     </ul>
   </div>
   
@@ -59,24 +88,18 @@
       <h2 id="section-2">{{ page.header2 }}</h2><div class="inner">
       {{ page.body2 }}
       </div></div>
-    {% endif %}
-    {% comment %}
-    <div class="box">    
-    <h2 id="section-3">Section 3</h2>
-    <div class="inner">
 
+    <div class="box">    
+    <h2 id="section-3">{{ page.header3 }}</h2>
+    <div class="inner">
+      {% include gamesPreview.html %}
     </div>
   </div>
-    {% endcomment %} 
+    {% endif %}
   </div> 
     <div class="sidebar-left"><div class="box">
   <h3>* UPDATE LOG: *</h3><div class="inner">
-
-    <li>Sept. 20, 2025 - Removed Herobrine</li>
-    <li>Sept. 20, 2025 - Removed Herobrine</li>
-    <li>Sept. 20, 2025 - Removed Herobrine</li>
-    <li>Sept. 20, 2025 - Removed Herobrine</li>
-
+    <div id="updates-list"></div>
   </div></div>
   <div class="box"><div class="inner">
   <p>add info about our 88x31 here</p>
@@ -95,12 +118,11 @@
   </div>
     
     <div class="sidebar-right"><div class="box">
-    <h3>* RECOMMENDED: *</h3><div class="inner">
-    <ol>
-      <li><a href="/games/hl/index">HλLF-LIFE</a></li>
-      <li><a href="/games/slope/index">Slope</a></li>
-      <li><a href="/games/2048/index">2048</a></li>
-    </ol>
+    <h3>* QOTD: *<br><sub>* (QUOTE OF THE DAY) *</sub></h3><div class="inner">
+    <p id="date">
+    <div class="box">
+      <p id="line"></p>
+    </div>
     </div></div>
       <div class="box"><div class="inner">
         add webring info here
