@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-CA" }}">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>{{ page.title }} - {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ "assets/css/main.css" | relative_url }}">
+  <script type="text/javascript" src="/assets/js/randoText.js"></script>
+  <script type="text/javascript" src="/assets/js/musicPlayer.js"></script>
+  <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}"
+    href="{{ "/feed.xml" | relative_url }}" />
+  {% include meta.html %}
+</head>
+
+<body>
+{% include gtag.html %}
+
+  <div class="banner">
+  </div>
+
+
+
+  <div class="navigation" style="position:absolute;top:213px;left:295px;">
+    <ul id="navigation">
+      <li><a href="/">home</a></li>
+
+      <li><a href="/games">games</a></li>
+
+      <li><a href="/emulators">emulators</a></li>
+
+      <li><a href="/about">about</a></li>
+
+      <li><a href="/guestbook">guestbook</a></li>
+
+      <li><a href="https://github.com/Bored-Entertainment">github</a></li>
+
+
+
+
+    </ul>
+
+  </div>
+
+
+
+
+
+
+
+  <div style="position:absolute;top:245px;left:300px;width:300px;">
+    <div class="title">* MESAREDUX *</div>
+        <div class="box">
+          {{ content }}
+        </div>
+        <div style="position:absolute;bottom:-20px;left:488px;width:88px;">
+          <marquee scrollamount="10" direction="up" height="560px">
+            {% for image in site.static_files %}
+            {% if image.path contains '/assets/images/badges' %}
+            <img id="badge" src="{{ image.path }}" alt="{{ image.name }}">
+            {% endif %}
+            {% endfor %}
+          </marquee>
+        </div>
+
+        <br>
+        <center>
+          Bored Entertainment 2025 </center>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div style="position:absolute;top:245px;left:120px;width:170px;">
+      <div class="title">Welcome!</div>
+      <div class="box">
+        Aenean sodales suscipit ipsum, eget sodales nisl malesuada placerat. Curabitur rutrum egestas enim ut convallis.
+        Vestibulum erat est, elementum eget sem quis, fringilla finibus diam. Aenean purus felis, ullamcorper at
+        tristique pharetra, semper eget massa. Ut egestas ante sed quam facilisis, eu posuere dolor lobortis.
+      </div>
+
+
+      <div class="title">Site Credits</div>
+      <div class="box">
+        Main Contributors:
+        <br>
+        <ul>
+          <li>greymesa - </li>
+          <li>Vivian Gee -</li>
+          <li>The Bored Entertainment Team</li>
+        </ul>
+      
+        Thanks to:
+        <br>
+        <ul>
+          <li>Ruffle - for making Flash content accessible again</li>
+          <li>Jekyll - for being a great static site generator</li>
+        </ul>
+      </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <div style="position:absolute;top:245px;left:610px;width:170px;">
+      <div class="title"> updates</div>
+      <div class="box">
+        <b>22.02.2024</b> Update here
+      </div>
+
+      <div class="title"> title</div>
+      <div class="box">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec eros eget enim posuere tempor. Vestibulum
+        ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam condimentum, ante id pulvinar
+        convallis, leo nunc iaculis nulla, in tincidunt dui neque ut nulla. Aenean sodales suscipit ipsum, eget sodales
+        nisl malesuada placerat.
+      </div>
+
+      <div class="title"> title</div>
+      <div class="box">
+        Aenean sodales suscipit ipsum, eget sodales nisl malesuada placerat. Curabitur rutrum egestas enim ut convallis.
+        Vestibulum erat est, elementum eget sem quis, fringilla finibus diam. Aenean purus felis, ullamcorper at
+        tristique pharetra, semper eget massa. Ut egestas ante sed quam facilisis, eu posuere dolor lobortis.
+      </div>
+
+
+    </div>
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-CA" }}">
-
-<head>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8">
   <title>{{ page.title }} - {{ site.title }}</title>
@@ -14,141 +13,108 @@
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}"
     href="{{ "/feed.xml" | relative_url }}" />
   {% include meta.html %}
-</head>
-
-<body>
-{% include gtag.html %}
-
-  <div class="banner">
+  </head>
+  <body cz-shortcut-listen="true">
+  
+  <div class="wrapper">
+  
+  <div class="header">
+  <div class="header-shadow">
+  <img src="/assets/images/image.png" alt="header image">
   </div>
-
-
-
-  <div class="navigation" style="position:absolute;top:213px;left:295px;">
+  </div>
+  
+  <div class="title">
+              <marquee scrollamount="10" direction="right">
+              {% for image in site.static_files %}
+              {% if image.path contains '/assets/images/badges' %}
+              <img id="badge" src="{{ image.path }}" alt="{{ image.name }}">
+              {% endif %}
+              {% endfor %}
+            </marquee>
+  </div>
+  
+  <div class="links">
     <ul id="navigation">
       <li><a href="/">home</a></li>
-
       <li><a href="/games">games</a></li>
-
       <li><a href="/emulators">emulators</a></li>
-
       <li><a href="/about">about</a></li>
-
       <li><a href="/guestbook">guestbook</a></li>
-
-      <li><a href="https://github.com/Bored-Entertainment">github</a></li>
-
-
-
-
+      <li><a href="https://neocities.org/">github</a></li>
     </ul>
-
   </div>
-
-
-
-
-
-
-
-  <div style="position:absolute;top:245px;left:300px;width:300px;">
-    <div class="title">* MESAREDUX *</div>
-        <div class="box">
-          {{ content }}
-        </div>
-        <div style="position:absolute;bottom:-20px;left:488px;width:88px;">
-          <marquee scrollamount="10" direction="up" height="560px">
-            {% for image in site.static_files %}
-            {% if image.path contains '/assets/images/badges' %}
-            <img id="badge" src="{{ image.path }}" alt="{{ image.name }}">
-            {% endif %}
-            {% endfor %}
-          </marquee>
-        </div>
-
-        <br>
-        <center>
-          Bored Entertainment 2025 </center>
+  
+  <div class="wrapper-2">
+  
+  <div class="main"><div class="box">  
+    <h2 id="section-1">{{ page.header }}</h2>
+    <div class="inner">
+    {{ content }}
+    </div>   
     </div>
 
-
-
-
-
-
-
-
-
-    <div style="position:absolute;top:245px;left:120px;width:170px;">
-      <div class="title">Welcome!</div>
+    {% if page.title == "home" %}
       <div class="box">
-        Aenean sodales suscipit ipsum, eget sodales nisl malesuada placerat. Curabitur rutrum egestas enim ut convallis.
-        Vestibulum erat est, elementum eget sem quis, fringilla finibus diam. Aenean purus felis, ullamcorper at
-        tristique pharetra, semper eget massa. Ut egestas ante sed quam facilisis, eu posuere dolor lobortis.
-      </div>
-
-
-      <div class="title">Site Credits</div>
-      <div class="box">
-        Main Contributors:
-        <br>
-        <ul>
-          <li>greymesa - </li>
-          <li>Vivian Gee -</li>
-          <li>The Bored Entertainment Team</li>
-        </ul>
-      
-        Thanks to:
-        <br>
-        <ul>
-          <li>Ruffle - for making Flash content accessible again</li>
-          <li>Jekyll - for being a great static site generator</li>
-        </ul>
-      </div>
-
+      <h2 id="section-2">{{ page.header2 }}</h2><div class="inner">
+        hello
+      </div></div>
+    {% endif %}
+    {% comment %}
+    <div class="box">    
+    <h2 id="section-3">Section 3</h2>
+    <div class="inner">
 
     </div>
+  </div>
+    {% endcomment %} 
+  </div> 
+    <div class="sidebar-left"><div class="box">
+  <h3>* UPDATE LOG: *</h3><div class="inner">
 
+    <li>Sept. 20, 2025 - Removed Herobrine</li>
+    <li>Sept. 20, 2025 - Removed Herobrine</li>
+    <li>Sept. 20, 2025 - Removed Herobrine</li>
+    <li>Sept. 20, 2025 - Removed Herobrine</li>
 
-
-
-
-
-
-
-
-
-
-    <div style="position:absolute;top:245px;left:610px;width:170px;">
-      <div class="title"> updates</div>
-      <div class="box">
-        <b>22.02.2024</b> Update here
-      </div>
-
-      <div class="title"> title</div>
-      <div class="box">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas nec eros eget enim posuere tempor. Vestibulum
-        ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam condimentum, ante id pulvinar
-        convallis, leo nunc iaculis nulla, in tincidunt dui neque ut nulla. Aenean sodales suscipit ipsum, eget sodales
-        nisl malesuada placerat.
-      </div>
-
-      <div class="title"> title</div>
-      <div class="box">
-        Aenean sodales suscipit ipsum, eget sodales nisl malesuada placerat. Curabitur rutrum egestas enim ut convallis.
-        Vestibulum erat est, elementum eget sem quis, fringilla finibus diam. Aenean purus felis, ullamcorper at
-        tristique pharetra, semper eget massa. Ut egestas ante sed quam facilisis, eu posuere dolor lobortis.
-      </div>
-
-
+  </div></div>
+  <div class="box"><div class="inner">
+  <p>add info about our 88x31 here</p>
+  </div>
+  </div>
+    <div class="box">
+    <h3>* THE TEAM: *</h3>
+    <div class="inner">
+        <li>greymesa - that guy</li>
+        <li>pawlixy - that girl</li>
+        <li>The Duck - quack</li>
+        <li>n1swordslasher - old</li>
+        <li>PiSaucer - benefactor</li>
     </div>
+  </div>
+  </div>
+    
+    <div class="sidebar-right"><div class="box">
+    <h3>* RECOMMENDED: *</h3><div class="inner">
+    <ol>
+      <li><a href="/games/hl/index">HλLF-LIFE</a></li>
+      <li><a href="/games/slope/index">Slope</a></li>
+      <li><a href="/games/2048/index">2048</a></li>
+    </ol>
+    </div></div>
+      <div class="box"><div class="inner">
+        add webring info here
+        <br>
+        <br>
+        my name is space and i'm being filled my name is space and i'm being filled my name is space and i'm being filled my name is space and i'm being filled my name is space and i'm being filled my name is space and i'm being filled my name is space and i'm being filled my name is space and i'm being filled my name is space and i'm being filled my name is space and i'm being filled 
+      </p></div></div>
+    </div>
+    
+    </div>
+    <br>
+    <div class="footer"></div>
+    </div>
+    
+  
 
-
-
-
-
-
-
-</body>
-
-</html>
+</body></html>

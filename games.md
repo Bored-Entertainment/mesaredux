@@ -1,16 +1,15 @@
 ---
 layout: default
 title: "games"
+header: "games"
 ---
 
-# games 
 <input type="text" id="gameSearch" placeholder="search games">
 <div id="noResults" style="display:none; color: #888; margin: 1em 0; font-style: italic;">No results found.</div>
 <ul id="gamesList">
   {% assign directories = site.games | group_by: 'parent_dir' %}
   {% for directory in directories %}
     <li class="directory">
-      <h2>{{ directory.name }}</h2>
       <ul>
         {% for item in directory.items %}
           <li class="game-item">
