@@ -134,7 +134,11 @@
     
     </div>
     <br>
-    <div class="footer"></div>
+    <div class="footer" role="contentinfo">
+      <div class="inner" style="text-align:center; padding:0.5em 1em;">
+  <p>&copy; {% assign thisyear = site.time | date: "%Y" %}{% if thisyear == "2025" %}2025{% else %}2025 - {{ thisyear }}{% endif %} Bored Entertainment. All rights reserved.</p>
+      </div>
+    </div>
     </div>
     
   
