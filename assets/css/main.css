@@ -1,3 +1,258 @@
+  
+center {
+  text-align: center;
+  }
+
+.centre {
+  text-align: center;
+  }
+
+/*Contains everything*/
+.wrapper {
+  width: 1150px;
+  background: white;
+  margin: 0 auto;
+  top: 0;
+  margin-top: -10px;
+  border-left: 0px solid white;
+  border-right: 0px solid white;  
+  margin-bottom: -10px;
+  }
+  
+/*Contains main and sidebar divs*/
+.wrapper-2 {
+  position: relative;
+}
+  
+/*Header and footer images*/
+.header, .footer {
+  height: 200px;
+  overflow: hidden;
+  background: linear-gradient(rgb(0,0,0,0.1),rgb(0,0,0,0.1));
+  background-size:cover;
+  }
+  
+  
+.footer {
+  height: 50px;
+  color: #ffffff;
+  }
+  
+.header img {
+  border-top: 0px;
+  height: 7.5em;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+  
+  
+/*Big title at the top of the page.*/  
+  
+/*Override default margins/padding for headings.*/
+.title h1, .title h2, .title h3 {
+  padding:0;
+  margin: 0;
+  }
+
+/*These three classes are just for defining the boundaries and size of the main and sidebar columns. Most fancy styling goes in the 'box' class.*/
+.main, .sidebar-right {
+  display: inline-block;
+  }
+  
+.sidebar-left, .sidebar-right {
+  width: 200px;
+  position: absolute;
+  top: 0;
+  }
+
+.sidebar-left {
+  margin-left: 10px;
+  }
+  
+.main {
+  margin-left: 220px;
+  width: 710px;
+  }
+  
+.sidebar-right {
+  margin-right: 10px;
+  margin-left: 10px;
+  }
+  
+/*Box used for individual sections in the sidebar, center column, etc.*/
+.box {  
+  padding: 5px 10px 0px 10px;
+  background: #e2dcc1;
+  color: white;
+  border-top: 5px solid #187b9b;
+  border-bottom: 5px solid #187b9b;
+  margin: 10px 0px 15px 0px;
+  }
+  
+/*Prevent overflow of large images in main text areas.*/
+.box img {
+  max-width: 100%;
+  height: auto;
+  }
+  
+/***
+  Not give any style rules by default. Move the padding from the 'box' class here if you want boxes with specially styled headers or images that 
+  don't follow the margins of the main text. (For an example of that: see skin #1.)
+  ***/
+/* (removed empty .inner ruleset from source to satisfy linter) */
+  
+/* For narrow screens. Makes the sidebars narrower, and makes width of the 
+ * center/main div 50% of the viewport width.
+ */
+@media(max-width:1180px) {
+  .wrapper {
+    width: calc(440px + 50vw);
+    }
+  .main {
+    width: 50vw;
+    }
+  }
+  
+@media(max-width:910px) {
+  .wrapper {
+    width: calc(360px + 52vw);
+    }
+  .sidebar-left, .sidebar-right {
+    width: 160px;
+    }
+  .main {
+    margin-left: 180px;
+    width: 52vw;
+    }
+  }
+  
+/* Mobile compatibility. Puts everything into a standard vertical layout. */
+@media(orientation:portrait) {
+  .wrapper {
+    width: 96vw;
+    margin: 0 auto;
+    padding:0;
+    position: relative;
+    }
+  .wrapper-2 {
+    width: 94vw;
+    margin: 0 auto;
+    padding:0;
+    position: relative;
+    }
+  .sidebar-left, .main, .sidebar-right {
+    position: relative;
+    width: 92vw;
+    margin: 0.25rem 1vw;
+    }
+  .sidebar-left, .sidebar-right {
+    font-size: 0.95em;
+    }
+  }
+
+.wrapper {
+  background: none;
+  top: 0;
+  margin: 0 auto;
+  width: 870px;
+  }
+  
+.sidebar-left, .sidebar-right {
+  width: 175px;
+  }
+  
+.main {
+  width: 500px;
+  margin-left: 185px;
+  }
+  
+.sidebar-left {
+  margin-left: 0px;
+  }
+  
+.wrapper, .links a {
+  color: white;
+  }
+  
+.box {
+  border: 3px double #333;
+  background: #fff;
+  padding: 0;
+  }
+  
+.header {
+  border: 3px double #ff4500;
+  background: #121212;
+  text-align: center;
+  margin-top: 15px;
+  top: 0;
+  height: auto;
+  }
+  
+.links {
+  margin-top: 2.5em;
+  }
+  
+
+
+  
+.box h1, .box h2, .box h3, .box h4 {
+  background: #141414;
+  color: #ff4500;
+  margin: 0;
+  padding: 0.35em 0.25em 0.3em 0.25em;
+  text-align: center;
+  border-bottom: 3px double #333;
+  }
+
+.box h1 a, .box h2 a, .box h3 a, .box h4 a {
+  text-decoration: underline;
+  }
+  
+.inner {
+  padding: 0.25em 1em 0.3em 1em;
+  font-size: 1.075em;
+  }
+  
+  
+/* For narrow screens: slightly narrows sidebars, and makes the width
+ * of the main/center div flexible (sized relative to viewport width.)
+ */
+@media(max-width:880px) {
+  .wrapper {
+    width: calc(340px + 50vw);
+    }
+  .sidebar-left, .sidebar-right {
+    width: 160px;
+    }
+  .main {
+    width: 50vw;
+    margin-left: 170px;
+    }
+  }
+
+/*Mobile compatibility. Just turns it all into a vertical layout.*/  
+@media(orientation:portrait) {
+  .wrapper {
+    width: 96vw;
+    margin: 0 auto;
+    padding:0;
+    position: relative;
+    }
+  .wrapper-2 {
+    width: 94vw;
+    margin: 0 auto;
+    padding:0;
+    position: relative;
+    }
+  .sidebar-left, .main, .sidebar-right {
+    position: relative;
+    width: 92vw;
+    margin: 0.25rem 1vw;
+    }
+  }
+
+/* ====== End merged content ====== */
 @font-face {
   font-family: TimesNewPixel;
   src: url('/assets/TimesNewPixel.ttf');
@@ -9,8 +264,10 @@
 }
 
 body {
-  font: 10px TimesNewPixel;
+  font: 0.7em TimesNewPixel;
   letter-spacing: 1px;
+  padding: 0;
+  margin: 0;
   color: #ffffff;
   background: #ff4500;
   background-image: url(/assets/images/bg.gif);
@@ -40,15 +297,7 @@ b {
 
 
 .title {
-  color: #ff4500;
-  background-color: #141414;
-  padding: 2px;
-  padding-top: 4px;
-  padding-left: 8px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  height: 10px;
-  line-height: 11px;
+  height: 20px;
 }
 
 .box {
@@ -58,25 +307,43 @@ b {
   margin-bottom: 8px;
 }
 
+
 #navigation {
-  width: 605px;
-  float: left;
-  margin: 0 0 0 0;
-  padding: 5px 0px;
+  /* smoothly scale between a sensible minimum and maximum and remain centered */
+  width: clamp(320px, 92%, 605px);
+  max-width: 100%;
+  margin: 0 auto;
   list-style: none;
   background-color: transparent;
   border-bottom: 0px solid #ff4500;
   border-top: 0px solid #ff4500;
+  display: flex;
+  flex-wrap: wrap; /* allow items to wrap on small screens */
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 0; /* ensure padding doesn't offset centering */
+  box-sizing: border-box;
 }
 
+/* Use flex layout for list items so they keep their position when container scales */
 #navigation li {
-  float: left;
+  float: none;
+  flex: 0 0 auto;
+}
+
+/* Slightly reduce button padding on very small screens so nav fits better */
+@media (max-width: 420px) {
+  #navigation li a {
+    padding: 4px 8px;
+    font-size: 0.95em;
+  }
 }
 
 #navigation li a {
   display: block;
   padding: 2px 10px;
-  font: italic 11px Seraphim;
+  font: italic 1.16em Seraphim;
   text-transform: lowercase;
   border-radius: 10px;
   letter-spacing: 1px;
@@ -92,16 +359,6 @@ b {
 #blackbar li a:hover {
   color: #b73100;
   background-color: #ffaa00;
-}
-
-.banner {
-  position: absolute;
-  top: 60px;
-  left: 120px;
-  width: 660px;
-  height: 150px;
-  background: #fff url(/assets/images/header.png);
-  border: 1px solid #ff4500;
 }
 
 
@@ -186,18 +443,14 @@ html::-webkit-scrollbar-button:end:increment:vertical:increment {
 .container {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  padding: 10px;
   justify-content: center;
   margin: 0;
   padding: 0;
-  cursor: pointer;
 
   ::-webkit-scrollbar {
     width: 5px;
     height: 5px;
   }
-
   ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     -webkit-border-radius: 10px;
