@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "games"
-header: "games"
+header: "* GAMES: *"
 ---
 
 <input type="text" id="gameSearch" placeholder="search games">
