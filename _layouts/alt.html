@@ -98,12 +98,17 @@
             ' allowfullscreen></iframe>
             </div>
             <button id="fullscreen-btn" style="margin-top:10px;">Fullscreen</button>
-            <a href="src/game.swf" download class="btn btn-secondary">Download</a>
+            <a href="src/game.zip" download class="btn btn-secondary">Download</a>
             {% endif %}
             {% endif %}
             <link rel="stylesheet" href="{{ "assets/css/gameWrapper.css" | relative_url }}">
             <script type="text/javascript" src="/assets/js/gameWrapper.js"></script>
         </div>
+    </div>
+      <div class="footer" role="contentinfo">
+      <div class="inner" style="text-align:center; padding:0.5em 1em;">
+  <p>&copy; {% assign thisyear = site.time | date: "%Y" %}{% if thisyear == "2025" %}2025{% else %}2025 - {{ thisyear }}{% endif %} Bored Entertainment. All rights reserved.</p>
+      </div>
     </div>
     {% if page.title == "404" %}
     <div id="background" class="background"></div>
