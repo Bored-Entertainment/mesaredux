@@ -217,6 +217,7 @@ GEM
     listen (3.8.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    logger (1.7.0)
     mercenary (0.3.6)
     mini_portile2 (2.8.5)
     minima (2.5.1)
@@ -281,6 +282,7 @@ DEPENDENCIES
   csv
   github-pages (>= 213)
   jekyll (>= 3.8.5)
+  logger
   webrick (~> 1.8)
 
 BUNDLED WITH
