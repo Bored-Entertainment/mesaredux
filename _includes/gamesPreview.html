@@ -1,7 +1,7 @@
 <div style="max-height: 70vh; overflow-y: auto;" id="gamesScroll">
   <div id="gamesGrid" class="games-gallery one-row">
-  {% assign games = site.games%}
-  {% for item in games limit:10 %}
+  {% assign games = site.games %}
+  {% for item in games limit:5 %}
     {% assign thumb = item.url | append: 'thumb.png' %}
     <a class="game-card" href="{{ item.url }}" data-title="{{ item.title | downcase }}">
       <div class="thumb-wrap">
