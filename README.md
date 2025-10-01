@@ -8,7 +8,7 @@
 
 #### The team behind blockbuster sites such as [The Mesa Complex](https://github.com/Bored-Entertainment/themesacomplex), [Swordslasher.com](https://swordslasher.com/), and [BoredHTML](https://bored.pisaucer.com/) proudly presents this project—a definitive and scalable redux of The Mesa Complex, representing the culmination of our last six years of work!
 
-<h4>This project is scalable, and adding a new game is simple as the following steps:</h4>
+#### This project is scalable, and adding a new game is simple as the following steps:
 
 1. Find the game you wish to add, currently we only support HTML5 and Flash game.
 2. Ideally, you should be able to download the game files or `.swf`, you *can* send us a link to the game, but there's no guarantee we can add it.
