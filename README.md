@@ -14,7 +14,7 @@
 2. Ideally, you should be able to download the game files or `.swf`, you *can* send us a link to the game, but there's no guarantee we can add it.
 3. If you aim to add a HTML5 game, ensure that the main HTML file is named `index.html` instead of `game.html`, `app.html`, etc.
 4. If you aim to add a Flash game, ensure that your `.swf` file is named `game.swf`.
-5. Upload a zip of the game files or `.swf` to [VirusTotal](https://www.virustotal.com/gui/home/upload), and keep the output URL.
+5. Upload a zip of the game files (named game.zip) or `.swf` to [VirusTotal](https://www.virustotal.com/gui/home/upload), and keep the output URL.
 6. Fork the repo ([Bored-Entertainment/mesaredux](https://github.com/Bored-Entertainment/mesaredux))
 7. In the `_games` directory, create a folder with the name of the game you wish to add, lowercase and without spaces; As an example: `_games/my GAME` -> `_games/mygame`.
 8. In the new directory you've created, create a file named `index.md` that contains only the following:
