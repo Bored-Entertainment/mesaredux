@@ -4,11 +4,11 @@
 ![Last Commit](https://img.shields.io/github/last-commit/Bored-Entertainment/mesaredux?style=for-the-badge)
 ![Website Uptime](https://img.shields.io/website?style=for-the-badge&up_message=online&url=https%3A%2F%2Fmesaredux.mesagrey.ca)
 <br>
-# MESλREDUX - WIP
+# MESλREDUX
 
 #### The team behind blockbuster sites such as [The Mesa Complex](https://github.com/Bored-Entertainment/themesacomplex), [Swordslasher.com](https://swordslasher.com/), and [BoredHTML](https://bored.pisaucer.com/) proudly presents this project—a definitive and scalable redux of The Mesa Complex, representing the culmination of our last six years of work!
-
-This site is project is scalable, and adding a new game is simple as following steps:
+<br>
+<h4>This project is scalable, and adding a new game is simple as the following steps:</h4>
 
 1. Find the game you wish to add, currently we only support HTML5 and Flash game.
 2. Ideally, you should be able to download the game files or `.swf`, you *can* send us a link to the game, but there's no guarantee we can add it.
@@ -33,4 +33,4 @@ description: "Battle stickman enemies with martial arts and super moves."(A brie
 11. Create a Pull Request, following the guidelines and requested information present in the template.
 <br><sub>Please note that the addition of games is at the discretion of the Bored Entertainment Team, and we will not add games if the `sha256` checksum provided by VirusTotal doesn't match up with what you've uploaded, VirusTotal flags the game you're requesting to add, we don't think it'll fit the aesthetic of the site, or for any reason not listed here.</sub>
 
-### Thank You for contributing to the MESλREDUX project! 
+#### Thank You for contributing to the MESλREDUX project! 
