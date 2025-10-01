@@ -11,7 +11,7 @@
 #### This project is scalable, and adding a new game is simple as the following steps:
 
 1. Find the game you wish to add, currently we only support HTML5 and Flash game.
-2. Ideally, you should be able to download the game files or `.swf`, you *can* send us a link to the game, but there's no guarantee we can add it.
+2. Ideally, you should be able to download the game files or `.swf`, you *can* send us a link to the game, but there's no guarantee we can add it. If you wish to add a game, but do not have the relevent files, please open an **Issue**, not a Pull Request.
 3. If you aim to add a HTML5 game, ensure that the main HTML file is named `index.html` instead of `game.html`, `app.html`, etc.
 4. If you aim to add a Flash game, ensure that your `.swf` file is named `game.swf`.
 5. Upload a zip of the game files (named game.zip) or `.swf` to [VirusTotal](https://www.virustotal.com/gui/home/upload), and keep the output URL.
