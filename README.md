@@ -21,10 +21,10 @@
 ```html
 ---
 layout: alt (Don't touch this)
-title: "Electricman 2" (Add your games title)
-flash: true (Whether or not your game is a flash game
-aspectRatio: "16:9" (The ideal Aspect Ratio of your game, if unsure pick from 16:9 or 4:3)
-description: "Battle stickman enemies with martial arts and super moves."(A brief, one sentence descriptor for your game)
+title: "Electricman 2" (Add your games title.)
+flash: true (Whether or not your game is a flash game.)
+aspectRatio: "16:9" (The ideal Aspect Ratio of your game, if unsure pick from 16:9 or 4:3.)
+description: "Battle stickman enemies with martial arts and super moves."(A brief, one sentence descriptor for your game.)
 ---
 (ENSURE YOU REMOVE CONTENT IN BRACKETS WHEN DONE)
 ```
