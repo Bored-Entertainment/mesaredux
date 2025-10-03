@@ -110,7 +110,7 @@
   </div></div>
   <div class="box"><div class="inner">
     <h4>* SITES YOU SHOULD CHECK OUT: *</h4>
-    <div style="max-height: 15vh; overflow-y: auto; padding-top: 5px; text-align: center; margin: 0 auto;">
+    <div style="max-height: 12vh; overflow-y: auto; padding-top: 5px; text-align: center; margin: 0 auto;">
         {% for image in site.static_files %}
         {% if image.path contains '/assets/images/badges/links' %}
           <a href="https://{{ image.name | replace: '.png', '' | replace: '.gif', '' | replace: '.jpg', '' }}">
