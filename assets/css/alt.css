@@ -233,3 +233,28 @@ a {
     text-align: center;
     margin: 0 auto;
 }
+
+#fullscreen-btn{
+  color:#fff !important;
+  background:linear-gradient(135deg,#ff4500 80%,#ff7b00 100%);
+  border:1px solid #ff4500;
+  text-decoration:none;
+  font-weight:600;
+  font-size:.65rem;
+  letter-spacing:.4px;
+  padding:.25rem .55rem;
+  border-radius:6px;
+  box-shadow:0 2px 4px -1px rgba(0,0,0,.18),0 0 0 1px rgba(255,69,0,.12);
+  transition:background .18s,border-color .18s,transform .18s,color .18s;
+  text-shadow:0 1px 2px rgba(0,0,0,0.18);
+  font-family: Seraphim;
+}
+#fullscreen-btn:hover{
+  background:linear-gradient(135deg,#ff7b00 80%,#ff4500 100%);
+  border-color:#ff7b00;
+  color:#fff;
+}
+#fullscreen-btn:active{
+  transform:translateY(1px);
+  filter:brightness(0.95);
+}
