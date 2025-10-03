@@ -28,6 +28,8 @@ For those who've been following us, but even moreso for those who have not—MES
 
 - [The Ruffle Team](https://ruffle.rs/) - for facilitating the preservation and playability of Flash games in current year.
 
+- [Jekyll](https://jekyllcodex.org/) - for being the best Static Site Generator a guy could ask for. We might have a love-hate relationship, but that won't stop us from shoutting you out. 
+
 #### Legal Stuff:
 
 <sub>Intellectual Property Disclaimer:</sub>
