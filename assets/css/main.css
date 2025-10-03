@@ -55,9 +55,9 @@ center {
   
 .header img {
   border-top: 0px;
-  height: 7.5em;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  height: 10em;
+  padding-top: 3px;
+
 }
   
   
@@ -285,8 +285,8 @@ body {
   padding: 0;
   margin: 0;
   color: #ffffff;
-  background-color: #010101 !important;
   background-image: url(/assets/images/bg.gif);
+  background-color: #010101 !important;
   image-rendering: pixelated;
 }
 
