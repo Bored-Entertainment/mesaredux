@@ -1,6 +1,6 @@
 url: "https://mesaredux.mesagrey.ca" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "" # the subpath of your site, e.g. /blog
-title: "mesaredux" # the name of your site, e.g. ACME Corp.
+title: "MESλREDUX" # the name of your site, e.g. ACME Corp.
 excerpt_separator: <!--ex-->
 repository: Bored-Entertainment/mesaredux
 collections:
