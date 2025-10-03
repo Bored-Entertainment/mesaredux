@@ -1,4 +1,3 @@
-  
 center {
   text-align: center;
   }
@@ -26,15 +25,13 @@ center {
   
 /*Header and footer images*/
 .header, .footer {
-  height: 200px;
   overflow: hidden;
   background: linear-gradient(rgb(0,0,0,0.1),rgb(0,0,0,0.1));
   background-size:cover;
   }
-  
-  
+
+
 .footer {
-  height: 50px;
   color: #ffffff;
   }
 
@@ -43,7 +40,6 @@ center {
   clear: both;
   width: 100%;
   box-sizing: border-box;
-  margin-top: 0.75em;
   text-align: center;
 }
 
@@ -586,4 +582,75 @@ html::-webkit-scrollbar-button:end:increment:vertical:increment {
       outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
       font-family: Seraphim;
+}
+
+.discord {
+    max-height: fit-content;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.discord-users{--dw-font:11px;--dw-font-small:10px;--dw-avatar:26px;--dw-status:12px;--dw-gap:0.4rem;--dw-pad-y:0.30rem;--dw-pad-x:0.45rem;max-width:240px;font-size:var(--dw-font);margin:0 0 0 auto;font-family:Seraphim,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#101010;border:2px solid #2a2a2a;border-radius:10px;box-shadow:0 3px 14px -4px rgba(0,0,0,.55);overflow:hidden}
+.discord-users-header{display:flex;align-items:center;justify-content:space-between;padding:.4rem .5rem;background:#181818;font-weight:600;font-size:calc(var(--dw-font) - 1px);letter-spacing:.4px;border-bottom:1px solid #202020}
+.discord-users-title{display:inline-flex;align-items:center;gap:.35rem}
+.discord-users-count{font-size:var(--dw-font-small);color:#bbb}
+.discord-users-body{display:flex;flex-direction:column;padding:.3rem .4rem;gap:.25rem;max-height:190px;overflow-y:auto}
+.discord-user{display:flex;align-items:center;gap:var(--dw-gap);padding:var(--dw-pad-y) var(--dw-pad-x);background:linear-gradient(to bottom,rgba(255,255,255,0.035),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.05);border-radius:7px;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);transition:background .18s,border-color .18s}
+.discord-user:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.16)}
+.discord-avatar-wrap{position:relative;flex:0 0 auto;width:var(--dw-avatar);height:var(--dw-avatar);display:grid;place-items:center}
+.discord-avatar{width:calc(var(--dw-avatar) - 2px);height:calc(var(--dw-avatar) - 2px);object-fit:cover;display:block;border-radius:50%;background:#222}
+.discord-status{position:absolute;right:-3px;bottom:-3px;width:var(--dw-status);height:var(--dw-status);border:2px solid #101010;border-radius:50%;box-shadow:0 0 0 1px rgba(0,0,0,.35)}
+.discord-status.status-online{background:#3ba55d}
+.discord-status.status-idle{background:#f1c40f}
+.discord-status.status-dnd{background:#ed4245}
+.discord-status.status-offline{background:#4f545c}
+.discord-username{font-size:var(--dw-font-small);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:125px}
+.discord-users-footer{padding:.3rem .45rem;background:#161616;border-top:1px solid #222;display:flex;justify-content:flex-end}
+.discord-join-link{
+  color:#fff !important;
+  background:linear-gradient(135deg,#ff4500 80%,#ff7b00 100%);
+  border:1px solid #ff4500;
+  text-decoration:none;
+  font-weight:600;
+  font-size:.65rem;
+  letter-spacing:.4px;
+  padding:.25rem .55rem;
+  border-radius:6px;
+  box-shadow:0 2px 4px -1px rgba(0,0,0,.18),0 0 0 1px rgba(255,69,0,.12);
+  transition:background .18s,border-color .18s,transform .18s,color .18s;
+  text-shadow:0 1px 2px rgba(0,0,0,0.18);
+}
+.discord-join-link:hover{
+  background:linear-gradient(135deg,#ff7b00 80%,#ff4500 100%);
+  border-color:#ff7b00;
+  color:#fff;
+}
+.discord-join-link:active{
+  transform:translateY(1px);
+  filter:brightness(0.95);
+}
+.discord-users-error{padding:.55rem .5rem;color:#ff6b6b;font-size:.7rem;}
+@media (max-width:600px){.discord-users{margin:1rem .75rem 0 .75rem;max-width:240px}.discord-username{max-width:140px}}
+/* Basic wrapper alignment */
+#discord-widget-wrapper{display:flex;justify-content:flex-end}
+
+/* Contact page layout: contact box left, widget right */
+.contact-layout{display:flex;flex-wrap:nowrap;align-items:flex-start;gap:12px;margin-top:8px}
+.contact-layout .contactbox{flex:1 1 auto;min-width:0;background:#161616;border:1px solid #2a2a2a;border-radius:10px;padding:8px 10px;box-shadow:0 2px 8px -3px rgba(0,0,0,.55)}
+.contactbox-title{margin:0 0 6px;font-family:Seraphim;font-size:1rem;color:#ff4500;text-align:left;border-bottom:1px solid #272727;padding-bottom:4px}
+.contactbox-body{font-size:.8rem;line-height:1.35em}
+.contact-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:4px}
+.contact-list li{background:rgba(255,255,255,0.04);padding:4px 6px;border:1px solid rgba(255,255,255,0.06);border-radius:6px}
+.contact-list a{color:#ff7b00;text-decoration:underline}
+.contact-list a:hover{color:#ff4500}
+
+/* Ensure widget doesn’t stretch when space is narrow */
+.contact-layout #discord-widget-wrapper{flex:0 0 auto;display:flex;justify-content:flex-end}
+.contact-layout #discord-widget-wrapper .discord-users{max-width:240px}
+
+@media (max-width:780px){
+  .contact-layout{flex-direction:column-reverse;align-items:center;justify-content:flex-start}
+  .contact-layout .contactbox{width:100%;max-width:600px}
+  .contact-layout #discord-widget-wrapper{justify-content:center;width:100%}
+  .contact-layout #discord-widget-wrapper .discord-users{margin:0 auto}
 }

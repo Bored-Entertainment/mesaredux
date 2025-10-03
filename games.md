@@ -16,7 +16,7 @@ header: "* GAMES: *"
   Gallery can be forced to a single, horizontally scrollable row by adding the class 'one-row'
   to the container below: class="games-gallery one-row"
 -->
-<div style="max-height: 70vh; overflow-y: auto;" id="gamesScroll">
+<div style="max-height: 50vh; overflow-y: auto;" id="gamesScroll">
   <div id="gamesGrid" class="games-gallery">
   {% assign games = site.games | sort: 'title' %}
   {% for item in games %}
