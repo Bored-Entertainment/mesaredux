@@ -22,9 +22,11 @@ For those who've been following us, but even moreso for those who have not—MES
 #### MESλREDUX could not be created without the following parties:
 - [EGGRAMEN](https://eggramen.neocities.org/) - for the use of their HTML layout.
 
-- [The Ruffle Team](https://ruffle.rs/) - for facilitating the preservation and playability of Flash games in current year.
-
 - [slash](https://slashist.straw.page/) - FOR SINGLEHANDIDLY MAKING OUR LOGOS FOR THIS SITE. WE COULDN'T HAVE DONE IT WITHOUT HER !!!!!
+
+- [Bastiti](https://github.com/Bastiti) - for use of their Custom Discord Widget gist.
+
+- [The Ruffle Team](https://ruffle.rs/) - for facilitating the preservation and playability of Flash games in current year.
 
 #### Legal Stuff:
 

@@ -67,7 +67,7 @@
       <li><a href="/">home</a></li>
       <li><a href="/games">games</a></li>
       <li><a href="/about">about</a></li>
-      <li><a href="#">contact</a></li>
+      <li><a href="/contact">contact</a></li>
       <li><a href="https://github.com/Bored-Entertainment/mesaredux">github</a></li>
       <li><a href="https://github.com/Bored-Entertainment/mesaredux/issues">game request</a></li>
     </ul>
@@ -78,8 +78,14 @@
   <div class="main"><div class="box">  
     <h2 id="section-1">{{ page.header }}</h2>
     <div class="inner">
+    {% if page.title == "about" %}
+    <div style="max-height: 60vh; overflow-y: auto;">
     {{ content }}
-    </div>   
+    </div>
+    {% else %}
+    {{ content }}
+    {% endif %}
+    </div>
     </div>
 
     {% if page.title == "home" %}
