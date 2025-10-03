@@ -45,6 +45,11 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
+      - name: Remove game src folders (Neocities only)
+        run: |
+          echo "Cleaning _site/games/*/index/src for Neocities..."
+          rm -rf _site/games/*/index/src
+
       - name: Deploy to Neocities
         uses: bcomnes/deploy-to-neocities@v3
         with:
