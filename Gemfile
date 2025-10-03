@@ -9,4 +9,6 @@ end
 gem "webrick", "~> 1.8"
 gem "csv"
 gem "logger"
+gem "jekyll-seo-tag"
+gem "jekyll-sitemap"
 

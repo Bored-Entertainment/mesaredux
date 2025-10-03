@@ -282,6 +282,8 @@ DEPENDENCIES
   csv
   github-pages (>= 213)
   jekyll (>= 3.8.5)
+  jekyll-seo-tag
+  jekyll-sitemap
   logger
   webrick (~> 1.8)
 

@@ -11,6 +11,8 @@ collections:
 
 plugins:
   - _plugins/nested_collections.rb
+  - jekyll-seo-tag
+  - jekyll-sitemap
 
 exclude:
   - "tempgames"
