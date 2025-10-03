@@ -3,6 +3,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 title: "MESλREDUX" # the name of your site, e.g. ACME Corp.
 excerpt_separator: <!--ex-->
 repository: Bored-Entertainment/mesaredux
+
 collections:
   games:
     output: true
@@ -13,3 +14,7 @@ plugins:
 
 exclude:
   - "tempgames"
+  - "vendor"
+  - ".bundle"
+  - "Gemfile"
+  - "Gemfile.lock"
