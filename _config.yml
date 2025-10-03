@@ -10,3 +10,6 @@ collections:
 
 plugins:
   - _plugins/nested_collections.rb
+
+exclude:
+  - "tempgames"
