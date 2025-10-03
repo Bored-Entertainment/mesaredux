@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <title>{{ page.title }} - {{ site.title }}</title>
   <link rel="stylesheet" href="{{ "assets/css/main.css" | relative_url }}">
+  <link rel="stylesheet" href="https://webring.mesagrey.ca/webring/boredring.css">
   <script type="text/javascript" src="/assets/js/randoText.js"></script>
   <script type="text/javascript" src="/assets/js/updates.js"></script>
   <script>
@@ -38,8 +39,6 @@
   </script>
   <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}"
-    href="{{ "/feed.xml" | relative_url }}" />
   {% include meta.html %}
   </head>
   {% include gtag.html %}
@@ -53,11 +52,14 @@
   </div>
   
   <div class="title">
-              <marquee scrollamount="10" direction="right">
+              <marquee scrollamount="10" direction="right" style="padding-top:5px">
               {% for image in site.static_files %}
-              {% if image.path contains '/assets/images/badges' %}
-              <img id="badge" src="{{ image.path }}" alt="{{ image.name }}">
-              {% endif %}
+                {% if image.path contains '/assets/images/badges/' %}
+                  {% assign suffix = image.path | remove: '/assets/images/badges/' %}
+                  {% unless suffix contains '/' %}
+                    <img id="badge" src="{{ image.path }}" alt="{{ image.name }}">
+                  {% endunless %}
+                {% endif %}
               {% endfor %}
             </marquee>
   </div>
@@ -107,13 +109,23 @@
     <div id="updates-list"></div>
   </div></div>
   <div class="box"><div class="inner">
-  <p>add info about our 88x31 here</p>
+    <h4>* SITES YOU SHOULD CHECK OUT: *</h4>
+    <div style="max-height: 15vh; overflow-y: auto; padding-top: 5px; text-align: center; margin: 0 auto;">
+        {% for image in site.static_files %}
+        {% if image.path contains '/assets/images/badges/links' %}
+          <a href="https://{{ image.name | replace: '.png', '' | replace: '.gif', '' | replace: '.jpg', '' }}">
+            <img id="badge" src="{{ image.path }}" alt="{{ image.name }}">
+          </a>
+        {% endif %}
+        {% endfor %}
+    </div>
   </div>
   </div>
     <div class="box">
     <h3>* THE TEAM: *</h3>
     <div class="inner">
         <li>greymesa - that guy</li>
+        <li>harper/dirt - professional</li>
         <li>pawlixy - that girl</li>
         <li>The Duck - quack</li>
         <li>n1swordslasher - old</li>
@@ -130,11 +142,14 @@
     </div>
     </div></div>
       <div class="box"><div class="inner">
-        add webring info here
-        <br>
-        <br>
-        my name is space and i'm being filled my name is space and i'm being filled my name is space and i'm being filled my name is space and i'm being filled my name is space and i'm being filled my name is space and i'm being filled my name is space and i'm being filled my name is space and i'm being filled my name is space and i'm being filled my name is space and i'm being filled 
-      </p></div></div>
+    <script src="/assets/js/boredring-rotator.js"></script>
+    <div class="boredring-rotator">
+      <div id="boredring">
+        <script type="text/javascript" src="/boredring-variables.js"></script>
+        <script type="text/javascript" src="https://webring.mesagrey.ca/webring/boredring-widget.js"></script>
+      </div>
+    </div>
+  </div>
     </div>
     
     </div>
