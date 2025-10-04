@@ -14,7 +14,7 @@ For those who've been following us, but even moreso for those who have not—MES
 
 - [harper aka. cupofdirtfordinner](https://dirt.cool/) - Joined the team in Janurary 2022. Was one of the primary developers of Mesa Complex, singlehandidly made nearly all of mesa.rip. She makes awesome music, sites, and games.
 
-- [n1swordslasher](https://swordslasher.com/) - Joined the team sometime in 2022. Created Slash Flash, yoinking like all of the games from BoredHTML. There used to be a longstanding joke among the team about how squeaky the guys voice was, but it's actually pretty normal now. He also is really into iPods!!
+- [swordslasher](https://swordslasher.com/) - Joined the team sometime in 2022. Created Slash Flash, yoinking like all of the games from BoredHTML. There used to be a longstanding joke among the team about how squeaky the guys voice was, but it's actually pretty normal now. He also is really into iPods!!
 
 - [PiSaucer](https://bored.pisaucer.com/) - The man behind it all. Founded Bored Entertaintment way back in 2018 with BoredHTML, has contributed to every Bored Entertainment site up till Mesa Complex. Unfourtunately too busy with university to be active nowadays.
 <br>
