@@ -15,7 +15,7 @@
   {% if forloop.last %}
     / {{ page.title }}
   {% else %}
-  / <a href="{% assign crumb_limit = forloop.index | plus: 1 %}{% capture path %}{% for crumb in crumbs limit: crumb_limit %}{{ crumb | append: '/' | replace:'without-plugin/','without-plugins/' }}{% endfor %}{% endcapture %}{% assign path = path | replace:'//','/' %}{% if path == '/games/' %}/games{% else %}{{ path }}{% endif %}">{{ crumb | replace:'-',' ' | remove:'.html' | capitalize }}</a>
+  / <a href="{% assign crumb_limit = forloop.index | plus: 1 %}{% capture path %}{% for crumb in crumbs limit: crumb_limit %}{{ crumb | append: '/' | replace:'without-plugin/','without-plugins/' }}{% endfor %}{% endcapture %}{% assign path = path | replace:'//','/' %}{% if path == '/games/' %}/games{% else %}{{ path | append: 'index' }}{% endif %}">{{ crumb | replace:'-',' ' | remove:'.html' | capitalize }}</a>
   {% endif %}
 {% endfor %}
 </div>
