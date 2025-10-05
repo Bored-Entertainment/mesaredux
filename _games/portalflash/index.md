@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Bowman Series"
+title: "Portal Flash Series"
 index: true
 ---
 {% include subgameIndex.html %}

@@ -78,7 +78,15 @@
   <div class="wrapper-2">
   
   <div class="main"><div class="box">  
-    <h2 id="section-1">{{ page.header }}</h2>
+    {% assign header_text = page.header %}
+    {% if header_text == nil or header_text == "" %}
+      {% assign base_title = page.title | default: site.title %}
+      {% if base_title %}
+        {% assign header_text = base_title | upcase %}
+        {% assign header_text = "* " | append: header_text | append: ": *" %}
+      {% endif %}
+    {% endif %}
+    <h2 id="section-1">{{ header_text }}</h2>
     <div class="inner">
     {% if page.title == "about" %}
     <div style="max-height: 60vh; overflow-y: auto;">
