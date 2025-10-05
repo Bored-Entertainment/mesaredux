@@ -20,6 +20,8 @@ header: "* GAMES: *"
   <div id="gamesGrid" class="games-gallery">
   {% assign games = site.games | sort: 'title' %}
   {% for item in games %}
+    {% assign path_parts = item.relative_path | remove_first: '_games/' | split: '/' %}
+    {% if path_parts.size == 2 %}
     {% assign thumb = item.url | append: 'thumb.png' %}
     <a class="game-card" href="{{ item.url }}" data-title="{{ item.title | downcase }}">
       <div class="thumb-wrap">
@@ -32,6 +34,7 @@ header: "* GAMES: *"
         <div class="game-title">{{ item.title }}</div>
       </div>
     </a>
+    {% endif %}
   {% endfor %}
   
 

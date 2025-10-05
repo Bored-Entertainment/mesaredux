@@ -1,0 +1,62 @@
+{% assign current_game_group = page.parent_dir | default: '' %}
+{% if current_game_group == '' %}
+  {% assign current_path_source = page.relative_path | default: page.path %}
+  {% assign current_path = current_path_source | remove_first: '_games/' %}
+  {% assign current_segments = current_path | split: '/' %}
+  {% assign current_segment_count = current_segments | size %}
+  {% assign current_limit = current_segment_count | minus: 1 %}
+  {% if current_limit > 0 %}
+    {% assign current_game_group = current_segments | slice: 0, current_limit | join: '/' %}
+  {% else %}
+    {% assign current_game_group = '' %}
+  {% endif %}
+{% endif %}
+{% assign current_prefix = current_game_group | append: '/' %}
+<div class="games-gallery">
+  {% assign nested_games = site.games | sort: 'title' %}
+  {% for game in nested_games %}
+    {% assign parent_dir = game.parent_dir | default: '' %}
+    {% if parent_dir == '' %}
+      {% assign game_path_source = game.relative_path | default: game.path %}
+      {% assign game_path = game_path_source | remove_first: '_games/' %}
+      {% assign game_segments = game_path | split: '/' %}
+      {% assign game_segment_count = game_segments | size %}
+      {% if game_segment_count > 1 %}
+        {% assign game_limit = game_segment_count | minus: 1 %}
+        {% assign parent_dir = game_segments | slice: 0, game_limit | join: '/' %}
+      {% else %}
+        {% assign parent_dir = '' %}
+      {% endif %}
+    {% endif %}
+
+    {% assign should_render = false %}
+    {% if game.url != page.url %}
+      {% if current_game_group == '' %}
+        {% if parent_dir contains '/' %}
+          {% assign should_render = true %}
+        {% endif %}
+      {% else %}
+        {% if parent_dir == current_game_group or parent_dir contains current_prefix %}
+          {% assign should_render = true %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+
+    {% if should_render %}
+      <a class="game-card" href="{{ game.url }}">
+        <div class="thumb-wrap">
+          <img src="{{ game.url | append: 'thumb.png' }}"
+               alt="{{ game.title }} thumbnail"
+               loading="lazy"
+               onerror="this.onerror=null;this.src='/assets/images/placeholder.png';" />
+        </div>
+        <div class="game-meta">
+          <div class="game-title">{{ game.title }}</div>
+        </div>
+      </a>
+    {% endif %}
+  {% endfor %}
+</div>
+<div style="display: flex; justify-content: center; align-items: center; padding-top:10px;">
+<a href="/games" class="back">back</a>
+</div>

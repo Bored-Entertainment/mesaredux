@@ -50,7 +50,7 @@
     {% endif %}
     <div class="container">
         <div class="box">
-            {% if page.title == "404" %}
+            {% if page.title == "404" or page.index == true %}
             {{ content }}
             {% else %}
             <div class="page-header">
