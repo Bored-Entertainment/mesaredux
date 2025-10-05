@@ -1,10 +1,9 @@
 <div style="max-height: 70vh; overflow-y: auto;" id="gamesScroll">
   <div id="gamesGrid" class="games-gallery one-row">
   {% assign games = site.games %}
-  {% assign preview_count = 0 %}
   {% for item in games %}
     {% assign path_parts = item.relative_path | remove_first: '_games/' | split: '/' %}
-    {% if path_parts.size == 2 and preview_count < 5 %}
+    {% if path_parts.size == 2 %}
       {% assign thumb = item.url | append: 'thumb.png' %}
       <a class="game-card" href="{{ item.url }}" data-title="{{ item.title | downcase }}">
         <div class="thumb-wrap">
@@ -17,7 +16,6 @@
           <div class="game-title">{{ item.title }}</div>
         </div>
       </a>
-      {% assign preview_count = preview_count | plus: 1 %}
     {% endif %}
   {% endfor %}
   
@@ -29,11 +27,19 @@
 document.addEventListener('DOMContentLoaded', function() {
   var grid = document.getElementById('gamesGrid');
   if (!grid) return;
+
   var cards = Array.from(grid.getElementsByClassName('game-card'));
+  if (cards.length <= 5) return;
+
   for (let i = cards.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [cards[i], cards[j]] = [cards[j], cards[i]];
   }
-  cards.forEach(card => grid.appendChild(card));
+
+  grid.textContent = '';
+
+  cards.slice(0, 5).forEach(function(card) {
+    grid.appendChild(card);
+  });
 });
 </script>
