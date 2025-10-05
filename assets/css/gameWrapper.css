@@ -7,22 +7,13 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    display: block;
 }
 
 /* Ensure iframe can be absolutely positioned inside wrapper */
 .fullscreen-center-wrapper {
     position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    overflow: hidden;
 }
 
 /* Smoother scaling */
-#game-iframe {
-    will-change: transform;
-    display: block;
-}
+#game-iframe { will-change: transform; }
 
