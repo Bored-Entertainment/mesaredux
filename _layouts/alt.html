@@ -41,7 +41,7 @@
     {% include meta.html %}
 </head>
 
-<body>
+<body data-flash="{{ page.flash | default: false }}">
     {% include gtag.html %}
     {% if page.title == "404" %}
     <audio id="BGM" loop>
