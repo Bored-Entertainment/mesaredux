@@ -1,7 +1,7 @@
 ---
 layout: alt
 title: "motox3m"
-flash: true
+type: flash
 aspectRatio: "4:3"
 description: "bike"
 ---

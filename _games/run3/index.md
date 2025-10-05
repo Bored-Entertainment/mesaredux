@@ -1,7 +1,7 @@
 ---
 layout: alt
 title: "Run 3"
-flash: false
+type: html
 aspectRatio: "4:3"
 description: "Classic run experience.."
 ---

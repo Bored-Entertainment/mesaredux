@@ -7,11 +7,20 @@
         return;
     }
 
-    var isFlashPage = false;
+    var gameType = 'html';
     if (document.body && typeof document.body.dataset !== 'undefined') {
-        var flashValue = document.body.dataset.flash;
-        isFlashPage = flashValue === 'true' || flashValue === 'True' || flashValue === '1';
+        if (document.body.dataset.type && document.body.dataset.type.trim() !== '') {
+            gameType = document.body.dataset.type.trim().toLowerCase();
+        } else if (document.body.dataset.flash) {
+            var legacyFlashValue = document.body.dataset.flash;
+            var legacyIsFlash = legacyFlashValue === 'true' || legacyFlashValue === 'True' || legacyFlashValue === '1';
+            if (legacyIsFlash) {
+                gameType = 'flash';
+            }
+        }
     }
+
+    var isFlashPage = gameType === 'flash';
 
     // Scale iframe to fit screen while preserving aspect ratio when fullscreened
     function applyFullscreenScale() {

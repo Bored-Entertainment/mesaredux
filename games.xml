@@ -13,8 +13,8 @@ sitemap: false
     <url>{{ game.url | absolute_url | xml_escape }}</url>
     <path>{{ game.path | xml_escape }}</path>
     <slug>{{ game.slug | xml_escape }}</slug>
-    <collection>{{ game.collection.label | default: 'games' | xml_escape }}</collection>
-    <flash>{{ game.flash | default: false }}</flash>
+  <collection>{{ game.collection.label | default: 'games' | xml_escape }}</collection>
+  <type>{{ game.type | default: 'html' | xml_escape }}</type>
     <aspect_ratio>{{ game.aspectRatio | xml_escape }}</aspect_ratio>
     <description>{{ game.description | xml_escape }}</description>
   </game>
