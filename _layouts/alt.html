@@ -72,7 +72,7 @@
                 <object width="100" height="100">
                 <embed
                 id="game-embed"
-                src="src/game.swf"
+                src="{{ page.url | append: 'src/game.swf' | relative_url }}"
                 flashvars=""
                 base="" 
                 quality="high"
@@ -85,14 +85,14 @@
             ' allowfullscreen ></iframe>
             </div>
             <button id="fullscreen-btn" style="margin-top:10px;">Fullscreen</button>
-            <a href="src/game.swf" download class="btn btn-secondary">Download</a>
+            <a href="{{ page.url | append: 'src/game.swf' | relative_url }}" download class="btn btn-secondary">Download</a>
       {% elsif game_type == 'html' %}
              <div class="fullscreen-center-wrapper" id="fullscreen-wrapper">
              <iframe id="game-iframe" srcdoc='
                 <object width="100" height="100">
                 <embed
                 id="game-embed"
-                src="src/index.html"
+                src="{{ page.url | append: 'src/index.html' | relative_url }}"
                 flashvars=""
                 base="" 
                 quality="high"
@@ -135,7 +135,7 @@
         autoStart: true,
         kiosk: true,
         autoSave: true,
-        url: "src/game.jsdos",
+        url: "{{ page.url | append: 'src/game.jsdos' | relative_url }}",
       };
 
       Dos(canvas, options)
@@ -175,7 +175,7 @@
       <button id="fullscreen-btn" style="margin-top:10px;">Fullscreen</button>
             {% else %}
             <div class="fullscreen-center-wrapper" id="fullscreen-wrapper">
-             <iframe id="game-iframe" src="src/index.html" allowfullscreen></iframe>
+             <iframe id="game-iframe" src="{{ page.url | append: 'src/index.html' | relative_url }}" allowfullscreen></iframe>
             </div>
             <button id="fullscreen-btn" style="margin-top:10px;">Fullscreen</button>
             {% endif %}
