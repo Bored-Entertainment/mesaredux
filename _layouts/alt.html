@@ -42,7 +42,7 @@
         href="{{ "/feed.xml" | relative_url }}" />
   {% include meta.html %}
 </head>
-{% assign game_type = page.type | default: 'html' %}
+{% assign game_type = page.game_type | default: page.type | default: 'html' %}
 
 <body data-type="{{ game_type }}">
     {% include gtag.html %}
@@ -173,7 +173,25 @@
 ' allow="fullscreen" allowfullscreen></iframe>
             </div>
       <button id="fullscreen-btn" style="margin-top:10px;">Fullscreen</button>
-            {% else %}
+  {% elsif game_type == 'gba' %}
+    {% assign rom_path = page.url | append: 'src/game.gba' %}
+    <div class="fullscreen-center-wrapper" id="fullscreen-wrapper">
+     <iframe id="game-iframe" srcdoc='
+        <object width="100" height="100">
+        <embed
+        id="game-embed"
+        src="{{ '/emulators/gba/index.html' | relative_url }}?rom={{ rom_path | relative_url }}"
+        flashvars=""
+        base="" 
+        quality="high"
+        allowscriptaccess="always"
+        allowfullscreen="true"
+        wmode="window"
+        </object>
+    ' allowfullscreen></iframe>
+    </div>
+    <button id="fullscreen-btn" style="margin-top:10px;">Fullscreen</button>
+  {% else %}
             <div class="fullscreen-center-wrapper" id="fullscreen-wrapper">
              <iframe id="game-iframe" src="{{ page.url | append: 'src/index.html' | relative_url }}" allowfullscreen></iframe>
             </div>
