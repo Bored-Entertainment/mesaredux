@@ -52,7 +52,7 @@
   </div>
   
   <div class="title">
-              <marquee scrollamount="10" direction="right" style="padding-top:5px">
+              <marquee scrollamount="7" direction="right" style="padding-top:5px">
               {% for image in site.static_files %}
                 {% if image.path contains '/assets/images/badges/' %}
                   {% assign suffix = image.path | remove: '/assets/images/badges/' %}
