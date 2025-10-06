@@ -116,9 +116,30 @@
   <h3>* UPDATE LOG: *</h3><div class="inner">
     <div id="updates-list"></div>
   </div></div>
-  <div class="box"><div class="inner">
+  <div class="box">
+    <h4>* MESλREDUX'S 88x31: *</h4>
+    <div class="inner" style="padding-top: 5px; text-align: center;">
+    <sub>YOU WILL BE PUTTING THIS ON YOUR WEBSITE AND EVERYWHERE ELSE YOU PHYSICALLY CAN! (please it's so pretty)</sub>
+      <br><br>
+    <a href="https://mesaredux.mesagrey.ca" style="text-align: center; margin: 0 auto; display: block;">
+      <img id="badge" src="/assets/images/mesaredux.gif" alt="MESλREDUX: Unblocked Games for the masses! - Click to visit!" style="border: 1px solid #ff44007c;">
+    </a>
+    <br>
+    <div style="overflow-x: auto; white-space: nowrap; border: 1px solid #ff4500; padding: 5px; background: #141414; scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.3) rgba(0, 0, 0, 0.3);">
+      <code id="badge-embed-code">
+      &lt;a href="https://mesaredux.mesagrey.ca"&gt;&lt;img src="https://mesaredux.mesagrey.ca/assets/images/mesaredux.gif" alt="MESλREDUX: Unblocked Games for the masses! - Click to visit!" style="border: 1px solid #ff44007c;"&gt;&lt;/a&gt;
+    </code>
+    </div>
+    <br>
+    <button type="button" class="copy-badge-button" data-target="badge-embed-code">
+      copy to clipboard
+    </button>
+  </div>
+  </div>
+    <div class="box">
     <h4>* SITES YOU SHOULD CHECK OUT: *</h4>
-    <div style="max-height: 12vh; overflow-y: auto; padding-top: 5px; text-align: center; margin: 0 auto;">
+    <div class="inner">
+    <div style="max-height: 13vh; overflow-y: auto; padding-top: 5px; text-align: center; margin: 0 auto;">
         {% for image in site.static_files %}
         {% if image.path contains '/assets/images/badges/links' %}
           <a href="https://{{ image.name | replace: '.png', '' | replace: '.gif', '' | replace: '.jpg', '' }}">
@@ -127,17 +148,6 @@
         {% endif %}
         {% endfor %}
     </div>
-  </div>
-  </div>
-    <div class="box">
-    <h3>* THE TEAM: *</h3>
-    <div class="inner">
-        <li>greymesa - that guy</li>
-        <li>harper/dirt - professional</li>
-        <li>pawlixy - that girl</li>
-        <li>The Duck - quack</li>
-        <li>swordslasher - hello :3</li>
-        <li>PiSaucer - benefactor</li>
     </div>
   </div>
   </div>
@@ -168,7 +178,102 @@
       </div>
     </div>
     </div>
-    
-  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var copyButtons = document.querySelectorAll('.copy-badge-button');
+      if (!copyButtons.length) {
+        return;
+      }
+
+      copyButtons.forEach(function(button) {
+        var originalLabel = button.textContent.trim();
+        var revertTimer = null;
+
+        button.addEventListener('click', function() {
+          var targetId = button.getAttribute('data-target');
+          if (!targetId) {
+            return;
+          }
+
+          var codeBlock = document.getElementById(targetId);
+          if (!codeBlock) {
+            return;
+          }
+
+          var snippet = codeBlock.textContent.trim();
+          if (!snippet) {
+            return;
+          }
+
+          var handleSuccess = function() {
+            clearTimeout(revertTimer);
+            button.textContent = 'copied!';
+            button.disabled = true;
+            revertTimer = setTimeout(function() {
+              button.textContent = originalLabel;
+              button.disabled = false;
+            }, 2000);
+          };
+
+          var handleError = function(error) {
+            if (error) {
+              console.error('Clipboard copy failed:', error);
+            }
+            clearTimeout(revertTimer);
+            button.textContent = 'copy failed';
+            button.disabled = false;
+            revertTimer = setTimeout(function() {
+              button.textContent = originalLabel;
+            }, 2000);
+          };
+
+          var fallbackCopy = function(text) {
+            var textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.setAttribute('readonly', '');
+            textarea.style.position = 'absolute';
+            textarea.style.left = '-9999px';
+            document.body.appendChild(textarea);
+
+            var selection = document.getSelection();
+            var selectedRange = selection && selection.rangeCount > 0 ? selection.getRangeAt(0) : null;
+
+            textarea.select();
+            var succeeded = false;
+            try {
+              succeeded = document.execCommand('copy');
+            } catch (err) {
+              succeeded = false;
+            }
+
+            document.body.removeChild(textarea);
+
+            if (selectedRange) {
+              selection.removeAllRanges();
+              selection.addRange(selectedRange);
+            }
+
+            return succeeded;
+          };
+
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(snippet)
+              .then(handleSuccess)
+              .catch(function(err) {
+                if (fallbackCopy(snippet)) {
+                  handleSuccess();
+                } else {
+                  handleError(err);
+                }
+              });
+          } else if (fallbackCopy(snippet)) {
+            handleSuccess();
+          } else {
+            handleError();
+          }
+        });
+      });
+    });
+  </script>
 
 </body></html>
