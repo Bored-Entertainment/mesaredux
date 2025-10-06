@@ -12,7 +12,7 @@
 
 #### This project is scalable, and adding a new game is simple as the following steps:
 
-1. Find the game you wish to add; currently we support HTML5 and Flash game types.
+1. Find the game you wish to add; currently we support HTML5, DOS, and Flash game types.
 2. Ideally, you should be able to download the game files or `.swf`, you *can* send us a link to the game, but there's no guarantee we can add it. If you wish to add a game, but do not have the relevent files, please open an **Issue**, not a Pull Request.
 3. If you aim to add a HTML5 game, ensure that the main HTML file is named `index.html` instead of `game.html`, `app.html`, etc.
 4. If you aim to add a Flash game, ensure that your `.swf` file is named `game.swf` and set the front-matter `type` to `flash`.
@@ -24,7 +24,7 @@
 ---
 layout: alt (Don't touch this)
 title: "Electricman 2" (Add your games title.)
-type: flash (Set to `html` for HTML5 builds or `flash` for SWF content.)
+type: flash (Set to `html` for HTML5 builds, 'dos' for js-dos packages, or `flash` for SWF content.)
 aspectRatio: "16:9" (The ideal Aspect Ratio of your game, if unsure pick from 16:9 or 4:3.)
 description: "Battle stickman enemies with martial arts and super moves."(A brief, one sentence descriptor for your game.)
 ---
