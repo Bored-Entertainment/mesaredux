@@ -265,12 +265,12 @@ center {
 
 @font-face {
   font-family: TimesNewPixel;
-  src: url('/assets/TimesNewPixel.ttf');
+  src: url('../TimesNewPixel.ttf');
 }
 
 @font-face {
   font-family: Seraphim;
-  src: url('/assets/Seraphimb1.ttf');
+  src: url('../Seraphimb1.ttf');
 }
 
 
@@ -297,7 +297,7 @@ body {
   width: 100vw; height: 100vh;
   left: 0; top: 0;
   mix-blend-mode: lighten;
-  background-image: url(/assets/images/bg.gif);
+  background-image: url('../images/bg.gif');
   pointer-events: none;
 } 
 #bg1 {
