@@ -363,6 +363,47 @@ b {
   height: 20px;
 }
 
+.badge-marquee {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.badge-marquee .badge-track {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 10px;
+  will-change: transform;
+  animation: badge-marquee-slide-right linear infinite;
+  animation-duration: var(--badge-marquee-duration, 25s);
+}
+
+.badge-marquee .badge-track img {
+  flex: 0 0 auto;
+  height: auto;
+}
+
+.badge-marquee--right .badge-track {
+  transform: translateX(-50%);
+}
+
+@keyframes badge-marquee-slide-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .badge-marquee .badge-track {
+    animation: none !important;
+    transform: translateX(0) !important;
+  }
+}
+
 .box {
   background-color: #191919;
   border: 1px solid #ff4500;
