@@ -281,9 +281,59 @@ body {
   padding: 0;
   margin: 0;
   color: #ffffff;
-  background-image: url(/assets/images/bg.gif);
   background-color: #010101 !important;
   image-rendering: pixelated;
+}
+
+#bgs {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+#bgs * {
+  position: absolute;
+  width: 100vw; height: 100vh;
+  left: 0; top: 0;
+  mix-blend-mode: lighten;
+  background-image: url(/assets/images/bg.gif);
+  pointer-events: none;
+} 
+#bg1 {
+  opacity: 75%;
+  background-size: 200px 200px;
+  animation: up1 5s linear infinite;
+  z-index: 1;
+}
+#bg2 {
+  opacity: 100%;
+  background-size: 300px 300px;
+  animation: up2 5s linear infinite, left 10s linear infinite;
+  z-index: 2;
+}
+#bg3 {
+  opacity: 25%;
+  background-size: 400px 400px;
+  animation: up3 17s linear infinite;
+  z-index: 3;
+}
+  
+@keyframes up1 {
+  0% {background-position-y: 0px}
+  100% {background-position-y: -200px}
+}
+@keyframes up2 {
+  0% {background-position-y: 0px}
+  100% {background-position-y: -300px}
+}
+@keyframes up3 {
+  0% {background-position-y: 0px}
+  100% {background-position-y: -400px}
+}
+@keyframes left {
+  0% {background-position-x: 0px}
+  100% {background-position-x: -300px}
 }
 
 
