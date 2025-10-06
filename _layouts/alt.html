@@ -34,7 +34,9 @@
       console.error('Error loading JSON:', err);
     });
   </script>
+  {% if page.type == 'flash' %}
     <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+  {% endif %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}"
         href="{{ "/feed.xml" | relative_url }}" />
@@ -64,7 +66,7 @@
             <script>
                 let aspectRatioInfo = getAspectRatioInfo('{{ page.aspectRatio }}')
             </script>
-        {% if game_type == 'flash' %}
+    {% if game_type == 'flash' %}
             <div class="fullscreen-center-wrapper" id="fullscreen-wrapper">
              <iframe id="game-iframe" srcdoc='
                 <object width="100" height="100">
@@ -101,6 +103,76 @@
             ' allowfullscreen></iframe>
             </div>
             <button id="fullscreen-btn" style="margin-top:10px;">Fullscreen</button>
+    {% elsif game_type == 'dos' %}
+            <div class="fullscreen-center-wrapper" id="fullscreen-wrapper">
+             <iframe id="game-iframe" srcdoc='
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://v8.js-dos.com/latest/js-dos.css">
+<style>
+  html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; }
+  #dos-canvas { width: 100%; height: 100%; }
+</style>
+<script src="https://v8.js-dos.com/latest/js-dos.js"></script>
+</head>
+<body>
+<div id="dos-canvas"></div>
+<script>
+  (function () {
+    var dosInstance = null;
+
+    function initDos() {
+      var canvas = document.getElementById("dos-canvas");
+      if (!canvas || typeof Dos !== "function") {
+        console.error("js-dos canvas or library unavailable");
+        return;
+      }
+
+      var options = {
+        renderAspect: "Fit",
+        autoStart: true,
+        kiosk: true,
+        autoSave: true,
+        url: "src/game.jsdos",
+      };
+
+      Dos(canvas, options)
+        .then(function (instance) {
+          dosInstance = instance;
+          window.dosInstance = instance;
+          window.__dosInstance = instance;
+        })
+        .catch(function (error) {
+          console.error("Failed to initialise js-dos", error);
+        });
+    }
+
+    window.requestDosFullscreen = function () {
+      if (dosInstance && typeof dosInstance.setFullScreen === "function") {
+        try {
+          dosInstance.setFullScreen(true);
+          return true;
+        } catch (error) {
+          console.error("js-dos fullscreen request failed", error);
+        }
+      }
+      return false;
+    };
+
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+      setTimeout(initDos, 0);
+    } else {
+      window.addEventListener("DOMContentLoaded", initDos);
+    }
+  })();
+</script>
+</body>
+</html>
+' allow="fullscreen" allowfullscreen></iframe>
+            </div>
+      <button id="fullscreen-btn" style="margin-top:10px;">Fullscreen</button>
             {% else %}
             <div class="fullscreen-center-wrapper" id="fullscreen-wrapper">
              <iframe id="game-iframe" src="src/index.html" allowfullscreen></iframe>

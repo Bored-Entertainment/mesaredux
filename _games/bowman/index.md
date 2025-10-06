@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Bowman Series"
+title: "Bowman Duology"
 index: true
 ---
 {% include subgameIndex.html %}

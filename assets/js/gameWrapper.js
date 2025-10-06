@@ -21,6 +21,7 @@
     }
 
     var isFlashPage = gameType === 'flash';
+    var isDosPage = gameType === 'dos';
 
     // Scale iframe to fit screen while preserving aspect ratio when fullscreened
     function applyFullscreenScale() {
@@ -158,6 +159,30 @@
         return false;
     }
 
+    function tryEnterDosFullscreen() {
+        if (!isDosPage || !iframe || !iframe.contentWindow) {
+            return false;
+        }
+
+        try {
+            var childWindow = iframe.contentWindow;
+
+            if (typeof childWindow.requestDosFullscreen === 'function') {
+                return childWindow.requestDosFullscreen() === true;
+            }
+
+            var legacyInstance = childWindow.dosInstance || childWindow.__dosInstance;
+            if (legacyInstance && typeof legacyInstance.setFullScreen === 'function') {
+                legacyInstance.setFullScreen(true);
+                return true;
+            }
+        } catch (err) {
+            console.error('Failed to invoke DOS fullscreen method.', err);
+        }
+
+        return false;
+    }
+
     document.addEventListener('fullscreenchange', applyFullscreenScale);
     document.addEventListener('webkitfullscreenchange', applyFullscreenScale);
     document.addEventListener('mozfullscreenchange', applyFullscreenScale);
@@ -172,6 +197,11 @@
                 if (requestNativeFullscreen()) {
                     setTimeout(applyFullscreenScale, 50);
                 }
+            }
+        } else if (isDosPage) {
+            var dosHandled = tryEnterDosFullscreen();
+            if (!dosHandled && requestNativeFullscreen()) {
+                setTimeout(applyFullscreenScale, 50);
             }
         } else if (requestNativeFullscreen()) {
             setTimeout(applyFullscreenScale, 50);
