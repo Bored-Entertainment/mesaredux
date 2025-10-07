@@ -11,4 +11,6 @@ gem "csv"
 gem "logger"
 gem "jekyll-seo-tag"
 gem "jekyll-sitemap"
+gem "jekyll-minifier"
+gem "jekyll-compress-images"
 
