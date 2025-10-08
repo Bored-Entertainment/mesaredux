@@ -3,7 +3,6 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-# Sample workflow for building and deploying a Jekyll site to GitHub Pages
 name: Deploy Jekyll site to Pages
 
 on:
@@ -29,8 +28,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Download Half-Life ZIP
+        run: |
+          mkdir -p _games/hl/index/src/hl
+          curl -L "https://github.com/greymesa/files/releases/download/half-life/half-life.zip" -o "_games/hl/index/src/hl/half-life.zip"
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -52,7 +56,6 @@ jobs:
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v3
-        
 
   # Deployment job
   deploy-to-pages:
