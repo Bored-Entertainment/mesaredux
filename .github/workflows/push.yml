@@ -34,7 +34,7 @@ jobs:
       - name: Download Half-Life ZIP
         run: |
           mkdir -p _games/hl/index/src/hl
-          curl -L "https://storage.mesagrey.ca/half-life.zip" -o "_games/hl/index/src/hl/half-life.zip"
+          curl -L "https://github.com/greymesa/files/releases/download/half-life/half-life.zip" -o "_games/hl/index/src/hl/half-life.zip"
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
