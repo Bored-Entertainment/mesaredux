@@ -67,11 +67,11 @@ jobs:
         uses: actions/deploy-pages@v4
 
       - name: Notify Discord of deployment status
-        if: ${{ always() && job.status != 'cancelled' }}
+        if: always()
         uses: sarisia/actions-status-discord@v1
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           status: ${{ job.status }}
           title: "MESλREDUX Deployment"
           color: ${{ job.status == 'success' && '0xFF4500' || '0xFF0000' }}
-          description: "MESλREDUX has been built and deployed to [${{ steps.deployment.outputs.page_url }}](${{ steps.deployment.outputs.page_url }})."
+          description: ${{ job.status == 'success' && 'MESλREDUX has been built and deployed successfully! See changes at https://mesaredux.mesagrey.ca' || 'The deployment failed! Check the workflow logs for details.' }}
