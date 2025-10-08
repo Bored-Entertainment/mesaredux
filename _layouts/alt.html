@@ -47,8 +47,7 @@
 <body data-type="{{ game_type }}">
     {% include gtag.html %}
     {% if page.title == "404" %}
-    <audio id="BGM" loop>
-        Your browser does not support the audio element.
+    <audio id="BGM" preload="auto" data-local-src="{{ '/assets/music/whosthere.mp3' | relative_url }}" loop>
     </audio>
     {% endif %}
     <div class="container">

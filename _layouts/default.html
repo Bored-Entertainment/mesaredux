@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://webring.mesagrey.ca/webring/boredring.css">
   <script type="text/javascript" src="/assets/js/randoText.js"></script>
   <script type="text/javascript" src="/assets/js/updates.js"></script>
+  <script type="text/javascript" src="/assets/js/BGM.js"></script>
   <script>
     function loadJSON(src) {
       return fetch(src).then(res => {
@@ -43,6 +44,8 @@
   </head>
   {% include gtag.html %}
 <body>
+
+  <audio id="BGM" preload="auto" loop data-track-list="{{ "/assets/js/json/playlist.json" | relative_url }}"></audio>
   <div class="wrapper">
   <div class="header">
   <div class="header-shadow">
