@@ -54,7 +54,7 @@ jobs:
         with:
           overwrite: true
           js_engine: "uglify-js"
-          directory: 'assets/js, assets/css, _games/hl/'
+          directory: '_site/assets/js, _site/assets/css, _site/games/hl/'
            
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
