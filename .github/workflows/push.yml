@@ -21,10 +21,9 @@ permissions:
   id-token: write
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -32,6 +31,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -42,7 +42,7 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
- 
+
       - name: Build with Jekyll
         # Outputs to the './_site' directory by default
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
@@ -65,3 +65,13 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Notify Discord of deployment status
+        if: ${{ always() && job.status != 'cancelled' }}
+        uses: sarisia/actions-status-discord@v1
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          status: ${{ job.status }}
+          title: "MESλREDUX Deployment"
+          color: ${{ job.status == 'success' && '0xFF4500' || '0xFF0000' }}
+          description: "MESλREDUX has been built and deployed to [${{ steps.deployment.outputs.page_url }}](${{ steps.deployment.outputs.page_url }})."
