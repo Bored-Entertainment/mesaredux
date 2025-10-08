@@ -53,6 +53,7 @@ jobs:
         uses: nizarmah/auto-minify@v3
         with:
           overwrite: true
+          js_engine: "uglify-js"
            
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
