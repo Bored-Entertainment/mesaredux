@@ -54,7 +54,7 @@ jobs:
         with:
           overwrite: true
           js_engine: "uglify-js"
-          directory: '_site/assets/js, _site/assets/css, _site/games/hl/'
+          directory: '/home/runner/work/mesaredux/mesaredux/_site/assets/js, /home/runner/work/mesaredux/mesaredux/_site/assets/css, /home/runner/work/mesaredux/mesaredux/_site/games/hl/'
            
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
