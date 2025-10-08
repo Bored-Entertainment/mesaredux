@@ -1,3 +1,14 @@
-[
-  "/assets/music/mesabgm.mp3"
-]
+{
+  "tracks": [
+    {
+      "title": "",
+      "artist": "harper",
+      "src": "/assets/music/mesabgm.mp3"
+    },
+    {
+      "title": "Throw Money Everywhere",
+      "artist": "Kanye West",
+      "src": "/assets/music/throwmoneyeverywhere.mp3"
+    }
+  ]
+}

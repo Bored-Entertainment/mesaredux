@@ -206,8 +206,8 @@ center {
   
 
 
-  
-.box h1, .box h2, .box h3, .box h4 {
+
+.box h1, .box h2, .box h3, .box h4, .box h5 {
   background: #141414;
   color: #ff4500;
   margin: 0;
@@ -216,7 +216,7 @@ center {
   border-bottom: 3px double #333;
   }
 
-.box h1 a, .box h2 a, .box h3 a, .box h4 a {
+.box h1 a, .box h2 a, .box h3 a, .box h4 a, .box h5 a {
   text-decoration: underline;
   }
   
@@ -819,6 +819,22 @@ html::-webkit-scrollbar-button:end:increment:vertical:increment {
 .copy-badge-button:active{
   transform:translateY(1px);
   filter:brightness(0.95);
+}
+
+.copy-badge-button.audio-control-button{
+  font-size:0.6rem;
+  padding:.18rem .4rem;
+  min-width:2.5rem;
+  text-transform:lowercase;
+}
+
+.audio-controls{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:.4rem;
+  margin-top:5px;
 }
 
 body #boredring {

@@ -9,6 +9,7 @@
   <script type="text/javascript" src="/assets/js/randoText.js"></script>
   <script type="text/javascript" src="/assets/js/updates.js"></script>
   <script type="text/javascript" src="/assets/js/BGM.js"></script>
+  <script type="text/javascript" src="/assets/js/nowPlaying.js"></script>
   <script>
     function loadJSON(src) {
       return fetch(src).then(res => {
@@ -145,9 +146,12 @@
   </div>
   </div>
       <div class="box">
-    <h4>* BGM: *</h4>
+    <h4>♫ NOW PLAYING: <marquee><i id="now-playing">loading...</i></marquee></h4>
     <div class="inner">
-      
+      <div class="audio-controls">
+        <button type="button" class="copy-badge-button audio-control-button" id="bgm-play-toggle">pause</button>
+        <button type="button" class="copy-badge-button audio-control-button" id="bgm-mute-toggle">mute</button>
+      </div>
     </div>
   </div>
   </div>
@@ -159,11 +163,6 @@
       <p id="line"></p>
     </div>
     </div></div>
-      <div class="box"><h3>* WEBRING: *</h3><div class="inner">
-        <div id='boredring'></div><script type='text/javascript' src='https://webring.mesagrey.ca/webring/boredring-variables.js'></script><script type='text/javascript' src='https://webring.mesagrey.ca/webring/boredring-widget.js'></script>
-    </div>
-    
-  </div>
     <div class="box">
     <h4>* SITES YOU SHOULD CHECK OUT: *</h4>
     <div class="inner">
@@ -176,6 +175,12 @@
         {% endif %}
         {% endfor %}
     </div>
+    
+  </div>
+
+    </div>
+          <div class="box"><h3>* WEBRING: *</h3><div class="inner">
+        <div id='boredring'></div><script type='text/javascript' src='https://webring.mesagrey.ca/webring/boredring-variables.js'></script><script type='text/javascript' src='https://webring.mesagrey.ca/webring/boredring-widget.js'></script>
     </div>
   </div>
   </div>

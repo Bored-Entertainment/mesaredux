@@ -8,6 +8,62 @@ document.addEventListener('DOMContentLoaded', function() {
     const defaultLocalSrc = audio.getAttribute('data-local-src') || '/assets/music/whosthere.mp3';
     const playlistSrc = audio.getAttribute('data-track-list');
 
+    const setTrackMetadata = (metadata = {}, resolvedSrc = '') => {
+        const rawTitle = metadata.title || metadata.name || '';
+        const rawArtist = metadata.artist || metadata.by || metadata.author || '';
+        const album = metadata.album || '';
+        const label = metadata.display || metadata.label || '';
+
+        const srcForFallback = resolvedSrc || metadata.src || '';
+        const fallbackName = srcForFallback
+            ? decodeURIComponent(srcForFallback.split('/').pop() || '')
+            : '';
+
+        const title = rawTitle || fallbackName;
+        const artist = rawArtist;
+        const display = label || [artist, title].filter(Boolean).join(' — ') || fallbackName || '';
+
+        if (title) {
+            audio.dataset.trackTitle = title;
+        } else {
+            delete audio.dataset.trackTitle;
+        }
+
+        if (artist) {
+            audio.dataset.trackArtist = artist;
+        } else {
+            delete audio.dataset.trackArtist;
+        }
+
+        if (album) {
+            audio.dataset.trackAlbum = album;
+        } else {
+            delete audio.dataset.trackAlbum;
+        }
+
+        if (display) {
+            audio.dataset.trackDisplay = display;
+        } else {
+            delete audio.dataset.trackDisplay;
+        }
+
+        if (srcForFallback) {
+            audio.dataset.trackSource = srcForFallback;
+        } else {
+            delete audio.dataset.trackSource;
+        }
+
+        audio.dispatchEvent(new CustomEvent('trackmetadatachange', {
+            detail: {
+                title: audio.dataset.trackTitle || '',
+                artist: audio.dataset.trackArtist || '',
+                album: audio.dataset.trackAlbum || '',
+                display: audio.dataset.trackDisplay || '',
+                src: audio.dataset.trackSource || ''
+            }
+        }));
+    };
+
     const buildRemoteUrl = (path) => {
         if (!path) {
             return '';
@@ -29,16 +85,22 @@ document.addEventListener('DOMContentLoaded', function() {
         return Promise.resolve();
     };
 
-    const ensureSource = (candidate) => new Promise((resolve) => {
+    const ensureSource = (candidate, options = {}) => new Promise((resolve) => {
+        const remoteFallback = options.remoteFallback;
+
         if (!candidate) {
-            audio.src = buildRemoteUrl(defaultLocalSrc);
-            resolve();
+            if (remoteFallback) {
+                audio.src = remoteFallback;
+            } else {
+                audio.src = buildRemoteUrl(defaultLocalSrc);
+            }
+            resolve(audio.src);
             return;
         }
 
         if (/^https?:\/\//i.test(candidate)) {
             audio.src = candidate;
-            resolve();
+            resolve(audio.src);
             return;
         }
 
@@ -46,17 +108,28 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => {
                 if (response.ok) {
                     audio.src = candidate;
+                } else if (remoteFallback) {
+                    audio.src = remoteFallback;
                 } else {
                     audio.src = buildRemoteUrl(candidate);
                 }
             })
             .catch(() => {
-                audio.src = buildRemoteUrl(candidate);
+                if (remoteFallback) {
+                    audio.src = remoteFallback;
+                } else {
+                    audio.src = buildRemoteUrl(candidate);
+                }
             })
-            .finally(resolve);
+            .finally(() => resolve(audio.src));
     });
 
-    const playWithSource = (candidate) => ensureSource(candidate).then(finalizePlayback);
+    const playWithSource = (candidate, metadata = {}, options = {}) =>
+        ensureSource(candidate, options).then(resolvedSrc => {
+            setTrackMetadata({ ...metadata, src: resolvedSrc || candidate || '' }, resolvedSrc || candidate || '');
+            return finalizePlayback();
+        });
+
     const playDefault = () => playWithSource(defaultLocalSrc);
 
     const pickTrack = (data) => {
@@ -93,15 +166,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 
                 if (selection && typeof selection === 'object') {
-                    const localCandidate = selection.local || selection.src || selection.path;
-                    const remoteCandidate = selection.remote || selection.url;
+                    const metadata = {
+                        title: selection.title || selection.name,
+                        artist: selection.artist || selection.by || selection.author,
+                        album: selection.album,
+                        display: selection.display || selection.label
+                    };
+
+                    const sources = selection.sources || {};
+                    const localCandidate = selection.local || selection.src || selection.path || selection.file || sources.local || sources.src || sources.path;
+                    const remoteCandidate = selection.remote || selection.url || selection.href || sources.remote || sources.url;
 
                     if (localCandidate) {
-                        return playWithSource(localCandidate);
+                        return playWithSource(localCandidate, metadata, { remoteFallback: remoteCandidate });
                     }
 
                     if (remoteCandidate) {
                         audio.src = remoteCandidate;
+                        setTrackMetadata({ ...metadata, src: remoteCandidate }, remoteCandidate);
                         return finalizePlayback();
                     }
                 }
