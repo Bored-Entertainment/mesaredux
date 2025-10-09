@@ -877,7 +877,11 @@ body #boredring .webring-icon {
   --value-percent: 50%;
   -webkit-appearance: none;
   appearance: none;
-  width: clamp(120px, 28vw, 200px);
+  width: 100%;
+  max-width: clamp(90px, 55vw, 220px);
+  min-width: 0;
+  flex: 1 1 clamp(90px, 55vw, 220px);
+  margin-inline: auto;
   height: 8px;
   border-radius: 999px;
   border: 1px solid #2a2a2a;
@@ -888,6 +892,13 @@ body #boredring .webring-icon {
   accent-color: #ff4500;
   cursor: pointer;
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+@media (max-width: 520px) {
+  #volume-slider {
+    max-width: min(100%, 70vw);
+    flex-basis: clamp(80px, 60vw, 160px);
+  }
 }
 
 #volume-slider:focus-visible {
