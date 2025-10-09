@@ -21272,10 +21272,10 @@ const filesystemURL = "assets/filesystem_stdio-CVu1CW7S.wasm",
         }
     ),
     zipList = [
-        { name: "Half-Life - With Uplink (531M)", packageName: "half-life.zip" },
+        { name: "Half-Life - Full Game (531M)", packageName: "half-life.zip" },
         { name: "Uplink (45M)", packageName: "uplink.zip" },
     ],
-    _hoisted_1$9 = { class: "window", name: "Half-Life" },
+    _hoisted_1$9 = { class: "window", name: "Releases" },
     _hoisted_2$7 = { class: "box inset" },
     _hoisted_3$4 = ["onClick"],
     _sfc_main$a = defineComponent({
