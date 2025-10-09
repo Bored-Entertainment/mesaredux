@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     var fileName = src.split('/').pop();
-    return fileName ? decodeURIComponent(fileName) : ''; //why is this getting the filename and not the title of the track in the playlist?
+    return fileName ? decodeURIComponent(fileName) : '';
   }
 
   function updateNowPlaying() {
@@ -88,10 +88,126 @@ document.addEventListener('DOMContentLoaded', function() {
 
   
     //nice comments, grey
-    /////// harper code
-    var volumeslider = document.querySelector("#volume-slider") 
-    volumeslider.addEventListener('change', event=> {
-      console.log(volumeslider.value)
-      audio.volume = volumeslider.value / 100
-    })
+    // you too harper
+    /////// harper + grey code
+    var volumeslider = document.querySelector('#volume-slider');
+    if (volumeslider) {
+      var VOLUME_STORAGE_KEY = 'mesaredux.bgmVolume';
+      var DEFAULT_PERCENT = 50;
+      var DEFAULT_VOLUME = DEFAULT_PERCENT / 100;
+
+      var clampValue = function(value, min, max) {
+        var numeric = typeof value === 'number' ? value : parseFloat(value);
+        if (!Number.isFinite(numeric)) {
+          return NaN;
+        }
+        return Math.min(Math.max(numeric, min), max);
+      };
+
+      var clampPercent = function(value, fallback) {
+        var clamped = clampValue(value, 0, 100);
+        if (Number.isFinite(clamped)) {
+          return clamped;
+        }
+        return typeof fallback === 'number' ? fallback : DEFAULT_PERCENT;
+      };
+
+      var clampVolume = function(value, fallback) {
+        var clamped = clampValue(value, 0, 1);
+        if (Number.isFinite(clamped)) {
+          return clamped;
+        }
+        return typeof fallback === 'number' ? fallback : null;
+      };
+
+      var readStoredVolume = function() {
+        try {
+          var stored = window.localStorage.getItem(VOLUME_STORAGE_KEY);
+          if (stored === null || stored === '') {
+            return null;
+          }
+          return clampVolume(parseFloat(stored));
+        } catch (error) {
+          console.warn('Audio volume persistence unavailable:', error);
+          return null;
+        }
+      };
+
+      var persistVolume = function(volumeValue) {
+        var normalized = clampVolume(volumeValue);
+        if (normalized === null) {
+          return;
+        }
+        try {
+          window.localStorage.setItem(VOLUME_STORAGE_KEY, String(normalized));
+        } catch (error) {
+          if (!persistVolume._warned) {
+            console.warn('Audio volume persistence unavailable:', error);
+            persistVolume._warned = true;
+          }
+        }
+      };
+
+      var updateSliderFill = function(value) {
+        var numeric = clampPercent(value, DEFAULT_PERCENT);
+        volumeslider.style.setProperty('--value', numeric);
+        volumeslider.style.setProperty('--value-percent', numeric + '%');
+        return numeric;
+      };
+
+      var applyVolume = function(rawValue, options) {
+        var percent = updateSliderFill(rawValue);
+        var normalized = clampVolume(percent / 100, clampVolume(audio.volume, DEFAULT_VOLUME));
+        if (normalized === null) {
+          normalized = DEFAULT_VOLUME;
+        }
+        if (!options || !options.skipAssign) {
+          audio.volume = normalized;
+        }
+        if (!options || !options.skipPersist) {
+          persistVolume(normalized);
+        }
+        return normalized;
+      };
+
+      var storedVolume = readStoredVolume();
+      var startingVolume = storedVolume;
+
+      if (startingVolume === null) {
+        var sliderPresetPercent = clampPercent(volumeslider.value, DEFAULT_PERCENT);
+        startingVolume = clampVolume(sliderPresetPercent / 100, DEFAULT_VOLUME);
+      }
+
+      if (startingVolume === null) {
+        startingVolume = DEFAULT_VOLUME;
+      }
+
+      audio.volume = startingVolume;
+
+      var initialPercent = clampPercent(Math.round(startingVolume * 100), DEFAULT_PERCENT);
+
+      volumeslider.value = initialPercent;
+      updateSliderFill(initialPercent);
+
+      volumeslider.addEventListener('input', function(event) {
+        applyVolume(event.target.value);
+      });
+
+      volumeslider.addEventListener('change', function(event) {
+        applyVolume(event.target.value);
+      });
+
+      audio.addEventListener('volumechange', function() {
+        var currentVolume = clampVolume(audio.volume);
+        if (currentVolume === null) {
+          return;
+        }
+        var currentPercent = clampPercent(Math.round(currentVolume * 100), DEFAULT_PERCENT);
+        if (volumeslider.value !== String(currentPercent)) {
+          volumeslider.value = currentPercent;
+        }
+        updateSliderFill(currentPercent);
+        persistVolume(currentVolume);
+      });
+    }
 });
