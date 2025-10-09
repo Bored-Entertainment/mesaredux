@@ -91,6 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
     /////// harper code
     var volumeslider = document.querySelector("#volume-slider") 
     volumeslider.addEventListener('change', event=> {
-      audio.volume = this.value / 100
+      console.log(volumeslider.value)
+      audio.volume = volumeslider.value / 100
     })
 });
