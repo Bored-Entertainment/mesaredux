@@ -48,14 +48,7 @@ jobs:
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
-        
-      - name: Minify CSS and JS
-        uses: nizarmah/auto-minify@v3
-        with:
-          overwrite: true
-          js_engine: "uglify-js"
-          directory: '/home/runner/work/mesaredux/mesaredux/_site/assets/js, /home/runner/work/mesaredux/mesaredux/_site/assets/css, /home/runner/work/mesaredux/mesaredux/_site/games/hl/'
-           
+          
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v3

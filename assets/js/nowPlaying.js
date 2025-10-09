@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     muteToggle.textContent = audio.muted ? 'unmute' : 'mute';
   };
 
-  function getTrackLabel() {
+  function getTrackLabel() { 
     var display = audio.dataset.trackDisplay;
     if (display) {
       return display;
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     var fileName = src.split('/').pop();
-    return fileName ? decodeURIComponent(fileName) : '';
+    return fileName ? decodeURIComponent(fileName) : ''; //why is this getting the filename and not the title of the track in the playlist?
   }
 
   function updateNowPlaying() {
@@ -85,4 +85,13 @@ document.addEventListener('DOMContentLoaded', function() {
   updateNowPlaying();
   syncPlayLabel();
   syncMuteLabel();
+
+  
+    //nice comments, grey
+    /////// harper code
+    var volumeslider = document.querySelector("#volume-slider") 
+    volumeslider.addEventListener('change', event=> {
+      console.log(volumeslider.value)
+      audio.volume = volumeslider.value / 100
+    })
 });

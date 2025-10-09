@@ -1,9 +1,19 @@
 {
   "tracks": [
     {
-      "title": "",
-      "artist": "harper",
-      "src": "/assets/music/mesabgm.mp3"
+      "title": "oxygen fire",
+      "artist": "harper (harpulator)",
+      "src": "/assets/music/ost/oxygen fire.mp3"
+    },
+    {
+      "title": "snake enemy",
+      "artist": "harper (harpulator)",
+      "src": "/assets/music/ost/snake enemy.mp3"
+    },
+    {
+      "title": "mesa jar jar",
+      "artist": "harper (harpulator)",
+      "src": "/assets/music/ost/jarjar.mp3"
     }
   ]
 }
