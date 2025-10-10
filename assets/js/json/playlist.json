@@ -1,19 +1,28 @@
 {
   "tracks": [
     {
+      "title": "mesa jar jar",
+      "artist": "harper",
+      "src": "/assets/music/ost/jarjar.mp3",
+      "date": "7-10-24"
+    },
+    {
       "title": "oxygen fire",
-      "artist": "harper (harpulator)",
-      "src": "/assets/music/ost/oxygen fire.mp3"
+      "artist": "harper",
+      "src": "/assets/music/ost/oxygen fire.mp3",
+      "date": "8-10-24"
     },
     {
       "title": "snake enemy",
-      "artist": "harper (harpulator)",
-      "src": "/assets/music/ost/snake enemy.mp3"
+      "artist": "harper",
+      "src": "/assets/music/ost/snake enemy.mp3",
+      "date": "8-10-24"
     },
     {
-      "title": "mesa jar jar",
-      "artist": "harper (harpulator)",
-      "src": "/assets/music/ost/jarjar.mp3"
+      "title": "check your faucets",
+      "artist": "harper",
+      "src": "/assets/music/ost/check your faucets.mp3",
+      "date": "9-10-24"
     }
   ]
 }
