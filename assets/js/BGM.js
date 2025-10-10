@@ -7,29 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const baseUrl = 'https://mesareudx.mesagrey.ca/';
     const defaultLocalSrc = audio.getAttribute('data-local-src') || '/assets/music/whosthere.mp3';
     const playlistSrc = audio.getAttribute('data-track-list');
-    const VOLUME_STORAGE_KEY = 'mesaredux.bgmVolume';
-
-    const clampValue = (value, min, max) => {
-        const numeric = Number(value);
-        if (!Number.isFinite(numeric)) {
-            return NaN;
-        }
-        return Math.min(Math.max(numeric, min), max);
-    };
-
-    const getStoredVolume = () => {
-        try {
-            const stored = window.localStorage.getItem(VOLUME_STORAGE_KEY);
-            if (stored === null || stored === '') {
-                return null;
-            }
-            const clamped = clampValue(parseFloat(stored), 0, 1);
-            return Number.isFinite(clamped) ? clamped : null;
-        } catch (error) {
-            console.warn('Audio volume storage unavailable:', error);
-            return null;
-        }
-    };
 
     const setTrackMetadata = (metadata = {}, resolvedSrc = '') => {
         const rawTitle = metadata.title || metadata.name || '';
@@ -97,12 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     const finalizePlayback = () => {
-        const storedVolume = getStoredVolume();
-        if (storedVolume !== null) {
-            audio.volume = storedVolume;
-        } else if (!Number.isFinite(audio.volume) || audio.volume <= 0) {
-            audio.volume = 0.5;
-        }
+        audio.volume = 0.5;
         audio.loop = true;
         const playPromise = audio.play();
         if (playPromise && typeof playPromise.catch === 'function') {

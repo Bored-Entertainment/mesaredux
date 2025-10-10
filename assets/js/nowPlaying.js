@@ -90,16 +90,8 @@ document.addEventListener('DOMContentLoaded', function() {
     //nice comments, grey
     /////// harper code
     var volumeslider = document.querySelector("#volume-slider") 
-    
-    
     volumeslider.addEventListener('change', event=> {
-      audio.volume = volumeslider.value / 100 //change audio element's volume
-      localStorage.setItem("mesaBGMvolume", volumeslider.value); //remember volume
+      console.log(volumeslider.value)
+      audio.volume = volumeslider.value / 100
     })
-
-    //remember volume
-    volumeslider.value = localStorage.getItem("mesaBGMvolume") //does not trigger the "change" eventlistener,  
-    audio.volume = localStorage.getItem("mesaBGMvolume") / 100 //so this line is needed.
-    
 });
-
