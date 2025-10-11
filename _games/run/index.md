@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Run trilogy"
+title: "Run Trilogy"
 index: true
 ---
 {% include subgameIndex.html %}
