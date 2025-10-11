@@ -10,7 +10,7 @@ For those who've been following us, but even moreso for those who have not—MES
 
 - [pawlixy](#) - Joined the team in April 2021 with Duck, both of which developed Schoolgrounds. She went on to work on The Mesa Complex. Super duper awesome gamedev. 
 
-- [The Duck](https://the-duck.co/) - He joined the team in April 2021 as well. Created Schoolgrounds with pawlixy, worked on a brunt of Mesa Complex. Also a super duper awesome gamedev
+- [The Duck](https://the-duck.co/) - He joined the team in April 2021 as well. Created Schoolgrounds with pawlixy, worked on a brunt of Mesa Complex. He's a magic the gathering addict who also does game dev and is going into cybersecurity.
 
 - [harper aka. cupofdirtfordinner](https://dirt.cool/) - Joined the team in Janurary 2022. Was one of the primary developers of Mesa Complex, singlehandidly made nearly all of mesa.rip. She makes awesome music, sites, and games.
 
