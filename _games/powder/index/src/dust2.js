@@ -1,6 +1,6 @@
 var aa = 0,
-    screenWidth = 512,
-    screenHeight = 430,
+    screenWidth = 800,
+    screenHeight = 800,
     da, ea = 0,
     fa = 45,
     ga = false,
