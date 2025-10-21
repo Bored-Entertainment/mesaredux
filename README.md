@@ -98,5 +98,10 @@ Cloudflare Pages allows fast, globally distributed hosting.
 <sub>All mirrors will automatically stay up to date if Pull is installed and configured on your fork.</sub>
 </details>
 
+### Official Links:
+- https://mesaredux.mesagrey.ca - Main site
+#### Mirrors:
+- https://mesaredux.the-duck.co
 
-#### Thank You for contributing to the MESλREDUX project! 
+
+#### Thank You for checking out the MESλREDUX project! 
