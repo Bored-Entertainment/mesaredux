@@ -5,4 +5,5 @@ type: retroarch
 core: nes
 aspectRatio: "16:7.75"
 description: "The real SMB2."
+credit: https://nintendo.com
 ---
