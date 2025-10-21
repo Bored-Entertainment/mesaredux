@@ -47,7 +47,7 @@ description: "Battle stickman enemies with martial arts and super moves."(A brie
 
 1. Fork the repository [Bored-Entertainment/mesaredux](https://github.com/Bored-Entertainment/mesaredux).
 2. Install [Pull](https://github.com/apps/pull) on your fork to keep your mirror up to date with the upstream repository.
-3. Optionally, delete the `main` branch and make `build` the default.
+3. Delete the `main` branch and make `build` the default. <b>IMPORTANT</b>
 
 #### Optional: Custom Domain
 
