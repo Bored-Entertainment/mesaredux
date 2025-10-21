@@ -11,7 +11,6 @@ header: "* MESλREDUX - CONTACT *"
         <li>If you wish to get into contact with us, the fastest method would be joining our Discord, of which is linked on this page. For all inquiries, or if you can't access our Discord, please send us an email.</li>
         <li><b>Email:</b> <a href="mailto:contact@mesaredux.mesagrey.ca">contact@mesaredux.mesagrey.ca</a></li>
         <li>If you are looking to contact a specific developer, they can either be found through our Discord or on their websites, which are hyperlinked in the <a href="/about">about</a> page.</li>
-        <!-- Add any other contact methods here -->
       </ul>
     </div>
   </div>
