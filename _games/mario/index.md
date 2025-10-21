@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Mario Games"
+title: "Super Mario Series"
 index: true
 ---
 {% include subgameIndex.html %}
