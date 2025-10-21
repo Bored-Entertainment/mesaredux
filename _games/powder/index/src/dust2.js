@@ -1,6 +1,6 @@
 var aa = 0,
-    screenWidth = 800,
-    screenHeight = 800,
+    screenWidth = 1024,
+    screenHeight = 860,
     da, ea = 0,
     fa = 45,
     ga = false,
@@ -593,8 +593,8 @@ function startScript(a, c, b, d) {
         logOnConsole('Created by ha55ii, deobfuscated by Elieder Sousa');
         canvasElement.width = screenWidth;
         canvasElement.height = screenHeight;
-        canvasElement.width = 496;
-        canvasElement.height = 422;
+        canvasElement.width = 992;
+        canvasElement.height = 844;
         for (b = 0; 256 > b; b++) {
             Qd[b] = false;
             Rd[b] = false;
