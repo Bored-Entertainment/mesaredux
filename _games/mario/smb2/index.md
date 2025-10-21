@@ -1,6 +1,6 @@
 ---
 layout: alt
-title: "Super Mario Bros. 2 (USA)"
+title: "Super Mario Bros. 2-USA"
 type: retroarch
 core: nes
 aspectRatio: "16:7.75"
