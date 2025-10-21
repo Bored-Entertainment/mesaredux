@@ -45,7 +45,7 @@ description: "Battle stickman enemies with martial arts and super moves."(A brie
 
 #### MESλREDUX can be mirrored using three supported platforms. Before deploying, make sure you:
 
-1. Fork the repository [Bored-Entertainment/mesaredux](https://github.com/Bored-Entertainment/mesaredux). (Include all branches)
+1. Fork the repository [Bored-Entertainment/mesaredux](https://github.com/Bored-Entertainment/mesaredux). **(REMEMBER TO UNCHECK `"Copy the main branch only"`) WHEN FORKING**
 2. Install [Pull](https://github.com/apps/pull) on your fork to keep your mirror up to date with the upstream repository.
 3. Delete the `main` branch and make `build` the default. <b>IMPORTANT</b>
 
@@ -59,7 +59,7 @@ If you want your mirror to be accessible via your own domain or subdomain:
 ---
 
 ### 1. Netlify
-Netlify allows you to deploy a mirror with zero configuration. Use the button below to deploy directly:
+Netlify allows you to deploy a mirror quicky.
 
 **Instructions:**
 1. Log in to Netlify or create an account.
