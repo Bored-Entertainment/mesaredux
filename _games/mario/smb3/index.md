@@ -5,4 +5,5 @@ type: retroarch
 core: nes
 aspectRatio: "16:7.75"
 description: "The 3rd installment of the Super Mario Bros. 2D platformers."
+credit: https://nintendo.com
 ---
