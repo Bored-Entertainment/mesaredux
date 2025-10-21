@@ -78,20 +78,6 @@ GitHub Pages works well for hosting static mirrors of MESλREDUX.
 4. Click **Save** and wait for GitHub to publish your site.
 5. Your mirror will be available at `https://<your-username>.github.io/mesaredux`.
 
-
----
-
-### 3. Cloudflare Pages
-Cloudflare Pages allows fast, globally distributed hosting.
-
-**Instructions:**
-1. Log in to [Cloudflare Pages](https://pages.cloudflare.com/).
-2. Create a new project and connect it to your fork.
-3. Select the `build` branch.
-4. Set the **Build command** to `jekyll build` and **Build directory** to `_site`.
-5. Deploy and wait for the mirror to be live.
-
-  
 ---
 #### To submit your mirror to be in our list on the site, simply submit a Pull Request adding it to the [JSON List](https://github.com/Bored-Entertainment/mesaredux/edit/main/assets/js/json/unofficalmirrors.json)
 
@@ -102,6 +88,6 @@ Cloudflare Pages allows fast, globally distributed hosting.
 - https://mesaredux.mesagrey.ca - Main site
 #### Mirrors:
 - https://mesaredux.the-duck.co
-
+- https://https://mesaredux.netlify.app/
 
 #### Thank You for checking out the MESλREDUX project! 
