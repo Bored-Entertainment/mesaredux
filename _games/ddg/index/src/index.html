@@ -119,6 +119,7 @@ const engine = new Engine(GODOT_CONFIG);
 	const statusOverlay = document.getElementById('status');
 	const statusProgress = document.getElementById('status-progress');
 	const statusNotice = document.getElementById('status-notice');
+	const mainPackEndpoint = 'https://storage.mesagrey.ca/?requestFile=index.pck';
 
 	let initializing = true;
 	let statusMode = '';
@@ -162,6 +163,71 @@ const engine = new Engine(GODOT_CONFIG);
 		initializing = false;
 	}
 
+	function fetchMainPackUrl() {
+		return fetch(mainPackEndpoint).then((response) => {
+			if (!response.ok) {
+				throw new Error(`Failed to request main pack URL (${response.status})`);
+			}
+			return response.json();
+		}).then((data) => {
+			if (!data || typeof data.url !== 'string') {
+				throw new Error('The main pack URL response is invalid.');
+			}
+			return data.url;
+		});
+	}
+
+	function downloadMainPack(packUrl) {
+		return fetch(packUrl).then((response) => {
+			if (!response.ok) {
+				throw new Error(`Failed to download main pack (${response.status})`);
+			}
+			const contentLength = parseInt(response.headers.get('content-length') || '', 10);
+			const total = Number.isFinite(contentLength) && contentLength > 0 ? contentLength : (GODOT_CONFIG.fileSizes['index.pck'] || 0);
+			if (total > 0) {
+				statusProgress.max = total;
+				statusProgress.value = 0;
+			} else {
+				statusProgress.removeAttribute('max');
+				statusProgress.removeAttribute('value');
+			}
+			if (!response.body || typeof response.body.getReader !== 'function') {
+				return response.arrayBuffer().then((buffer) => {
+					if (statusProgress.hasAttribute('max')) {
+						statusProgress.value = statusProgress.max;
+					}
+					return { buffer, size: buffer.byteLength };
+				});
+			}
+			const reader = response.body.getReader();
+			const chunks = [];
+			let loaded = 0;
+			function pump() {
+				return reader.read().then(({ done, value }) => {
+					if (done) {
+						const combined = new Uint8Array(loaded);
+						let offset = 0;
+						for (let i = 0; i < chunks.length; i += 1) {
+							combined.set(chunks[i], offset);
+							offset += chunks[i].length;
+						}
+						if (statusProgress.hasAttribute('max')) {
+							statusProgress.value = statusProgress.max;
+						}
+						return { buffer: combined.buffer, size: combined.byteLength };
+					}
+					chunks.push(value);
+					loaded += value.length;
+					if (statusProgress.hasAttribute('max')) {
+						statusProgress.value = loaded;
+					}
+					return pump();
+				});
+			}
+			return pump();
+		});
+	}
+
 	const missing = Engine.getMissingFeatures({
 		threads: GODOT_THREADS_ENABLED,
 	});
@@ -199,19 +265,48 @@ const engine = new Engine(GODOT_CONFIG);
 		}
 	} else {
 		setStatusMode('progress');
-		engine.startGame({
-			'onProgress': function (current, total) {
-				if (current > 0 && total > 0) {
-					statusProgress.value = current;
-					statusProgress.max = total;
-				} else {
-					statusProgress.removeAttribute('value');
-					statusProgress.removeAttribute('max');
+		const exeName = GODOT_CONFIG.executable || 'index';
+		const packPath = `${exeName}.pck`;
+		const wasmSize = GODOT_CONFIG.fileSizes[`${exeName}.wasm`];
+		const onProgress = function (current, total) {
+			if (current > 0 && total > 0) {
+				statusProgress.value = current;
+				statusProgress.max = total;
+			} else {
+				statusProgress.removeAttribute('value');
+				statusProgress.removeAttribute('max');
+			}
+		};
+		fetchMainPackUrl().then((packUrl) => downloadMainPack(packUrl)).then(({ buffer, size }) => {
+			const knownSize = Number.isFinite(size) ? size : GODOT_CONFIG.fileSizes['index.pck'];
+			if (typeof knownSize === 'number' && knownSize > 0) {
+				GODOT_CONFIG.fileSizes[packPath] = knownSize;
+			}
+			const args = Array.isArray(GODOT_CONFIG.args) ? GODOT_CONFIG.args.slice() : [];
+			const flagIndex = args.indexOf('--main-pack');
+			if (flagIndex !== -1) {
+				args.splice(flagIndex, 1);
+				if (flagIndex < args.length) {
+					args.splice(flagIndex, 1);
 				}
-			},
+			}
+			args.unshift(packPath);
+			args.unshift('--main-pack');
+			engine.config.update({
+				'args': args,
+				'mainPack': packPath,
+				'onProgress': onProgress,
+			});
+			GODOT_CONFIG.args = args;
+			GODOT_CONFIG.mainPack = packPath;
+			GODOT_CONFIG.onProgress = onProgress;
+			return engine.preloadFile(buffer, packPath).then(() => {
+				Engine.load(exeName, wasmSize);
+				return engine.start();
+			});
 		}).then(() => {
 			setStatusMode('hidden');
-		}, displayFailureNotice);
+		}).catch(displayFailureNotice);
 	}
 }());
 		</script>
