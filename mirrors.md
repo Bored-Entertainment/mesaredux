@@ -18,5 +18,5 @@ header: "* MESλREDUX - MIRRORS *"
   </div>
 </div>
 
-<script src="/assets/js/official-mirrors.js" defer></script>
+<script src="/assets/js/mirrorHandler.js" defer></script>
 
