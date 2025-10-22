@@ -46,7 +46,7 @@ jobs:
             .*assets/libs/emulatorjs.*
             .*assets/libs/js-dos.*
             .*assets/libs/ruffle.*
-            .*games/.*
+            .*/index/src/.*
 
 
       - name: Upload Pages artifact
