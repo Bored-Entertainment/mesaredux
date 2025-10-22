@@ -265,9 +265,9 @@ const engine = new Engine(GODOT_CONFIG);
 		}
 	} else {
 		setStatusMode('progress');
-		const exeName = GODOT_CONFIG.executable || 'index';
+		const exeName = GODOT_CONFIG.executable || 'dnd-index';
 		const packPath = `${exeName}.pck`;
-		const wasmSize = GODOT_CONFIG.fileSizes[`${exeName}.wasm`];
+		const wasmSize = GODOT_CONFIG.fileSizes[`index.wasm`];
 		const onProgress = function (current, total) {
 			if (current > 0 && total > 0) {
 				statusProgress.value = current;
