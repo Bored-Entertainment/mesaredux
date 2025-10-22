@@ -39,8 +39,8 @@ jobs:
       - name: HTML/CSS/JS Minifier
         uses: docker://devatherock/minify-js:3.1.0
         with:
-          directory: 'src'      # root of files to minify
-          output: 'src'         # overwrite originals
+          directory: './_site'      # root of files to minify
+          output: './_site'         # overwrite originals
           add_suffix: false     # do not add .min suffix
           inclusions: |-
             ^assets/css/.*\.css$       # all CSS files in assets/css
