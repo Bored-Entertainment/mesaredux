@@ -36,6 +36,25 @@ jobs:
       - name: Build Jekyll site
         run: bundle exec jekyll build --destination ./_site
 
+      - name: CSS/JS Minifier
+        uses: docker://devatherock/minify-js:3.1.0
+        with:
+          directory: '_site/assets'      # root of files to minify
+          output: '_site/assets'         # overwrite originals
+          add_suffix: false     # do not add .min suffix
+          inclusions: |-        
+            .*\.js$
+            .*\.css$ 
+          
+      - name: HTML Minifier
+        uses: docker://devatherock/minify-js:3.1.0
+        with:
+          directory: '_site/'      # root of files to minify
+          output: '_site/'         # overwrite originals
+          add_suffix: false     # do not add .min suffix
+          inclusions: |-  
+            [^/]+\.html$
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
