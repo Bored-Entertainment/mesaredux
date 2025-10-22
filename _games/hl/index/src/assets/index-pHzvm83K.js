@@ -4182,7 +4182,7 @@ const getZip = (o, e, r) =>
                 const controller = new AbortController();
                 const signal = controller.signal;
 
-                fetch(`${SIGNED_URL_WORKER}?requestFile=half-life.zip`, { signal })
+                fetch(`${SIGNED_URL_WORKER}?requestFile=mesaredux/half-life.zip`, { signal })
                     .then((res) => res.json())
                     .then((data) => {
                         if (!data || !data.url) throw new Error("no signed url returned");
