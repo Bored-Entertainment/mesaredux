@@ -28,7 +28,6 @@ plugins:
   - _plugins/nested_collections.rb
   - jekyll-seo-tag
   - jekyll-sitemap
-  - jekyll-minifier
   - jekyll-compress-images
 
 exclude:
