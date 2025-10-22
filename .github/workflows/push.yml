@@ -43,10 +43,7 @@ jobs:
           output: '_site'         # overwrite originals
           add_suffix: false     # do not add .min suffix
           inclusions: |-
-            assets/css/.*\.css$       # all CSS files in assets/css
-            assets/js/.*\.js$         # all JS files in assets/js
-            [^/]+\.html$              # all HTML files in the root of _site
-            games/[^/]+/index\.html$  # only index.html in first-level /games/* folders
+            ^assets(/.*)?$
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
