@@ -13,20 +13,39 @@
     <script language="javascript" type="text/javascript" src="Population.js"></script>
     <script language="javascript" type="text/javascript" src="Coin.js"></script>
     <style>
-        body {
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
             background-color: rgb(30,30,30);
         }
+
+        #canvas {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        canvas {
+            width: 100% !important;
+            height: 100% !important;
+            display: block;
+        }
     </style>
+    <script>
+        window.addEventListener('keydown', function (event) {
+            const blockedKeys = ['Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
+            if (blockedKeys.includes(event.code) && event.target === document.body) {
+                event.preventDefault();
+            }
+        });
+    </script>
 </head>
 
 <body>
-<center>
     <div id="canvas"></div>
-    <FONT color="#ffffff" size="3" face="Courier">Thanks to the team behind Jump King for letting me keep this up, u guys are legends</FONT>
-    <BR>
-    <a href="https://store.steampowered.com/app/1061090/Jump_King/"  style="font-family:Courier; color:white;">Please support the official game on steam its pretty dope CLICK ME</a>
-    <BR>
-    <FONT color="#ffffff" size="3" face="Courier">if this shit aint loading then just keep hitting refresh, have fun and remember, dont press n</FONT> 
-</center>
 </body>
 </html>

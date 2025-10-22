@@ -255,7 +255,9 @@ function keyPressed() {
             player.rightHeld = true;
             break;
     }
-
+    if (key === ' ' || keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW || keyCode === UP_ARROW || keyCode === DOWN_ARROW) {
+        return false;
+    }
 }
 replayingBestPlayer = false;
 cloneOfBestPlayer = null;
@@ -327,6 +329,10 @@ function keyReleased() {
             evolationSpeed = constrain(evolationSpeed + 1, 0, 50);
             print(evolationSpeed)
             break;
+    }
+
+    if (key === ' ' || keyCode === LEFT_ARROW || keyCode === RIGHT_ARROW || keyCode === UP_ARROW || keyCode === DOWN_ARROW) {
+        return false;
     }
 }
 
