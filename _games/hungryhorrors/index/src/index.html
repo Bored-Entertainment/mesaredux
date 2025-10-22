@@ -111,7 +111,7 @@ body {
 
 		<script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"mesaredux_godot_horror-index.pck":162727648,"horror-index.wasm":43699190},"focusCanvas":true,"gdextensionLibs":[]};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"mesaredux_godot_horror-index.pck":162727648,"index.wasm":43699190},"focusCanvas":true,"gdextensionLibs":[]};
 const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 
@@ -267,7 +267,7 @@ const engine = new Engine(GODOT_CONFIG);
 		setStatusMode('progress');
 		const exeName = GODOT_CONFIG.executable || 'horror-index';
 		const packPath = `${exeName}.pck`;
-		const wasmSize = GODOT_CONFIG.fileSizes[`${exeName}.wasm`];
+		const wasmSize = GODOT_CONFIG.fileSizes[`index.wasm`];
 		const onProgress = function (current, total) {
 			if (current > 0 && total > 0) {
 				statusProgress.value = current;
