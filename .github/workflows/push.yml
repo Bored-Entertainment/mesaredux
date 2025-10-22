@@ -47,6 +47,7 @@ jobs:
             .*assets/libs/js-dos.*
             .*assets/libs/ruffle.*
             .*games/fruitninja/index/src/files/.*
+            .*games/cookieclicker/index/src/.*
 
 
       - name: Upload Pages artifact
