@@ -32,7 +32,6 @@ plugins:
   - jekyll-compress-images
 
 exclude:
-  - "tempgames"
   - "vendor"
   - ".bundle"
   - "Gemfile"
