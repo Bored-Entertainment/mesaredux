@@ -18,7 +18,7 @@
 
   <audio id="BGM" preload="auto" loop data-track-list="{{ "/assets/js/json/playlist.json" | relative_url }}"></audio>
   {% if page.title == "games" or page.title == "about" %}
-  <div class="wrapper" style="width: 1070px;">
+  <div class="wrapper" id="wrapper-wide">
   {% else %}
   <div class="wrapper">
   {% endif %}
@@ -60,7 +60,7 @@
   
   <div class="wrapper-2">
   {% if page.title == "games" or page.title == "about" %}
-    <div class="main" style="width: 700px;">
+    <div class="main" id="main-wide">
   {% else %}
   <div class="main">
   {% endif %}

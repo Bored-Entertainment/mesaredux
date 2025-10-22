@@ -122,6 +122,12 @@ center {
   .main {
     width: 50vw;
     }
+  #wrapper-wide {
+    width: min(calc(640px + 50vw), 100vw);
+    }
+  #main-wide {
+    width: min(calc(50vw + 200px), calc(100vw - 360px));
+    }
   }
   
 @media(max-width:910px) {
@@ -135,11 +141,18 @@ center {
     margin-left: 180px;
     width: 52vw;
     }
+  #wrapper-wide {
+    width: min(calc(560px + 52vw), 100vw);
+    }
+  #main-wide {
+    margin-left: 180px;
+    width: min(calc(52vw + 200px), calc(100vw - 340px));
+    }
   }
   
 /* Mobile compatibility. Puts everything into a standard vertical layout. */
 @media(orientation:portrait) {
-  .wrapper {
+  .wrapper, #wrapper-wide {
     width: 96vw;
     margin: 0 auto;
     padding:0;
@@ -151,7 +164,7 @@ center {
     padding:0;
     position: relative;
     }
-  .sidebar-left, .main, .sidebar-right {
+  .sidebar-left, .main, #main-wide, .sidebar-right {
     position: relative;
     width: 92vw;
     margin: 0.25rem 1vw;
@@ -165,7 +178,14 @@ center {
   background: none;
   top: 0;
   margin: 0 auto;
+  }
+
+.wrapper {
   width: 870px;
+  }
+
+#wrapper-wide {
+  width: 1070px;
   }
   
 .sidebar-left, .sidebar-right {
@@ -173,8 +193,14 @@ center {
   }
   
 .main {
-  width: 500px;
   margin-left: 185px;
+  width: 500px;
+  }
+
+#main-wide {
+  display: inline-block;
+  margin-left: 185px;
+  width: 700px;
   }
   
 .sidebar-left {
@@ -237,14 +263,21 @@ center {
     width: 160px;
     }
   .main {
-    width: 50vw;
     margin-left: 170px;
+    width: 50vw;
+    }
+  #wrapper-wide {
+    width: min(calc(540px + 50vw), 100vw);
+    }
+  #main-wide {
+    margin-left: 170px;
+    width: min(calc(50vw + 200px), calc(100vw - 330px));
     }
   }
 
 /*Mobile compatibility. Just turns it all into a vertical layout.*/  
 @media(orientation:portrait) {
-  .wrapper {
+  .wrapper, #wrapper-wide {
     width: 96vw;
     margin: 0 auto;
     padding:0;
@@ -256,7 +289,7 @@ center {
     padding:0;
     position: relative;
     }
-  .sidebar-left, .main, .sidebar-right {
+  .sidebar-left, .main, #main-wide, .sidebar-right {
     position: relative;
     width: 92vw;
     margin: 0.25rem 1vw;
