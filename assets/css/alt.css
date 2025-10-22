@@ -258,7 +258,7 @@ a {
   filter:brightness(0.95);
 }
 
-#credit{
+.game-action-btn{
   color:#fff !important;
   background:linear-gradient(135deg,#c43400 80%,#e26d00 100%);
   border:1px solid #ff4500;
@@ -272,19 +272,26 @@ a {
   transition:background .18s,border-color .18s,transform .18s,color .18s;
   text-shadow:0 1px 2px rgba(0,0,0,0.18);
   font-family: Seraphim;
+  margin-top: 7px;
 }
-#credit:hover{
+.game-action-btn:hover{
   background:linear-gradient(135deg,#ff4500 80%,#ff7b00 100%);
   border-color:#ff7b00;
   color:#fff;
 }
-#credit:active{
+.game-action-btn:active{
   transform:translateY(1px);
   filter:brightness(0.95);
 }
 
-#creditlink{
-
+.game-action-link{
     color:#fff;
+}
 
+.game-action-buttons{
+        display:flex;
+        gap:10px;
+        flex-wrap:wrap;
+        justify-content:center;
+        align-items:center;
 }

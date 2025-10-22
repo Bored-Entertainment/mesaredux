@@ -69,8 +69,7 @@
                 </object>
             ' allowfullscreen ></iframe>
             </div>
-            <button id="fullscreen-btn" style="margin-top:10px;">Fullscreen</button>
-            <a href="{{ page.url | append: 'src/game.swf' | relative_url }}" download class="btn btn-secondary">Download</a>
+    <button id="fullscreen-btn" style="margin-top:10px;">Fullscreen</button>
       {% elsif game_type == 'html' %}
              <div class="fullscreen-center-wrapper" id="fullscreen-wrapper">
              <iframe id="game-iframe" srcdoc='
@@ -220,8 +219,20 @@
             </div>
             <button id="fullscreen-btn" style="margin-top:10px;">Fullscreen</button>
             {% endif %}
-            {% if page.credit %}
-            <br><a id="creditlink" href="{{ page.credit }}" target="_blank"><button id="credit" style="margin-top:10px;">Game Credit</button></a>
+            {% if game_type == 'flash' or page.credit %}
+            <br>
+            <div class="game-action-buttons">
+              {% if game_type == 'flash' %}
+              <a class="game-action-link" href="{{ page.url | append: 'src/game.swf' | relative_url }}" download>
+                <button class="game-action-btn">Download</button>
+              </a>
+              {% endif %}
+              {% if page.credit %}
+              <a class="game-action-link" href="{{ page.credit }}" target="_blank">
+                <button class="game-action-btn">Game Credit</button>
+              </a>
+              {% endif %}
+            </div>
             {% endif %}
             {% endif %}
             <link rel="stylesheet" href="{{ "assets/css/gameWrapper.css" | relative_url }}">
