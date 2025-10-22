@@ -21272,7 +21272,7 @@ const filesystemURL = "assets/filesystem_stdio-CVu1CW7S.wasm",
         }
     ),
     zipList = [
-        { name: "Half-Life - Full Game (531M)", packageName: "mesaredux_half-life.zip" },
+        { name: "Half-Life - Full Game (531M)", packageName: "half-life.zip" },
         { name: "Uplink (45M)", packageName: "uplink.zip" },
     ],
     _hoisted_1$9 = { class: "window", name: "Releases" },
