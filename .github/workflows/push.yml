@@ -18,6 +18,8 @@ jobs:
   build:
     if: github.repository == 'Bored-Entertainment/mesaredux'
     runs-on: ubuntu-latest
+    env:
+      JEKYLL_ENV: production   # should b global now
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
@@ -32,8 +34,6 @@ jobs:
           cache-version: 0
 
       - name: Build Jekyll site
-        env:
-          JEKYLL_ENV: production
         run: bundle exec jekyll build --destination ./_site
 
       - name: Upload Pages artifact
