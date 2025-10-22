@@ -4182,7 +4182,7 @@ const getZip = (o, e, r) =>
                 const controller = new AbortController();
                 const signal = controller.signal;
 
-                fetch(`${SIGNED_URL_WORKER}?requestFile=half-life.zip`, { signal })
+                fetch(`${SIGNED_URL_WORKER}?requestFile=mesaredux/half-life.zip`, { signal })
                     .then((res) => res.json())
                     .then((data) => {
                         if (!data || !data.url) throw new Error("no signed url returned");
@@ -21272,7 +21272,7 @@ const filesystemURL = "assets/filesystem_stdio-CVu1CW7S.wasm",
         }
     ),
     zipList = [
-        { name: "Half-Life - Full Game (531M)", packageName: "half-life.zip" },
+        { name: "Half-Life - Full Game (531M)", packageName: "mesaredux_half-life.zip" },
         { name: "Uplink (45M)", packageName: "uplink.zip" },
     ],
     _hoisted_1$9 = { class: "window", name: "Releases" },

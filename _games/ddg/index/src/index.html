@@ -111,7 +111,7 @@ body {
 
 		<script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":160952720,"index.wasm":43699190},"focusCanvas":true,"gdextensionLibs":[]};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"mesaredux_godot_dnd-index.pck":160952720,"index.wasm":43699190},"focusCanvas":true,"gdextensionLibs":[]};
 const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 
@@ -119,7 +119,7 @@ const engine = new Engine(GODOT_CONFIG);
 	const statusOverlay = document.getElementById('status');
 	const statusProgress = document.getElementById('status-progress');
 	const statusNotice = document.getElementById('status-notice');
-	const mainPackEndpoint = 'https://storage.mesagrey.ca/?requestFile=index.pck';
+	const mainPackEndpoint = 'https://storage.mesagrey.ca/?requestFile=mesaredux/godot/dnd-dnd-index.pck';
 
 	let initializing = true;
 	let statusMode = '';
@@ -183,7 +183,7 @@ const engine = new Engine(GODOT_CONFIG);
 				throw new Error(`Failed to download main pack (${response.status})`);
 			}
 			const contentLength = parseInt(response.headers.get('content-length') || '', 10);
-			const total = Number.isFinite(contentLength) && contentLength > 0 ? contentLength : (GODOT_CONFIG.fileSizes['index.pck'] || 0);
+			const total = Number.isFinite(contentLength) && contentLength > 0 ? contentLength : (GODOT_CONFIG.fileSizes['mesaredux_godot_dnd-index.pck'] || 0);
 			if (total > 0) {
 				statusProgress.max = total;
 				statusProgress.value = 0;
@@ -278,7 +278,7 @@ const engine = new Engine(GODOT_CONFIG);
 			}
 		};
 		fetchMainPackUrl().then((packUrl) => downloadMainPack(packUrl)).then(({ buffer, size }) => {
-			const knownSize = Number.isFinite(size) ? size : GODOT_CONFIG.fileSizes['index.pck'];
+			const knownSize = Number.isFinite(size) ? size : GODOT_CONFIG.fileSizes['mesaredux_godot_dnd-index.pck'];
 			if (typeof knownSize === 'number' && knownSize > 0) {
 				GODOT_CONFIG.fileSizes[packPath] = knownSize;
 			}
