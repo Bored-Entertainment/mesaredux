@@ -1,6 +1,6 @@
 ---
 layout: alt
-title: "Mario & Luigi: Bowser's Inside Story"
+title: "Mario & Luigi: Bowser's Inside Story TEMP BROKEN"
 type: retroarch
 core: nds
 aspectRatio: "16:7.75"
