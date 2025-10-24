@@ -1,0 +1,59 @@
+{ "frames": {
+   "attackAnim 0.png": {
+    "frame": { "x": 0, "y": 0, "w": 24, "h": 25 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 25 },
+    "sourceSize": { "w": 24, "h": 25 },
+    "duration": 100
+   },
+   "attackAnim 1.png": {
+    "frame": { "x": 24, "y": 0, "w": 24, "h": 25 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 25 },
+    "sourceSize": { "w": 24, "h": 25 },
+    "duration": 100
+   },
+   "attackAnim 2.png": {
+    "frame": { "x": 48, "y": 0, "w": 24, "h": 25 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 25 },
+    "sourceSize": { "w": 24, "h": 25 },
+    "duration": 100
+   },
+   "attackAnim 3.png": {
+    "frame": { "x": 72, "y": 0, "w": 24, "h": 25 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 25 },
+    "sourceSize": { "w": 24, "h": 25 },
+    "duration": 100
+   },
+   "attackAnim 4.png": {
+    "frame": { "x": 96, "y": 0, "w": 24, "h": 25 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 25 },
+    "sourceSize": { "w": 24, "h": 25 },
+    "duration": 100
+   },
+   "attackAnim 5.png": {
+    "frame": { "x": 120, "y": 0, "w": 24, "h": 25 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 24, "h": 25 },
+    "sourceSize": { "w": 24, "h": 25 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.pngprite.org/",
+  "version": "1.1.1-dev",
+  "image": "attackAnim.png",
+  "format": "I8",
+  "size": { "w": 144, "h": 25 },
+  "scale": "1"
+ }
+}

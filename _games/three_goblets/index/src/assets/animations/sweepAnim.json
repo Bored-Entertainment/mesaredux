@@ -1,0 +1,59 @@
+{ "frames": {
+   "sweepAnim 0.png": {
+    "frame": { "x": 0, "y": 0, "w": 30, "h": 16 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 30, "h": 16 },
+    "sourceSize": { "w": 30, "h": 16 },
+    "duration": 100
+   },
+   "sweepAnim 1.png": {
+    "frame": { "x": 30, "y": 0, "w": 30, "h": 16 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 30, "h": 16 },
+    "sourceSize": { "w": 30, "h": 16 },
+    "duration": 100
+   },
+   "sweepAnim 2.png": {
+    "frame": { "x": 60, "y": 0, "w": 30, "h": 16 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 30, "h": 16 },
+    "sourceSize": { "w": 30, "h": 16 },
+    "duration": 100
+   },
+   "sweepAnim 3.png": {
+    "frame": { "x": 90, "y": 0, "w": 30, "h": 16 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 30, "h": 16 },
+    "sourceSize": { "w": 30, "h": 16 },
+    "duration": 100
+   },
+   "sweepAnim 4.png": {
+    "frame": { "x": 120, "y": 0, "w": 30, "h": 16 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 30, "h": 16 },
+    "sourceSize": { "w": 30, "h": 16 },
+    "duration": 100
+   },
+   "sweepAnim 5.png": {
+    "frame": { "x": 150, "y": 0, "w": 30, "h": 16 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 30, "h": 16 },
+    "sourceSize": { "w": 30, "h": 16 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.pngprite.org/",
+  "version": "1.1.1-dev",
+  "image": "sweepAnim.png",
+  "format": "I8",
+  "size": { "w": 180, "h": 16 },
+  "scale": "1"
+ }
+}

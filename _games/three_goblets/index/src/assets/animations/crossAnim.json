@@ -1,0 +1,59 @@
+{ "frames": {
+   "crossAnim 0.png": {
+    "frame": { "x": 0, "y": 0, "w": 34, "h": 24 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 34, "h": 24 },
+    "sourceSize": { "w": 34, "h": 24 },
+    "duration": 100
+   },
+   "crossAnim 1.png": {
+    "frame": { "x": 34, "y": 0, "w": 34, "h": 24 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 34, "h": 24 },
+    "sourceSize": { "w": 34, "h": 24 },
+    "duration": 100
+   },
+   "crossAnim 2.png": {
+    "frame": { "x": 68, "y": 0, "w": 34, "h": 24 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 34, "h": 24 },
+    "sourceSize": { "w": 34, "h": 24 },
+    "duration": 100
+   },
+   "crossAnim 3.png": {
+    "frame": { "x": 102, "y": 0, "w": 34, "h": 24 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 34, "h": 24 },
+    "sourceSize": { "w": 34, "h": 24 },
+    "duration": 100
+   },
+   "crossAnim 4.png": {
+    "frame": { "x": 136, "y": 0, "w": 34, "h": 24 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 34, "h": 24 },
+    "sourceSize": { "w": 34, "h": 24 },
+    "duration": 100
+   },
+   "crossAnim 5.png": {
+    "frame": { "x": 170, "y": 0, "w": 34, "h": 24 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 34, "h": 24 },
+    "sourceSize": { "w": 34, "h": 24 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.1.1-dev",
+  "image": "crossAnim.png",
+  "format": "I8",
+  "size": { "w": 204, "h": 24 },
+  "scale": "1"
+ }
+}

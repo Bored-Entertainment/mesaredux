@@ -1,0 +1,59 @@
+{ "frames": {
+   "splashAnim 0.png": {
+    "frame": { "x": 0, "y": 0, "w": 19, "h": 24 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 24 },
+    "sourceSize": { "w": 19, "h": 24 },
+    "duration": 100
+   },
+   "splashAnim 1.png": {
+    "frame": { "x": 19, "y": 0, "w": 19, "h": 24 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 24 },
+    "sourceSize": { "w": 19, "h": 24 },
+    "duration": 100
+   },
+   "splashAnim 2.png": {
+    "frame": { "x": 38, "y": 0, "w": 19, "h": 24 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 24 },
+    "sourceSize": { "w": 19, "h": 24 },
+    "duration": 100
+   },
+   "splashAnim 3.png": {
+    "frame": { "x": 57, "y": 0, "w": 19, "h": 24 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 24 },
+    "sourceSize": { "w": 19, "h": 24 },
+    "duration": 100
+   },
+   "splashAnim 4.png": {
+    "frame": { "x": 76, "y": 0, "w": 19, "h": 24 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 24 },
+    "sourceSize": { "w": 19, "h": 24 },
+    "duration": 100
+   },
+   "splashAnim 5.png": {
+    "frame": { "x": 95, "y": 0, "w": 19, "h": 24 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 19, "h": 24 },
+    "sourceSize": { "w": 19, "h": 24 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.pngprite.org/",
+  "version": "1.1.1-dev",
+  "image": "splashAnim.png",
+  "format": "I8",
+  "size": { "w": 114, "h": 24 },
+  "scale": "1"
+ }
+}

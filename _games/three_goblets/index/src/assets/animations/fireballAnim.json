@@ -1,0 +1,59 @@
+{ "frames": {
+   "fireballAnim 0.png": {
+    "frame": { "x": 0, "y": 0, "w": 25, "h": 24 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 23, "h": 22 },
+    "sourceSize": { "w": 23, "h": 22 },
+    "duration": 100
+   },
+   "fireballAnim 1.png": {
+    "frame": { "x": 26, "y": 0, "w": 25, "h": 24 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 23, "h": 22 },
+    "sourceSize": { "w": 23, "h": 22 },
+    "duration": 100
+   },
+   "fireballAnim 2.png": {
+    "frame": { "x": 52, "y": 0, "w": 25, "h": 24 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 23, "h": 22 },
+    "sourceSize": { "w": 23, "h": 22 },
+    "duration": 100
+   },
+   "fireballAnim 3.png": {
+    "frame": { "x": 78, "y": 0, "w": 25, "h": 24 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 23, "h": 22 },
+    "sourceSize": { "w": 23, "h": 22 },
+    "duration": 100
+   },
+   "fireballAnim 4.png": {
+    "frame": { "x": 104, "y": 0, "w": 25, "h": 24 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 23, "h": 22 },
+    "sourceSize": { "w": 23, "h": 22 },
+    "duration": 100
+   },
+   "fireballAnim 5.png": {
+    "frame": { "x": 130, "y": 0, "w": 25, "h": 24 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 23, "h": 22 },
+    "sourceSize": { "w": 23, "h": 22 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.pngprite.org/",
+  "version": "1.1.1-dev",
+  "image": "fireballAnim.png",
+  "format": "I8",
+  "size": { "w": 155, "h": 24 },
+  "scale": "1"
+ }
+}

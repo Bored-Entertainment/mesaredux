@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WebAssembly with Emscripten</title>
+  <style>
+    body, canvas {
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+    #progress {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-family: sans-serif;
+      font-size: 1.5em;
+      text-align: center;
+      z-index: 10;
+      text-shadow: 0 0 5px #000;
+      background: rgba(0,0,0,0.5);
+      padding: 1em 2em;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+  <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" tabindex="1"></canvas>
+  <div id="progress"></div>
+
+  <script>
+    function hideLoadingMessage() {
+      document.getElementById("progress").style.display = "none";
+    }
+
+    var Module = {
+      wasmBinaryFile: "index.wasm",
+      instantiateWasm: (function(imports, successCallback) {
+        var start = Date.now();
+        fetch('./index.wasm').then((response) => {
+          var loaded = 0;
+
+          function progressHandler(bytesLoaded, totalBytes) {
+            var progressDiv = document.getElementById("progress");
+            progressDiv.style.display = "block";
+            let loadedMiB = (bytesLoaded / (1024 * 1024)).toFixed(2);
+            progressDiv.innerHTML =
+              '<div style="white-space:nowrap;">Solitaire Battle is loading!</div>' +
+              `<div>${loadedMiB} MiB loaded</div>`;
+          }
+
+          var res = new Response(new ReadableStream({
+            async start(controller) {
+              var reader = response.body.getReader();
+              var totalBytes = +response.headers.get('Content-Length') || 0;
+              for (;;) {
+                var {done, value} = await reader.read();
+                if (done) break;
+                loaded += value.byteLength;
+                progressHandler(loaded, totalBytes);
+                controller.enqueue(value);
+              }
+              controller.close();
+            },
+          }, {
+            "status" : response.status,
+            "statusText" : response.statusText
+          }));
+
+          for (var pair of response.headers.entries()) {
+            res.headers.set(pair[0], pair[1]);
+          }
+
+          return WebAssembly.instantiateStreaming(res, imports);
+        }).then((output) => {
+          successCallback(output.instance);
+        }).catch(function(e) {
+          console.log('wasm instantiation failed! ' + e);
+        });
+      }),
+      canvas: (function () {
+        const canvas = document.getElementById('canvas');
+        return canvas;
+      })(),
+      print: function (msg) {
+        console.log(msg);
+      },
+      printErr: function (msg) {
+        console.warn(msg);
+      },
+      preRun: [
+        function() {
+          ENV.SDL_EMSCRIPTEN_ASYNCIFY = '1';
+        }
+      ]
+    }
+  </script>
+  <script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+{ "frames": {
+   "criticalAnim 0.png": {
+    "frame": { "x": 0, "y": 0, "w": 29, "h": 29 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 29, "h": 29 },
+    "sourceSize": { "w": 29, "h": 29 },
+    "duration": 100
+   },
+   "criticalAnim 1.png": {
+    "frame": { "x": 29, "y": 0, "w": 29, "h": 29 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 29, "h": 29 },
+    "sourceSize": { "w": 29, "h": 29 },
+    "duration": 100
+   },
+   "criticalAnim 2.png": {
+    "frame": { "x": 58, "y": 0, "w": 29, "h": 29 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 29, "h": 29 },
+    "sourceSize": { "w": 29, "h": 29 },
+    "duration": 100
+   },
+   "criticalAnim 3.png": {
+    "frame": { "x": 87, "y": 0, "w": 29, "h": 29 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 29, "h": 29 },
+    "sourceSize": { "w": 29, "h": 29 },
+    "duration": 100
+   },
+   "criticalAnim 4.png": {
+    "frame": { "x": 116, "y": 0, "w": 29, "h": 29 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 29, "h": 29 },
+    "sourceSize": { "w": 29, "h": 29 },
+    "duration": 100
+   },
+   "criticalAnim 5.png": {
+    "frame": { "x": 145, "y": 0, "w": 29, "h": 29 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 29, "h": 29 },
+    "sourceSize": { "w": 29, "h": 29 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.pngprite.org/",
+  "version": "1.1.1-dev",
+  "image": "criticalAnim.png",
+  "format": "I8",
+  "size": { "w": 174, "h": 29 },
+  "scale": "1"
+ }
+}
