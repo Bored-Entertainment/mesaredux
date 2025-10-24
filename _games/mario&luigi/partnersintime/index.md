@@ -1,6 +1,6 @@
 ---
 layout: alt
-title: "Mario & Luigi: Partner's in Time"
+title: "Mario & Luigi: Partner's in Time  TEMP BROKEN"
 type: retroarch
 core: nds
 aspectRatio: "16:7.75"
