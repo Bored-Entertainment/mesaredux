@@ -27,7 +27,7 @@
   {% assign parent_group = parent_segments | join: '/' %}
   {% assign back_url = '/games/' | append: parent_group | append: '/index' %}
 {% endif %}
-<div class="games-gallery">
+<div class="games-gallery" style="max-height: 30vw; overflow: scroll;">
   {% assign nested_games = site.games | sort: 'title' %}
   {% for game in nested_games %}
     {% assign parent_dir = game.parent_dir | default: '' %}
