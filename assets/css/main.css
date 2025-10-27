@@ -1010,3 +1010,24 @@ body #boredring .webring-icon {
     background: #ddd;
     border-radius: 2px;
   }
+
+  #updates-list {
+    max-height: 10vh;
+    overflow: scroll;
+  }
+  #updates-list ul {
+    list-style-position: inside;
+    padding-left: 0;
+    padding-top: 0;
+    margin-top: 0;
+    padding-left: 0;
+    font-size: 0.8em;
+    vertical-align: sub;
+  }
+
+  .qotd {
+    font-size: 0.8em;
+    vertical-align: sub;
+    max-height: 10vh;
+    overflow: scroll;
+  }

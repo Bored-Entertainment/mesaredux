@@ -25,11 +25,13 @@ fetch('/assets/js/json/updates.json')
 
             updatesContainer.innerHTML = '';
 
+            const ul = document.createElement('ul');
             updates.forEach(update => {
                 const li = document.createElement('li');
                 li.textContent = update;
-                updatesContainer.appendChild(li);
+                ul.appendChild(li);
             });
+            updatesContainer.appendChild(ul);
         });
     })
     .catch(error => {
