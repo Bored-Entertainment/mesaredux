@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "The Legend of Zelda Series"
+title: "Tetris Games"
 index: true
 ---
 {% include subgameIndex.html %}
