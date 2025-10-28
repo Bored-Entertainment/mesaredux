@@ -1012,7 +1012,8 @@ body #boredring .webring-icon {
 
   #updates-list {
     max-height: 10vh;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
   #updates-list ul {
     list-style-position: inside;
@@ -1028,5 +1029,6 @@ body #boredring .webring-icon {
     font-size: 0.8em;
     vertical-align: sub;
     max-height: 10vh;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
