@@ -1,0 +1,9 @@
+---
+layout: alt
+title: "Apotris"
+type: retroarch
+core: gba
+aspectRatio: "24:16"
+description: "Apotris is a free multiplatform open-source block stacking game! What sets Apotris apart from other block stacking games is its extensive customization options, complemented by ultra-responsive controls that let you execute your moves with precision. With 14 unique game modes and a plethora of settings, you can tailor the game to your preferences, ensuring a fresh and challenging experience every time you play. Whether you're a casual player or a hardcore enthusiast, Apotris has something for everyone. You can even battle your friends using the Gameboy Advance Link Cable or Wireless Adapters in 2-Player Battle! While Apotris was originally designed for Gameboy Advance, it now supports all kinds of platforms, so between the ports and emulation you can play Apotris on almost anything."
+credit: https://akouzoukos.com/apotris
+---
