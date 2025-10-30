@@ -1,6 +1,6 @@
 ---
 layout: alt
-title: "Tetris and Doctor Mario (snes)"
+title: "Tetris and Doctor Mario (SNES)"
 type: retroarch
 core: snes
 aspectRatio: "16:7.75"
