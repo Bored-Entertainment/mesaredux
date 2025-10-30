@@ -1,6 +1,6 @@
 ---
 layout: alt
-title: "Tetris DX"
+title: "Tetris DX (GBC)"
 type: retroarch
 core: gb
 aspectRatio: "16:7.75"
