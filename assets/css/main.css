@@ -1032,3 +1032,34 @@ body #boredring .webring-icon {
     overflow-y: scroll;
     overflow-x: hidden;
   }
+
+  .header-inner {
+  position: relative;
+  display: inline-block;
+}
+
+#blurb {
+  position: relative;	
+	width: 40%;
+	transform: rotate(15deg);
+	animation: blurb 0.5s ease-in-out infinite;
+	color: #FFFF00;
+	font-size: 0.95em;
+  position: absolute;
+  top: 25%;
+  right: -42%;
+}
+
+
+
+ @keyframes blurb {
+ 0% {
+ transform: scale(1) rotate(15deg);
+}
+ 50% {
+ transform: scale(1.05) rotate(15deg);
+}
+ 100% {
+ transform: scale(1) rotate(15deg);
+}
+}

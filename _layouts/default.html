@@ -10,6 +10,7 @@
   <script type="text/javascript" src="/assets/js/updates.js" defer></script>
   <script type="text/javascript" src="/assets/js/BGM.js" defer></script>
   <script type="text/javascript" src="/assets/js/nowPlaying.js" defer></script>
+  <script type="text/javascript" src="/assets/js/getBlurb.js" defer></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% include meta.html %}
   </head>
@@ -23,7 +24,8 @@
   <div class="wrapper">
   {% endif %}
   <div class="header">
-  <div class="header-shadow">
+  <div class="header-inner">
+  <div id="blurb"></div>
   <img src="/assets/images/banner.png" alt="header image">
   </div>
   </div>
