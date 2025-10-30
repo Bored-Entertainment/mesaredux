@@ -79,7 +79,7 @@ function displayBlurb(payload) {
         const showRegion = country === 'United States' || country === 'Canada';
         const location = showRegion ? `${city}, ${region}` : `${city}, ${country}`;
         const brand = 'MESλREDUX';
-        const shoutoutText = `shoutout ${location} for being the ${ordinalRank} biggest source of traffic for ${brand} this week`;
+        const shoutoutText = `shoutout ${location} for being the ${ordinalRank} biggest source of traffic for ${brand} this week!`;
         const lowerShoutout = shoutoutText.toLowerCase();
 
         blurbContainer.textContent = lowerShoutout.replace(brand.toLowerCase(), brand);
