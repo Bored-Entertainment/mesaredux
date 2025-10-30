@@ -76,11 +76,12 @@ function displayBlurb(payload) {
             return;
         }
 
-        const showRegion = country === 'United States' || country === 'Canada';
-        const location = showRegion ? `${city}, ${region}` : `${city}, ${country}`;
-        const brand = 'MESλREDUX';
-        const shoutoutText = `shoutout ${location} for being the ${ordinalRank} biggest source of traffic for ${brand} this week!`;
-        const lowerShoutout = shoutoutText.toLowerCase();
+    const showRegion = country === 'United States' || country === 'Canada';
+    const location = showRegion ? `${city}, ${region}` : `${city}, ${country}`;
+    const brand = 'MESλREDUX';
+    const rankingPhrase = rank === 1 ? 'biggest source' : `${ordinalRank} biggest source`;
+    const shoutoutText = `shoutout ${location} for being the ${rankingPhrase} of traffic for ${brand} this week!`;
+    const lowerShoutout = shoutoutText.toLowerCase();
 
         blurbContainer.textContent = lowerShoutout.replace(brand.toLowerCase(), brand);
     });
