@@ -1,6 +1,6 @@
 ---
 layout: alt
-title: "Tetris World"
+title: "Tetris Worlds (GBA)"
 type: retroarch
 core: gba
 aspectRatio: "16:7.75"
