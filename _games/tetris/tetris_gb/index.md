@@ -1,6 +1,6 @@
 ---
 layout: alt
-title: "Tetris Game Boy"
+title: "Tetris (GB)"
 type: retroarch
 core: gb
 aspectRatio: "16:7.75"
