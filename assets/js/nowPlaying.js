@@ -86,12 +86,16 @@ document.addEventListener('DOMContentLoaded', function() {
   syncPlayLabel();
   syncMuteLabel();
 
-  
+  const root = document.documentElement;
+
     //nice comments, grey
+    // thanks harper
     /////// harper code
     var volumeslider = document.querySelector("#volume-slider") 
     volumeslider.addEventListener('change', event=> {
       console.log(volumeslider.value)
       audio.volume = volumeslider.value / 100
+      /////// grey code (singular)
+      root.style.setProperty('--value', `${volumeslider.value}%`);
     })
 });

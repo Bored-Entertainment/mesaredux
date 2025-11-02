@@ -955,6 +955,10 @@ body #boredring .webring-icon {
     border-radius: 2px;
   }
 
+  :root {
+    --value: 50%;
+  }
+
   /* firefox */
   #volume-slider::-moz-range-thumb {
     width: 14px;
