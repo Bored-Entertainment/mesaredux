@@ -468,13 +468,7 @@ b {
   flex: 0 0 auto;
 }
 
-/* Slightly reduce button padding on very small screens so nav fits better */
-@media (max-width: 420px) {
-  #navigation li a {
-    padding: 4px 8px;
-    font-size: 0.95em;
-  }
-}
+
 
 #navigation li a {
   display: block;
@@ -1050,7 +1044,20 @@ body #boredring .webring-icon {
   right: -42%;
 }
 
-
+/* Slightly reduce button padding on very small screens so nav fits better */
+@media (max-width: 420px) {
+  #navigation li a {
+    padding: 4px 8px;
+    font-size: 0.95em;
+  }
+  #blurb {
+    font-size: 0.7em;
+    top: 60%;
+    right: -7%;
+    transform: rotate(10deg);
+    animation: blurbSmall 0.5s ease-in-out infinite;
+  }
+}
 
  @keyframes blurb {
  0% {
@@ -1061,5 +1068,16 @@ body #boredring .webring-icon {
 }
  100% {
  transform: scale(1) rotate(15deg);
+}
+}
+ @keyframes blurbSmall {
+ 0% {
+ transform: scale(1) rotate(10deg);
+}
+ 50% {
+ transform: scale(1.05) rotate(10deg);
+}
+ 100% {
+ transform: scale(1) rotate(10deg);
 }
 }
