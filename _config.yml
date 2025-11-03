@@ -19,15 +19,14 @@ imageoptim:
   jpegoptim:
     strip: "all"
   jpegtran: true
-  svgo: true
   oxipng: false
   allow_lossy: false
 
 
 plugins:
-  - _plugins/nested_collections.rb
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-minifier
   - jekyll-compress-images
 
 exclude:
@@ -35,3 +34,13 @@ exclude:
   - ".bundle"
   - "Gemfile"
   - "Gemfile.lock"
+
+jekyll-minifier:
+  exclude:
+    - "games/**/index/src/**"
+  compress_css: true
+  compress_javascript: true
+  compress_json: true    
+  compress_html: true
+  preserve_line_breaks: false
+  remove_comments: true

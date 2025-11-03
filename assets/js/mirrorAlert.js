@@ -6,8 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const mainDomain = 'mesaredux.mesagrey.ca';
   const manifestPath = `/assets/js/json/officialmirrors.json`;
-  const unofficialManifestPath = `https://${mainDomain}/assets/js/json/unofficialmirrors.json`;
-  const buildInfoPath = `https://${mainDomain}/assets/js/json/buildinfo.json`;
+  const buildInfoPath = `/assets/js/json/buildinfo.json`;
   const latestBuildInfoPath = `https://${mainDomain}/assets/js/json/buildinfo.json`;
   const fallbackMirrors = [mainDomain];
   const host = window.location.host.toLowerCase();
@@ -16,8 +15,43 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
+  const parseRevision = (info) => {
+    if (!info || typeof info !== 'object') {
+      return null;
+    }
+
+    const raw = info.build_revision ?? info.buildRevision ?? info.revision;
+    const value = Number(raw);
+    return Number.isFinite(value) && value > 0 ? value : null;
+  };
+
+  const formatTimestamp = (revision) => {
+    if (typeof revision !== 'number' || !Number.isFinite(revision)) {
+      return 'unknown time';
+    }
+
+    try {
+      return new Date(revision * 1000).toLocaleString(undefined, {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+      });
+    } catch (_error) {
+      return String(revision);
+    }
+  };
+
   const renderBanner = (officialHosts, buildInfo, latestBuildInfo) => {
     const isOfficial = officialHosts.has(host);
+    const localRevision = parseRevision(buildInfo);
+    const latestRevision = parseRevision(latestBuildInfo);
+    const canCompare = localRevision !== null && latestRevision !== null;
+    const buildsMatch = canCompare && localRevision === latestRevision;
+    const buildsDiffer = canCompare && !buildsMatch;
+
     const banner = document.createElement('div');
     banner.className = 'mirror-alert__banner';
     banner.style.padding = '0.75rem';
@@ -35,15 +69,39 @@ document.addEventListener('DOMContentLoaded', () => {
       ? `You are viewing an official MESλREDUX mirror on ${host || 'localhost'}.`
       : `You are viewing an unofficial MESλREDUX mirror on ${host || 'localhost'}.`;
 
-    const buildOutdated = !latestBuildInfo || (buildInfo && buildInfo.build_revision !== latestBuildInfo.build_revision);
-    
-  banner.innerHTML = `
+    let buildStatusHtml = '';
+
+    if (buildInfo && latestBuildInfo) {
+      if (buildsMatch) {
+        const intro = `<br><strong>This ${isOfficial ? 'official' : 'unofficial'} mirror is up to date.</strong>`;
+        const caution = isOfficial ? '' : ' <strong>HOWEVER, it may still host unreviewed changes—proceed with care.</strong>';
+        buildStatusHtml = `${intro}${caution}`;
+      } else if (buildsDiffer) {
+        const localTime = formatTimestamp(localRevision);
+        const latestTime = formatTimestamp(latestRevision);
+        const comparisonMessage = localRevision < latestRevision
+          ? `This mirror is running build <code>${localRevision}</code> (${localTime}), but the canonical site is on <code>${latestRevision}</code> (${latestTime}).`
+          : `This mirror is running build <code>${localRevision}</code> (${localTime}), which is newer than the canonical build <code>${latestRevision}</code> (${latestTime}).`;
+        const guidance = localRevision < latestRevision
+          ? (isOfficial ? ' Updates should propagate shortly.' : ` Please consider using an official mirror such as <a href="https://${mainDomain}">${mainDomain}</a> for the newest changes.`)
+          : (isOfficial ? ' Please verify the deployment pipeline.' : ' Treat this build with caution; prefer an official mirror for confirmed releases.');
+        buildStatusHtml = `<br><strong>Notice:</strong> ${comparisonMessage}${guidance}`;
+      } else {
+        buildStatusHtml = `<br><strong>Unable to compare build timestamps.</strong> This ${isOfficial ? 'official' : 'unofficial'} mirror may be out of date.`;
+      }
+    } else if (buildInfo && !latestBuildInfo) {
+      buildStatusHtml = `<br><strong>Unable to reach the canonical build manifest.</strong> This ${isOfficial ? 'official' : 'unofficial'} mirror might be out of date.`;
+    } else if (!buildInfo) {
+      buildStatusHtml = `<br><strong>Warning:</strong> This mirror did not provide build metadata, so freshness cannot be confirmed.`;
+    }
+
+    banner.innerHTML = `
 
   <strong>${statusLabel}:</strong> ${statusDescription}<br>
 
   <span>Try the main domain at <a href="https://${mainDomain}">${mainDomain}</a> if it is not blocked for you.</span>
 
-  ${buildInfo ? (latestBuildInfo ? (buildOutdated ? `<br><strong>Notice:</strong> This mirror is running an outdated or modified build.` + (isOfficial ? ` Please wait for changes to sync.` : ' Please consider using an official mirror for the latest updates.') : `<br><strong>This ${isOfficial ? 'official' : 'unofficial'} mirror is up to date${isOfficial ? '.' : ' with latest git commit. HOWEVER, be careful, it may be host to malicious changes that aren\'t committed!'}</strong>`) : `<br><strong>Unable to check for updates. This ${isOfficial ? 'official' : 'unofficial'} mirror is possibly out of date.</strong>`) : ''}
+  ${buildStatusHtml}
 
 `;
 
@@ -76,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const loadLatestBuildInfo = async () => {
     try {
-      const response = await fetch(latestBuildInfoPath, { cache: 'no-cache' });
+      const response = await fetch(`${latestBuildInfoPath}?t=${Date.now()}`, { cache: 'no-cache' });
       if (!response.ok) {
         throw new Error(`Failed to load latest build info: ${response.status}`);
       }
