@@ -1060,7 +1060,7 @@ body #boredring .webring-icon {
     appearance: none;
     width: 14px;
     height: 14px;
-    background: linear-gradient(135deg,#3c3c3c 80%,#333 100%);
+    background: #1a1a1a;
     border: 2px solid rgba(255, 68, 0, 0.6); /* outline */
     border-radius: 50%;
     cursor: pointer;
@@ -1081,7 +1081,7 @@ body #boredring .webring-icon {
   #volume-slider::-moz-range-thumb {
     width: 14px;
     height: 14px;
-    background: linear-gradient(135deg,#3c3c3c 80%,#333 100%);
+    background: #1a1a1a;
     border: 2px solid rgba(255, 68, 0, 0.6); /* outline */
     border-radius: 50%;
     cursor: pointer;
@@ -1103,7 +1103,7 @@ body #boredring .webring-icon {
   #volume-slider::-ms-thumb {
     width: 14px;
     height: 14px;
-    background: linear-gradient(135deg,#3c3c3c 80%,#333 100%);
+    background: #1a1a1a;
     border: 2px solid rgba(255, 68, 0, 0.6); /* outline */
     border-radius: 50%;
     cursor: pointer;
