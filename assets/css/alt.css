@@ -8,6 +8,10 @@
     src: url('/assets/Seraphimb1.ttf');
 }
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'TimesNewPixel', serif;
     margin: 0;
@@ -16,6 +20,7 @@ body {
     background-size: 65px;
     color: #fceaff;
     background-image: url(/assets/images/lmbda.png);
+    overflow-x: hidden;
 }
 
 .page-header {
@@ -169,7 +174,8 @@ strong {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    min-width: 100vw;
+    width: 100%;
+    max-width: 100%;
     padding: 10px;
     box-sizing: border-box;
 }
@@ -293,4 +299,226 @@ a {
         flex-wrap:wrap;
         justify-content:center;
         align-items:center;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    html::-webkit-scrollbar-button:vertical:start:increment,
+    html::-webkit-scrollbar-button:vertical:end:decrement,
+    html::-webkit-scrollbar-button:horizontal:start:increment,
+    html::-webkit-scrollbar-button:horizontal:end:decrement {
+        display: none;
+    }
+
+    html::-webkit-scrollbar {
+        width: 16px;
+        height: 16px;
+        background-color: #0e0e0e;
+    }
+
+    html::-webkit-scrollbar-corner {
+        background-color: #0e0e0e;
+    }
+
+    html::-webkit-scrollbar-thumb {
+        border-radius: 0;
+        background-color: #2e2e2e;
+        border: 3px solid #0e0e0e;
+        box-shadow: inset 1px 1px #3f3f3f, inset -1px -1px #101010;
+    }
+
+    html::-webkit-scrollbar-track {
+        background-color: #161616;
+        border-left: 1px solid #080808;
+        border-right: 1px solid #080808;
+        box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.55);
+    }
+
+    html::-webkit-scrollbar-button {
+        background-color: #252525;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 8px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #3a3a3a;
+        border-top-color: #2f2f2f;
+        border-left-color: #2f2f2f;
+        box-shadow: inset 1px 1px #3f3f3f, inset -1px -1px #0f0f0f;
+    }
+
+    html::-webkit-scrollbar-button:start:decrement,
+    html::-webkit-scrollbar-button:end:increment {
+        display: block;
+    }
+
+    html::-webkit-scrollbar-button:start:decrement:active,
+    html::-webkit-scrollbar-button:end:increment:active {
+        border-color: #888;
+        box-shadow: none;
+    }
+
+    html::-webkit-scrollbar-button:start:decrement:horizontal:decrement,
+    html::-webkit-scrollbar-button:end:increment:horizontal:decrement {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6.86 6.86'%3E%3Cpath fill='%231d1d1b' d='M4.41 4.9v-.98h-.98v-.98h-.98v-.98h-.98v-.98h-.98V6.86h.98v-.98h.98V4.9h.98v-.98h.98v-.98h.98v-.98h-.98z'/%3E%3C/svg%3E");
+    }
+
+    html::-webkit-scrollbar-button:start:decrement:horizontal:increment,
+    html::-webkit-scrollbar-button:end:increment:horizontal:increment {
+        background-image: url("data:image/svg+xml,%3Csvg transform='rotate(180)' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6.86 6.86'%3E%3Cpath fill='%231d1d1b' d='M4.41 2.94v-.98h-.98V.98h-.98V0h-.98V6.86h.98v-.98h.98V4.9h.98v-.98h.98v-.98h-.98z'/%3E%3C/svg%3E");
+    }
+
+    html::-webkit-scrollbar-button:start:decrement:vertical:decrement,
+    html::-webkit-scrollbar-button:end:increment:vertical:decrement {
+        background-image: url("data:image/svg+xml,%3Csvg transform='rotate(270)' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6.86 6.86'%3E%3Cpath fill='%231d1d1b' d='M4.41 2.94v-.98h-.98V.98h-.98V0h-.98V6.86h.98v-.98h.98V4.9h.98v-.98h.98v-.98h-.98z'/%3E%3C/svg%3E");
+    }
+
+    html::-webkit-scrollbar-button:start:decrement:vertical:increment,
+    html::-webkit-scrollbar-button:end:increment:vertical:increment {
+        background-image: url("data:image/svg+xml,%3Csvg transform='rotate(90)' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6.86 6.86'%3E%3Cpath fill='%231d1d1b' d='M4.41 2.94v-.98h-.98V.98h-.98V0h-.98V6.86h.98v-.98h.98V4.9h.98v-.98h.98v-.98h-.98z'/%3E%3C/svg%3E");
+    }
+}
+
+html.custom-scrollbar-active {
+    scrollbar-width: none;
+}
+
+html.custom-scrollbar-active,
+body.custom-scrollbar-active {
+    overscroll-behavior: contain;
+}
+
+body.custom-scrollbar-visible {
+    padding-right: 16px;
+}
+
+.custom-scrollbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 16px;
+    height: 100vh;
+    background: #121212;
+    z-index: 9990;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    user-select: none;
+}
+
+.custom-scrollbar.is-visible {
+    display: flex;
+}
+
+.custom-scrollbar-button {
+    flex: 0 0 16px;
+    width: 16px;
+    height: 16px;
+    background-color: #252525;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #3a3a3a;
+    border-top-color: #2f2f2f;
+    border-left-color: #2f2f2f;
+    box-shadow: inset 1px 1px #3f3f3f, inset -1px -1px #0f0f0f;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 8px;
+    cursor: pointer;
+    padding: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 0;
+}
+
+.custom-scrollbar-button:focus-visible {
+    outline: 2px solid #ff4500;
+    outline-offset: -2px;
+}
+
+.custom-scrollbar-button:active {
+    border: 1px solid #888;
+    box-shadow: none;
+    background-position: 3.2px 3.2px;
+}
+
+.custom-scrollbar-button.up {
+    background-image: url("data:image/svg+xml,%3Csvg transform='rotate(270)' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6.86 6.86'%3E%3Cpath fill='%231d1d1b' d='M4.41 2.94v-.98h-.98V.98h-.98V0h-.98V6.86h.98v-.98h.98V4.9h.98v-.98h.98v-.98h-.98z'/%3E%3C/svg%3E");
+}
+
+.custom-scrollbar-button.down {
+    background-image: url("data:image/svg+xml,%3Csvg transform='rotate(90)' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6.86 6.86'%3E%3Cpath fill='%231d1d1b' d='M4.41 2.94v-.98h-.98V.98h-.98V0h-.98V6.86h.98v-.98h.98V4.9h.98v-.98h.98v-.98h-.98z'/%3E%3C/svg%3E");
+}
+
+.custom-scrollbar-track {
+    flex: 1 1 auto;
+    position: relative;
+    background-color: #181818;
+    background-image:
+        linear-gradient(to right, rgba(90, 90, 90, 0.2), rgba(45, 45, 45, 0.1)),
+        linear-gradient(to right, #0e0e0e 50%, #1f1f1f 50%),
+        linear-gradient(to bottom, #0e0e0e 50%, #1f1f1f 50%);
+    background-size: 3px 3px;
+    background-blend-mode: normal, difference, normal;
+    border-left: 1px solid #101010;
+    border-right: 1px solid #101010;
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.55);
+    padding: 1px 0;
+}
+
+.custom-scrollbar-thumb {
+    position: absolute;
+    left: 1px;
+    width: calc(100% - 2px);
+    min-height: 30px;
+    background-color: #2f2f2f;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #3a3a3a;
+    border-top-color: #333333;
+    border-left-color: #333333;
+    box-shadow: inset 1px 1px #3f3f3f, inset -1px -1px #101010;
+    cursor: grab;
+    border-radius: 0;
+}
+
+.custom-scrollbar-thumb.is-dragging,
+body.custom-scrollbar-dragging {
+    cursor: grabbing;
+}
+
+.custom-scrollbar-thumb::after {
+    content: '';
+    position: absolute;
+    inset: 4px 3px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .container::-webkit-scrollbar,
+    .box::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+
+    .container::-webkit-scrollbar-track,
+    .box::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.3);
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+    }
+
+    .container::-webkit-scrollbar-thumb,
+    .box::-webkit-scrollbar-thumb {
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        background: rgba(47, 47, 47, 0.3);
+        -webkit-box-shadow: none;
+    }
+
+    .container::-webkit-scrollbar-thumb:window-inactive,
+    .box::-webkit-scrollbar-thumb:window-inactive {
+        background: rgba(47, 47, 47, 0.3);
+    }
 }

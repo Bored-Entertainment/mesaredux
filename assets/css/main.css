@@ -1130,7 +1130,7 @@ body #boredring .webring-icon {
 
   #updates-list {
     max-height: 10vh;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
   }
   #updates-list ul {
@@ -1147,7 +1147,7 @@ body #boredring .webring-icon {
     font-size: 0.8em;
     vertical-align: sub;
     max-height: 10vh;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
   }
 
