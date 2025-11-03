@@ -63,10 +63,41 @@ function displayBlurb(payload) {
         return;
     }
 
-    const randomIndex = Math.floor(Math.random() * entries.length);
-    const randomEntry = entries[randomIndex];
-    const { weektopCity: city = 'Unknown City', weektopRegion: region = 'Unknown Region', weektopCountry: country = 'Unknown Country' } = randomEntry;
-    const rank = randomIndex + 1;
+    const validEntries = entries
+        .map((entry, index) => ({ entry, index }))
+        .filter(({ entry, index }) => {
+            const city = entry?.weektopCity?.trim?.();
+            const region = entry?.weektopRegion?.trim?.();
+            const country = entry?.weektopCountry?.trim?.();
+            const isValid = Boolean(city && region && country);
+            if (!isValid) {
+                console.warn(`blurb: skipping entry at source index ${index} due to missing data`);
+            }
+            return isValid;
+        })
+        .map(({ entry }, idx) => ({
+            ...entry,
+            weektopCity: entry.weektopCity.trim(),
+            weektopRegion: entry.weektopRegion.trim(),
+            weektopCountry: entry.weektopCountry.trim(),
+            rank: idx + 1
+        }));
+
+    if (!validEntries.length) {
+        console.warn('blurb: no valid entries remain after filtering');
+        return;
+    }
+
+    const topTwenty = validEntries.slice(0, 20);
+    if (!topTwenty.length) {
+        console.warn('blurb: no entries available after applying top 20 limit');
+        return;
+    }
+
+
+    const randomIndex = Math.floor(Math.random() * topTwenty.length);
+    const randomEntry = topTwenty[randomIndex];
+    const { weektopCity: city = 'Unknown City', weektopRegion: region = 'Unknown Region', weektopCountry: country = 'Unknown Country', rank } = randomEntry;
     const ordinalRank = toOrdinal(rank);
 
     onReady(() => {
@@ -76,12 +107,12 @@ function displayBlurb(payload) {
             return;
         }
 
-    const showRegion = country === 'United States' || country === 'Canada';
-    const location = showRegion ? `${city}, ${region}` : `${city}, ${country}`;
-    const brand = 'MESλREDUX';
-    const rankingPhrase = rank === 1 ? 'biggest source' : `${ordinalRank} biggest source`;
-    const shoutoutText = `shoutout ${location} for being the ${rankingPhrase} of traffic for ${brand} this week!`;
-    const lowerShoutout = shoutoutText.toLowerCase();
+        const showRegion = country === 'United States' || country === 'Canada';
+        const location = showRegion ? `${city}, ${region}` : `${city}, ${country}`;
+        const brand = 'MESλREDUX';
+        const rankingPhrase = rank === 1 ? 'biggest source' : `${ordinalRank} biggest source`;
+        const shoutoutText = `shoutout ${location} for being the ${rankingPhrase} of traffic for ${brand} this week!`;
+        const lowerShoutout = shoutoutText.toLowerCase();
 
         blurbContainer.textContent = lowerShoutout.replace(brand.toLowerCase(), brand);
     });
