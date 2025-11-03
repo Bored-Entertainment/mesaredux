@@ -43,30 +43,8 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./_site
+
           
-      - name: Push built site to build branch
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          git fetch origin build || echo "No remote build branch yet"
-
-          if git rev-parse --verify origin/build >/dev/null 2>&1; then
-            git checkout build
-            git merge -X ours origin/build --allow-unrelated-histories || true
-          else
-            git checkout --orphan build
-          fi
-
-          mkdir /tmp/keep_temp
-          mv _site /tmp/keep_temp
-          rm -rf ./*
-          cp -r /tmp/keep_temp/_site/* ./
-
-          git add -A
-          git commit -m "Built site from main branch" || echo "No changes to commit"
-          git push origin build
-
   deploy:
     if: github.repository == 'Bored-Entertainment/mesaredux'
     needs: build
