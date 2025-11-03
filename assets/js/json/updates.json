@@ -36,6 +36,7 @@
   "Oct. 30, 2025 - MORE TETRIS!!!!- slash",
   "Nov. 1, 2025 - Added a cool little shoutout blurb to the banner - grey",
   "Nov. 2, 2025 - Fixed the broken volume slider css on chrome and safari although it's really ugly. just use firefox lol - grey",
-  "Nov. 2, 2025 - Redid scrollbar styles for better theme integration and parity across browsers - grey"
+  "Nov. 2, 2025 - Redid scrollbar styles for better theme integration and parity across browsers - grey",
+  "Nov. 2, 2025 - Added image optimization and code minification on build for faster loading times - grey"
 
 ]
