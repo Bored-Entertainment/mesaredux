@@ -14,7 +14,8 @@ fetch('/assets/js/json/updates.json')
         return response.json();
     })
     .then(data => {
-        const updates = Array.isArray(data) ? data.slice(-3) : [];
+    const updates = Array.isArray(data) ? data.slice(-3) : [];
+    updates.reverse();
 
         onReady(() => {
             const updatesContainer = document.getElementById('updates-list');
