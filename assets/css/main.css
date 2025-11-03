@@ -441,6 +441,7 @@ b {
   border: 1px solid #ff4500;
   padding: 8px;
   margin-bottom: 8px;
+  scrollbar-width: thin;
 }
 
 
@@ -709,6 +710,7 @@ body.custom-scrollbar-dragging {
   justify-content: center;
   margin: 0;
   padding: 0;
+  scrollbar-width: thin;
 }
 
 @media (hover: hover) and (pointer: fine) {
