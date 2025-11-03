@@ -1,0 +1,1742 @@
+{
+	"textures": [
+		{
+			"image": "UI.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 631,
+				"h": 255
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "steam.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 512,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 473,
+						"h": 128
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 473,
+						"h": 128
+					}
+				},
+				{
+					"filename": "stage_forest.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 156,
+						"h": 96
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 156,
+						"h": 96
+					},
+					"frame": {
+						"x": 1,
+						"y": 130,
+						"w": 156,
+						"h": 96
+					}
+				},
+				{
+					"filename": "stage_sinking.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 156,
+						"h": 96
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 156,
+						"h": 96
+					},
+					"frame": {
+						"x": 158,
+						"y": 130,
+						"w": 156,
+						"h": 96
+					}
+				},
+				{
+					"filename": "weaponSlots.psd",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 96,
+						"h": 32
+					},
+					"frame": {
+						"x": 475,
+						"y": 1,
+						"w": 96,
+						"h": 32
+					}
+				},
+				{
+					"filename": "frame1_c2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 48,
+						"h": 48
+					},
+					"frame": {
+						"x": 315,
+						"y": 130,
+						"w": 48,
+						"h": 48
+					}
+				},
+				{
+					"filename": "frame1_c4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 48,
+						"h": 48
+					},
+					"frame": {
+						"x": 475,
+						"y": 34,
+						"w": 48,
+						"h": 48
+					}
+				},
+				{
+					"filename": "frame4_c3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 48,
+						"h": 48
+					},
+					"frame": {
+						"x": 364,
+						"y": 130,
+						"w": 48,
+						"h": 48
+					}
+				},
+				{
+					"filename": "frame5_c4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 48,
+						"h": 48
+					},
+					"frame": {
+						"x": 413,
+						"y": 130,
+						"w": 48,
+						"h": 48
+					}
+				},
+				{
+					"filename": "frame5_c4_ad.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 48,
+						"h": 48
+					},
+					"frame": {
+						"x": 315,
+						"y": 179,
+						"w": 48,
+						"h": 48
+					}
+				},
+				{
+					"filename": "frameB9.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 48,
+						"h": 48
+					},
+					"frame": {
+						"x": 364,
+						"y": 179,
+						"w": 48,
+						"h": 48
+					}
+				},
+				{
+					"filename": "TreasureIdle_03.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 40,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 5,
+						"w": 28,
+						"h": 27
+					},
+					"frame": {
+						"x": 1,
+						"y": 227,
+						"w": 28,
+						"h": 27
+					}
+				},
+				{
+					"filename": "button_c5_mouseover.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 7,
+						"w": 48,
+						"h": 35
+					},
+					"frame": {
+						"x": 475,
+						"y": 83,
+						"w": 48,
+						"h": 35
+					}
+				},
+				{
+					"filename": "button_c5_normal.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 7,
+						"w": 48,
+						"h": 35
+					},
+					"frame": {
+						"x": 413,
+						"y": 179,
+						"w": 48,
+						"h": 35
+					}
+				},
+				{
+					"filename": "button_c5_pressed.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 7,
+						"w": 48,
+						"h": 35
+					},
+					"frame": {
+						"x": 524,
+						"y": 34,
+						"w": 48,
+						"h": 35
+					}
+				},
+				{
+					"filename": "button_c8_normal.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 7,
+						"w": 48,
+						"h": 35
+					},
+					"frame": {
+						"x": 524,
+						"y": 70,
+						"w": 48,
+						"h": 35
+					}
+				},
+				{
+					"filename": "button_c9_normal_mini.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 15,
+						"w": 48,
+						"h": 18
+					},
+					"frame": {
+						"x": 30,
+						"y": 227,
+						"w": 48,
+						"h": 18
+					}
+				},
+				{
+					"filename": "button_c9_normal_mini_desaturated.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 15,
+						"w": 48,
+						"h": 18
+					},
+					"frame": {
+						"x": 572,
+						"y": 1,
+						"w": 48,
+						"h": 18
+					}
+				},
+				{
+					"filename": "button_c9_desaturated.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 7,
+						"w": 48,
+						"h": 35
+					},
+					"frame": {
+						"x": 573,
+						"y": 20,
+						"w": 48,
+						"h": 35
+					}
+				},
+				{
+					"filename": "button_c9_mouseover.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 7,
+						"w": 48,
+						"h": 35
+					},
+					"frame": {
+						"x": 573,
+						"y": 56,
+						"w": 48,
+						"h": 35
+					}
+				},
+				{
+					"filename": "button_c9_normal.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 7,
+						"w": 48,
+						"h": 35
+					},
+					"frame": {
+						"x": 573,
+						"y": 92,
+						"w": 48,
+						"h": 35
+					}
+				},
+				{
+					"filename": "button_c9_pressed.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 7,
+						"w": 48,
+						"h": 35
+					},
+					"frame": {
+						"x": 524,
+						"y": 106,
+						"w": 48,
+						"h": 35
+					}
+				},
+				{
+					"filename": "TreasureIdle_05.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 40,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 12,
+						"w": 37,
+						"h": 20
+					},
+					"frame": {
+						"x": 79,
+						"y": 227,
+						"w": 37,
+						"h": 20
+					}
+				},
+				{
+					"filename": "TreasureOpen_05.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 40,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 9,
+						"w": 37,
+						"h": 23
+					},
+					"frame": {
+						"x": 117,
+						"y": 227,
+						"w": 37,
+						"h": 23
+					}
+				},
+				{
+					"filename": "TreasureOpen_06.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 40,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 9,
+						"w": 37,
+						"h": 23
+					},
+					"frame": {
+						"x": 155,
+						"y": 227,
+						"w": 37,
+						"h": 23
+					}
+				},
+				{
+					"filename": "TreasureOpen_04.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 40,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 8,
+						"w": 36,
+						"h": 24
+					},
+					"frame": {
+						"x": 193,
+						"y": 227,
+						"w": 36,
+						"h": 24
+					}
+				},
+				{
+					"filename": "TreasureOpen_07.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 40,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 9,
+						"w": 36,
+						"h": 23
+					},
+					"frame": {
+						"x": 230,
+						"y": 227,
+						"w": 36,
+						"h": 23
+					}
+				},
+				{
+					"filename": "TreasureOpen_08.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 40,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 9,
+						"w": 35,
+						"h": 23
+					},
+					"frame": {
+						"x": 267,
+						"y": 227,
+						"w": 35,
+						"h": 23
+					}
+				},
+				{
+					"filename": "sliderrail_c4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 32
+					},
+					"frame": {
+						"x": 622,
+						"y": 1,
+						"w": 8,
+						"h": 32
+					}
+				},
+				{
+					"filename": "TreasureOpenFront_05.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 40,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 18,
+						"w": 37,
+						"h": 14
+					},
+					"frame": {
+						"x": 573,
+						"y": 128,
+						"w": 37,
+						"h": 14
+					}
+				},
+				{
+					"filename": "frame5_c4_in.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 48,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 6,
+						"w": 36,
+						"h": 36
+					},
+					"frame": {
+						"x": 413,
+						"y": 215,
+						"w": 36,
+						"h": 36
+					}
+				},
+				{
+					"filename": "TreasureOpenFront_06.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 40,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 19,
+						"w": 35,
+						"h": 13
+					},
+					"frame": {
+						"x": 475,
+						"y": 119,
+						"w": 35,
+						"h": 13
+					}
+				},
+				{
+					"filename": "selectionSquareActive_03.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 32,
+						"h": 32
+					},
+					"frame": {
+						"x": 462,
+						"y": 133,
+						"w": 32,
+						"h": 32
+					}
+				},
+				{
+					"filename": "selectionSquare_03.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 32,
+						"h": 32
+					},
+					"frame": {
+						"x": 462,
+						"y": 166,
+						"w": 32,
+						"h": 32
+					}
+				},
+				{
+					"filename": "selectionSquareActive_02.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 2,
+						"w": 28,
+						"h": 28
+					},
+					"frame": {
+						"x": 495,
+						"y": 133,
+						"w": 28,
+						"h": 28
+					}
+				},
+				{
+					"filename": "MoneyPile.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 2,
+						"w": 30,
+						"h": 30
+					},
+					"frame": {
+						"x": 495,
+						"y": 162,
+						"w": 30,
+						"h": 30
+					}
+				},
+				{
+					"filename": "TreasureIdle_01.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 40,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 10,
+						"w": 32,
+						"h": 22
+					},
+					"frame": {
+						"x": 462,
+						"y": 199,
+						"w": 32,
+						"h": 22
+					}
+				},
+				{
+					"filename": "TreasureIdle_08.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 40,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 10,
+						"w": 32,
+						"h": 22
+					},
+					"frame": {
+						"x": 462,
+						"y": 199,
+						"w": 32,
+						"h": 22
+					}
+				},
+				{
+					"filename": "TreasureOpen_01.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 40,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 10,
+						"w": 32,
+						"h": 22
+					},
+					"frame": {
+						"x": 462,
+						"y": 199,
+						"w": 32,
+						"h": 22
+					}
+				},
+				{
+					"filename": "selectionSquareActive_01.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 1,
+						"w": 30,
+						"h": 30
+					},
+					"frame": {
+						"x": 495,
+						"y": 193,
+						"w": 30,
+						"h": 30
+					}
+				},
+				{
+					"filename": "selectionSquare_01.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 1,
+						"w": 30,
+						"h": 30
+					},
+					"frame": {
+						"x": 450,
+						"y": 224,
+						"w": 30,
+						"h": 30
+					}
+				},
+				{
+					"filename": "TreasureOpenFront_04.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 40,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 19,
+						"w": 34,
+						"h": 13
+					},
+					"frame": {
+						"x": 524,
+						"y": 142,
+						"w": 34,
+						"h": 13
+					}
+				},
+				{
+					"filename": "TreasureIdle_04.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 40,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 8,
+						"w": 32,
+						"h": 24
+					},
+					"frame": {
+						"x": 526,
+						"y": 156,
+						"w": 32,
+						"h": 24
+					}
+				},
+				{
+					"filename": "TreasureOpen_03.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 40,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 8,
+						"w": 33,
+						"h": 24
+					},
+					"frame": {
+						"x": 526,
+						"y": 181,
+						"w": 33,
+						"h": 24
+					}
+				},
+				{
+					"filename": "TreasureIdle_07.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 40,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 11,
+						"w": 34,
+						"h": 21
+					},
+					"frame": {
+						"x": 526,
+						"y": 206,
+						"w": 34,
+						"h": 21
+					}
+				},
+				{
+					"filename": "TreasureIdle_06.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 40,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 10,
+						"w": 32,
+						"h": 22
+					},
+					"frame": {
+						"x": 303,
+						"y": 228,
+						"w": 32,
+						"h": 22
+					}
+				},
+				{
+					"filename": "TreasureOpen_02.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 40,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 11,
+						"w": 33,
+						"h": 21
+					},
+					"frame": {
+						"x": 336,
+						"y": 228,
+						"w": 33,
+						"h": 21
+					}
+				},
+				{
+					"filename": "TreasureIdle_02.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 40,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 7,
+						"w": 30,
+						"h": 25
+					},
+					"frame": {
+						"x": 370,
+						"y": 228,
+						"w": 30,
+						"h": 25
+					}
+				},
+				{
+					"filename": "selectionSquare_02.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 2,
+						"w": 28,
+						"h": 28
+					},
+					"frame": {
+						"x": 559,
+						"y": 143,
+						"w": 28,
+						"h": 28
+					}
+				},
+				{
+					"filename": "frameB.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 24,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 24,
+						"h": 24
+					},
+					"frame": {
+						"x": 588,
+						"y": 143,
+						"w": 24,
+						"h": 24
+					}
+				},
+				{
+					"filename": "arrow_04.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 4,
+						"w": 16,
+						"h": 8
+					},
+					"frame": {
+						"x": 30,
+						"y": 246,
+						"w": 16,
+						"h": 8
+					}
+				},
+				{
+					"filename": "arrow_06.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 3,
+						"w": 16,
+						"h": 8
+					},
+					"frame": {
+						"x": 47,
+						"y": 246,
+						"w": 16,
+						"h": 8
+					}
+				},
+				{
+					"filename": "frameC.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 24,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 24,
+						"h": 24
+					},
+					"frame": {
+						"x": 560,
+						"y": 172,
+						"w": 24,
+						"h": 24
+					}
+				},
+				{
+					"filename": "frameD.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 24,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 24,
+						"h": 24
+					},
+					"frame": {
+						"x": 561,
+						"y": 197,
+						"w": 24,
+						"h": 24
+					}
+				},
+				{
+					"filename": "CoinGold.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 2,
+						"w": 12,
+						"h": 12
+					},
+					"frame": {
+						"x": 511,
+						"y": 119,
+						"w": 12,
+						"h": 12
+					}
+				},
+				{
+					"filename": "menu_slider_button_strip3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 8,
+						"h": 14
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 8,
+						"h": 14
+					},
+					"frame": {
+						"x": 622,
+						"y": 34,
+						"w": 8,
+						"h": 14
+					}
+				},
+				{
+					"filename": "menu_checkbox_24_bg.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 24,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 24,
+						"h": 24
+					},
+					"frame": {
+						"x": 481,
+						"y": 224,
+						"w": 24,
+						"h": 24
+					}
+				},
+				{
+					"filename": "pause.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 24,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 0,
+						"w": 16,
+						"h": 24
+					},
+					"frame": {
+						"x": 506,
+						"y": 224,
+						"w": 16,
+						"h": 24
+					}
+				},
+				{
+					"filename": "TreasureOpenFront_07.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 40,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 20,
+						"w": 33,
+						"h": 12
+					},
+					"frame": {
+						"x": 523,
+						"y": 228,
+						"w": 33,
+						"h": 12
+					}
+				},
+				{
+					"filename": "TreasureOpenFront_08.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 40,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 20,
+						"w": 33,
+						"h": 12
+					},
+					"frame": {
+						"x": 523,
+						"y": 228,
+						"w": 33,
+						"h": 12
+					}
+				},
+				{
+					"filename": "TreasureOpenFront_03.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 40,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 20,
+						"w": 31,
+						"h": 12
+					},
+					"frame": {
+						"x": 523,
+						"y": 241,
+						"w": 31,
+						"h": 12
+					}
+				},
+				{
+					"filename": "arrow_05.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 5,
+						"w": 16,
+						"h": 5
+					},
+					"frame": {
+						"x": 481,
+						"y": 249,
+						"w": 16,
+						"h": 5
+					}
+				},
+				{
+					"filename": "SkullToken.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 3,
+						"w": 11,
+						"h": 10
+					},
+					"frame": {
+						"x": 401,
+						"y": 228,
+						"w": 11,
+						"h": 10
+					}
+				},
+				{
+					"filename": "lock16.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 24,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 3,
+						"w": 17,
+						"h": 18
+					},
+					"frame": {
+						"x": 613,
+						"y": 128,
+						"w": 17,
+						"h": 18
+					}
+				},
+				{
+					"filename": "no16.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 24,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 3,
+						"w": 17,
+						"h": 17
+					},
+					"frame": {
+						"x": 613,
+						"y": 147,
+						"w": 17,
+						"h": 17
+					}
+				},
+				{
+					"filename": "menu_checkbox_24_checkmark.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 24,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 3,
+						"w": 18,
+						"h": 18
+					},
+					"frame": {
+						"x": 561,
+						"y": 222,
+						"w": 18,
+						"h": 18
+					}
+				},
+				{
+					"filename": "arrow_03.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 16,
+						"h": 11
+					},
+					"frame": {
+						"x": 555,
+						"y": 241,
+						"w": 16,
+						"h": 11
+					}
+				},
+				{
+					"filename": "stage_forest_icon.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 18,
+						"h": 18
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 18,
+						"h": 18
+					},
+					"frame": {
+						"x": 580,
+						"y": 222,
+						"w": 18,
+						"h": 18
+					}
+				},
+				{
+					"filename": "arrow_07.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 16,
+						"h": 11
+					},
+					"frame": {
+						"x": 572,
+						"y": 241,
+						"w": 16,
+						"h": 11
+					}
+				},
+				{
+					"filename": "yes16.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 24,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 5,
+						"w": 18,
+						"h": 14
+					},
+					"frame": {
+						"x": 588,
+						"y": 168,
+						"w": 18,
+						"h": 14
+					}
+				},
+				{
+					"filename": "MoneyBagGreen.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 16
+					},
+					"frame": {
+						"x": 607,
+						"y": 168,
+						"w": 16,
+						"h": 16
+					}
+				},
+				{
+					"filename": "menu_checkbox_16_bg.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 16
+					},
+					"frame": {
+						"x": 586,
+						"y": 183,
+						"w": 16,
+						"h": 16
+					}
+				},
+				{
+					"filename": "p_arca.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 16
+					},
+					"frame": {
+						"x": 586,
+						"y": 200,
+						"w": 16,
+						"h": 16
+					}
+				},
+				{
+					"filename": "p_porta.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 16
+					},
+					"frame": {
+						"x": 603,
+						"y": 185,
+						"w": 16,
+						"h": 16
+					}
+				},
+				{
+					"filename": "arrow_01.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 15
+					},
+					"frame": {
+						"x": 603,
+						"y": 202,
+						"w": 16,
+						"h": 15
+					}
+				},
+				{
+					"filename": "arrow_02.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 16,
+						"h": 14
+					},
+					"frame": {
+						"x": 599,
+						"y": 218,
+						"w": 16,
+						"h": 14
+					}
+				},
+				{
+					"filename": "arrow_08.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 16,
+						"h": 14
+					},
+					"frame": {
+						"x": 599,
+						"y": 233,
+						"w": 16,
+						"h": 14
+					}
+				},
+				{
+					"filename": "QuestionMark.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 1,
+						"w": 12,
+						"h": 14
+					},
+					"frame": {
+						"x": 616,
+						"y": 218,
+						"w": 12,
+						"h": 14
+					}
+				},
+				{
+					"filename": "menu_checkbox_16_checkmark.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 16
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 1,
+						"w": 13,
+						"h": 14
+					},
+					"frame": {
+						"x": 616,
+						"y": 233,
+						"w": 13,
+						"h": 14
+					}
+				},
+				{
+					"filename": "TreasureOpenFront_01.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 40,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 3,
+						"h": 3
+					},
+					"frame": {
+						"x": 557,
+						"y": 228,
+						"w": 3,
+						"h": 3
+					}
+				},
+				{
+					"filename": "TreasureOpenFront_02.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 40,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 3,
+						"h": 3
+					},
+					"frame": {
+						"x": 557,
+						"y": 228,
+						"w": 3,
+						"h": 3
+					}
+				},
+				{
+					"filename": "blackDot.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1,
+						"h": 1
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1,
+						"h": 1
+					},
+					"frame": {
+						"x": 524,
+						"y": 156,
+						"w": 1,
+						"h": 1
+					}
+				},
+				{
+					"filename": "whiteDot.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1,
+						"h": 1
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1,
+						"h": 1
+					},
+					"frame": {
+						"x": 611,
+						"y": 128,
+						"w": 1,
+						"h": 1
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:cc823a5289cf8bbf409d663dfa0ce30f:afd62b7490f427a791806246167cbea3:4b774b923918ecd961888279dba3ffad$"
+	}
+}

@@ -7,3 +7,6 @@ _site/
 vendor/
 # Ignore all .DS_Store files recursively
 **/.DS_Store
+_games/ripper.sh
+_games/mkgamedr.sh
+**/ripper.sh
