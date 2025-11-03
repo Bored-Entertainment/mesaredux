@@ -43,11 +43,10 @@ description: "Battle stickman enemies with martial arts and super moves."(A brie
 <details>
   <summary>Hosting a Mirror</summary>
 
-#### MESλREDUX can be mirrored using three supported platforms. Before deploying, make sure you:
+#### MESλREDUX can be mirrored using any platform that allows the building and deploying of jekyll sites.
 
-1. Fork the repository [Bored-Entertainment/mesaredux](https://github.com/Bored-Entertainment/mesaredux). **(REMEMBER TO UNCHECK `"Copy the main branch only"`) WHEN FORKING**
-2. Install [Pull](https://github.com/apps/pull) on your fork to keep your mirror up to date with the upstream repository.
-3. Delete the `main` branch and make `build` the default. <b>IMPORTANT</b>
+Before deploying, make sure you fork the repository [Bored-Entertainment/mesaredux](https://github.com/Bored-Entertainment/mesaredux).
+
 
 #### Optional: Custom Domain
 
@@ -63,7 +62,7 @@ Netlify allows you to deploy a mirror quicky.
 
 **Instructions:**
 1. Log in to Netlify or create an account.
-2. Select your fork and the `build` branch.
+2. Select your fork.
 4. Deploy and wait for your site to go live.
 
 ---
@@ -74,7 +73,7 @@ GitHub Pages works well for hosting static mirrors of MESλREDUX.
 **Instructions:**
 1. Navigate to your fork on GitHub.
 2. Go to **Settings → Pages**.
-3. Set **Source** to the `build` branch and root (`/`).
+3. Turn Pages on.
 4. Click **Save** and wait for GitHub to publish your site.
 5. Your mirror will be available at `https://<your-username>.github.io/mesaredux`.
 
