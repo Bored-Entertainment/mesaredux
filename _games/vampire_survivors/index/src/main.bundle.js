@@ -10276,8 +10276,8 @@
       _0x34bb1a.EnemySpeed = _0x34bb1a._baseEnemySpeed;
       _0x34bb1a.ProjectileSpeed = _0x34bb1a._baseProjectileSpeed;
       _0x34bb1a.GoldMultiplier = _0x34bb1a._baseGoldMultiplier;
-      _0x34bb1a.PixelScale = 0x1;
-      _0x34bb1a.RPixelScale = 0x1;
+      _0x34bb1a.PixelScale = 1;
+      _0x34bb1a.RPixelScale = 1;
       _0x34bb1a.ZDamageNumber = Number.MAX_SAFE_INTEGER - 0x2710;
       _0x34bb1a.ZInGameUI = Number.MAX_SAFE_INTEGER - 0x3e8;
       var _0x1d0b69 = function (_0x57ba38, _0x26a7a6, _0x318ff4, _0x5e6791) {
@@ -16690,42 +16690,36 @@
         return _0x572c9f ? _0x25efe0 / 512 : _0x2fcc22 / 683;
       }
       const _0x3fa92c = {
-        'type': Phaser.AUTO,
-        'scale': {
-          'parent': 'phaser-game',
-          'mode': _0x57fecd,
-          'autoRound': true,
-          'autoCenter': Phaser.Scale.Center.CENTER_BOTH,
-          'width': _0x25efe0,
-          'height': _0x2fcc22
-        },
-        'input': {
-          'gamepad': true
-        },
-        'scene': [_0x17d3e5, _0x426bcd, _0xff8f12, _0x402199, _0x3b2b95, _0x535680, _0x5bd029, _0x53b0d7, _0x170c87, _0x32998e, _0xd6a4a0, _0x5ef933, _0x1a5722, _0x565eb7, _0x5dc8cd, _0x298ea6, _0x5aa38f, _0x1458bc, _0x4bdbc4, _0xd6fe40, _0x344f00],
-        'antialias': false,
-        'physics': {
-          'default': "arcade",
-          'arcade': {
-            'debug': false,
-            'gravity': {
-              'y': 0x0
-            }
-          }
-        },
-        'plugins': {
-          'global': [_0x35cd95.Plugin.DefaultCfg, {
-            'key': "rexPixelationPipeline",
-            'plugin': _0x17059a.Z,
-            'start': true
-          }, {
-            'key': "rexShatterImagePlugin",
-            'plugin': _0x74224d.Z,
-            'start': true
-          }],
-          'scene': []
-        }
-      };
+      type: Phaser.AUTO,
+      // in the Phaser config block
+      scale: {
+        parent: 'phaser-game',
+        mode: Phaser.Scale.NONE, // <- no auto-scaling
+        width: 800,
+        height: 450,
+        autoCenter: Phaser.Scale.Center.CENTER_BOTH
+      },
+      input: { gamepad: true },
+      antialias: false,
+      physics: {
+        default: "arcade",
+        arcade: { debug: false, gravity: { y: 0 } }
+      },
+      scene: [
+        _0x17d3e5, _0x426bcd, _0xff8f12, _0x402199, _0x3b2b95,
+        _0x535680, _0x5bd029, _0x53b0d7, _0x170c87, _0x32998e,
+        _0xd6a4a0, _0x5ef933, _0x1a5722, _0x565eb7, _0x5dc8cd,
+        _0x298ea6, _0x5aa38f, _0x1458bc, _0x4bdbc4, _0xd6fe40, _0x344f00
+      ],
+      plugins: {
+        global: [
+          _0x35cd95.Plugin.DefaultCfg,
+          { key: "rexPixelationPipeline", plugin: _0x17059a.Z, start: true },
+          { key: "rexShatterImagePlugin", plugin: _0x74224d.Z, start: true }
+        ],
+        scene: []
+      }
+    };
       class _0x1d0e6c extends Phaser.Game {
         constructor(_0x894548) {
           super(_0x894548);
@@ -16742,17 +16736,27 @@
         static set ["Sound"](_0x25d0e3) {
           this._sound = _0x25d0e3;
         }
-        static ["ApplyGameResolution"]() {
-          if (_0x572c9f) {
-            var _0x2f3c9a = this._core.scene.scale.height / this._core.scene.scale.width;
-            _0x1d0e6c.Core.scene.scale.setGameSize(0x156, 0x156 * _0x2f3c9a);
-          } else {
-            _0x2f3c9a = this._core.scene.scale.width / this._core.scene.scale.height;
-            _0x1d0e6c.Core.scene.scale.setGameSize(0x1c8 * _0x2f3c9a, 0x1c8);
+        // Replace the existing methods in class _0x1d0e6c
+        static ApplyGameResolution() {
+          // Force the game view to exactly 800x450
+          try {
+            if (this._core && this._core.scene && this._core.scene.scale) {
+              this._core.scene.scale.setGameSize(800, 450);
+            }
+          } catch (e) {
+            console.warn("ApplyGameResolution error:", e);
           }
         }
-        static ["ApplyMenuResolution"]() {
-          _0x1d0e6c.Core.scene.scale.setGameSize(_0x25efe0, _0x2fcc22);
+
+        static ApplyMenuResolution() {
+          // Force menu scenes to the same fixed resolution
+          try {
+            if (this._core && this._core.scene && this._core.scene.scale) {
+              this._core.scene.scale.setGameSize(800, 450);
+            }
+          } catch (e) {
+            console.warn("ApplyMenuResolution error:", e);
+          }
         }
       }
       try {
@@ -16766,7 +16770,54 @@
         _0xfe7efc = null;
       }
       window.addEventListener("load", () => {
-        new _0x1d0e6c(_0x3fa92c);
+        const gameInstance = new _0x1d0e6c(_0x3fa92c);
+
+          // Force scaling constants to 1
+          if (window._0x34bb1a) {
+            _0x34bb1a.PixelScale = 1;
+            _0x34bb1a.RPixelScale = 1;
+          }
+
+          // Optional: Also fix scene-level scaling if applied
+          gameInstance.scale.displaySize.setAspectRatio(800 / 450);
+          gameInstance.scale.refresh();
+
+        // Force parent container and canvas to exact pixel size
+        try {
+          const parentEl = document.getElementById('phaser-game') || document.querySelector('body');
+          if (parentEl) {
+            parentEl.style.width = '800px';
+            parentEl.style.height = '450px';
+            parentEl.style.maxWidth = '800px';
+            parentEl.style.maxHeight = '450px';
+            parentEl.style.overflow = 'hidden';
+          }
+          // Wait a tick for Phaser to create the canvas
+          setTimeout(() => {
+            const canvas = (parentEl && parentEl.querySelector) ? parentEl.querySelector('canvas') : document.querySelector('canvas');
+            if (canvas) {
+              // CSS size
+              canvas.style.width = '800px';
+              canvas.style.height = '450px';
+              // canvas drawing buffer: ensure 800x450 pixels
+              canvas.width = 800;
+              canvas.height = 450;
+              // Also set style to avoid scaling by CSS
+              canvas.style.maxWidth = '800px';
+              canvas.style.maxHeight = '450px';
+              canvas.style.display = 'block';
+            }
+            // If Phaser's scale manager exists, make sure its internal sizes match
+            try {
+              if (gameInstance && gameInstance.scene && gameInstance.scene.scale) {
+                gameInstance.scene.scale.resize(800, 450);
+                gameInstance.scene.scale.setGameSize(800, 450);
+              }
+            } catch (err) { /* ignore */ }
+          }, 50);
+        } catch (e) {
+          console.warn("Post-create sizing error:", e);
+        }
       });
     },
     0x66: () => {}
