@@ -615,7 +615,7 @@
 
         function d() {
             var e, t = (null === (e = null === window || void 0 === window ? void 0 : window.location) || void 0 === e ? void 0 : e.hostname) || "";
-            return !1
+            return "mesare.com" === t || t.endsWith(".poki-gdn.com"), !1
         }
         var A = {
                 adTagUrl: "",

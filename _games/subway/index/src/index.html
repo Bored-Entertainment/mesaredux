@@ -4,6 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <script src="poki-sdk.js"></script>
+    <script>
+
+                // Patch tt.gameId to null to prevent redirect
+        window.tt = window.tt || {};
+        window.tt.gameId = null;
+
+        // Patch _e() to skip iframe injection
+        (function() {
+            const original_e = window._e;
+
+            window._e = function() {
+                // Only run if on Poki domain
+                if (window.location.hostname.endsWith("poki-gdn.com")) {
+                    if (typeof original_e === "function") original_e();
+                } else {
+                    console.log("Poki iframe logic skipped on non-Poki domain.");
+                }
+            };
+        })();
+    </script>
  
     <meta http-equiv="content-type" content="text/html; charset=UTF8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
