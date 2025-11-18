@@ -279,41 +279,57 @@
 
         const originalFetch = window.fetch;
 
-        function mergeFiles(fileParts) {
+                function mergeFiles(fileParts) {
             return new Promise((resolve, reject) => {
                 let buffers = [];
-                let totalSize = 0;
                 let loadedSize = 0;
-                Promise.all(fileParts.map(part =>
-                    fetch(part, { method: 'HEAD' }).then(res => {
-                        try {
-                            if (!res.ok) throw new Error("Missing part: " + part);
-                            return parseInt(res.headers.get("Content-Length") || "0", 10);
-                        } catch (error) { document.getElementById('stage').innerHTML = "ERROR: MISSING FILE(S)..." }
-                    })
-                )).then(sizes => {
-                    totalSize = sizes.reduce((a, b) => a + b, 0);
-                    function fetchPart(index) {
-                        if (index >= fileParts.length) {
-                            let mergedBlob = new Blob(buffers);
-                            let mergedFileUrl = URL.createObjectURL(mergedBlob);
-                            resolve(mergedFileUrl);
-                            return;
-                        }
+                // We can't get total size easily, so we'll base progress on part count
+                let totalParts = fileParts.length;
 
-                        fetch(fileParts[index]).then((response) => {
-                            if (!response.ok) throw new Error("Missing part: " + fileParts[index]);
-                            return response.arrayBuffer();
-                        }).then((data) => {
-                            buffers.push(data);
-                            loadedSize += data.byteLength;
-                            updateProgress('LOCATING ARCHIVE...', Math.floor((loadedSize / totalSize / 2) * 100));
-                            fetchPart(index + 1);
-                        }).catch(reject);
+                // Helper function to fetch a part
+                async function fetchPart(index) {
+                    if (index >= totalParts) {
+                        // All parts loaded, merge them
+                        let mergedBlob = new Blob(buffers);
+                        let mergedFileUrl = URL.createObjectURL(mergedBlob);
+                        resolve(mergedFileUrl);
+                        return;
                     }
 
-                    fetchPart(0);
-                }).catch(reject);
+                    const partPath = fileParts[index];
+                    const requestUrl = 'https://storage.mesagrey.ca/?requestFile=' + partPath;
+
+                    try {
+
+                        const signedUrlResponse = await originalFetch(requestUrl);
+                        if (!signedUrlResponse.ok) throw new Error("Could not get signed URL for: " + partPath);
+                        
+                        const signedUrlData = await signedUrlResponse.json();
+                        const actualFileUrl = signedUrlData.url;
+
+                        if (!actualFileUrl) throw new Error("Invalid response from signed URL server for: " + partPath);
+
+                        const partResponse = await originalFetch(actualFileUrl);
+                        if (!partResponse.ok) throw new Error("Could not fetch part: " + partPath);
+                        
+                        const data = await partResponse.arrayBuffer();
+                        
+                        buffers.push(data);
+                        loadedSize += data.byteLength;
+                        
+                        updateProgress('LOCATING ARCHIVE...', Math.floor(((index + 1) / totalParts / 2) * 100));
+                        
+                        fetchPart(index + 1);
+
+                    } catch (error) {
+                        document.getElementById('stage').innerHTML = "ERROR: MISSING FILE(S)...";
+                        console.error(error);
+                        reject(error);
+                    }
+                }
+
+                // Start fetching the first part
+                fetchPart(0);
             });
         }
 
@@ -324,9 +340,9 @@
             }
             return parts;
         }
-        Promise.all([
-            mergeFiles(getParts("src/resources.zip", 1, parts))
-        ]).then(([resources]) => {
+            Promise.all([
+                mergeFiles(getParts("mesaredux/html/fnaf/fnaf2/resources.zip", 1, parts))
+            ]).then(([resources]) => {
             window.fetch = async function (url, ...args) {
                 if (url.endsWith("resources.zip")) {
                     return originalFetch(resources, ...args);

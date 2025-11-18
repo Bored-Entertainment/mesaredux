@@ -306,7 +306,15 @@ center {
   src: url('../Seraphimb1.ttf');
 }
 
-
+#mirror-alert code {
+  font: 1.2em TimesNewPixel;
+  letter-spacing: 2px;
+  font-weight: bolder;
+  padding: 2px;
+  margin: 1.5px;
+  color: black;
+  text-decoration: underline;
+}
 
 body {
   font: 0.75em TimesNewPixel;
