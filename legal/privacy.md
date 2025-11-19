@@ -33,7 +33,7 @@ We implement regular scans to detect security vulnerabilities and maintain a sec
 
 ### Cookies and Tracking
 
-For detailed information about how we use cookies, please see our [Cookies Page](/cookies). In summary:  
+For detailed information about how we use cookies, please see our [Cookies Page](/legal/cookies). In summary:  
 
 - We primarily use **Google Analytics** to gather aggregated website usage data.  
 - We also use **local storage** for site features such as persistent messages or preferences.  
