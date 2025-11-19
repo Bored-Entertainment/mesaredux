@@ -21,6 +21,7 @@ imageoptim:
   jpegtran: true
   oxipng: false
   allow_lossy: false
+  svgo: false
 
 
 plugins:
