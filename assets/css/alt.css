@@ -23,6 +23,13 @@ body {
     overflow-x: hidden;
 }
 
+.footer a {
+    color: #fceaff;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: small;
+}
+
 .page-header {
     background-color: #141414;
     border: #ff4500 2px solid;

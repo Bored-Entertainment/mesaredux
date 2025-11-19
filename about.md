@@ -2,6 +2,8 @@
 layout: default
 title: "about"
 header: "* ABOUT MESλREDUX *"
+scroller: true
+wide: true
 ---
 For those who've been following us, but even moreso for those who have not—MESλREDUX comes from a 2 year hiatus off our last project, mesa.rip—of which is a site that was developed 98% completely by harper. The MESλREDUX project was first created in early Februrary 2024 by greymesa, but due to irl commitments, it never ended up going much of anywhere. Fret not though, we're back for good!
 
@@ -34,13 +36,3 @@ For those who've been following us, but even moreso for those who have not—MES
 
 
 - [Jekyll](https://jekyllcodex.org/) - for being the best Static Site Generator a guy could ask for. We might have a love-hate relationship, but that won't stop us from shoutting you out. 
-
-#### Legal Stuff:
-
-<sub>Intellectual Property Disclaimer:</sub>
-
-<sub>All trademarks, copyrights, and other intellectual property rights associated with the games, images, logos, and content available on this website are the property of their respective owners. This website does not claim ownership of, nor do we make any representations about the ownership of, any such intellectual property. All rights to the content provided are retained by their respective copyright holders.</sub>
-
-<sub>Limitation of Liability:</sub>
-
-<sub>This website provides access to games and content for entertainment purposes only. We make no representations or warranties regarding the accuracy, legality, or appropriateness of the content. By accessing this website, you acknowledge and agree that we are not responsible for any issues that may arise from the use of or reliance on the content provided. In no event shall the website owner or operators be liable for any direct, indirect, incidental, consequential, or punitive damages arising out of the use or inability to use the content.</sub>

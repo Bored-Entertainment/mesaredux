@@ -2,6 +2,7 @@
 layout: default
 title: "games"
 header: "* MESλREDUX - GAMES: *"
+wide: true
 ---
 
 <div style="display: flex; justify-content: center; align-items: center; width: 100%; margin: 2em 0 1em 0;">

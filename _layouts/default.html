@@ -19,7 +19,7 @@
 <body>
 
   <audio id="BGM" preload="auto" loop data-track-list="{{ "/assets/js/json/playlist.json" | relative_url }}"></audio>
-  {% if page.title == "games" or page.title == "about" %}
+  {% if page.wide %}
   <div class="wrapper" id="wrapper-wide">
   {% else %}
   <div class="wrapper">
@@ -62,7 +62,7 @@
   </div>
   
   <div class="wrapper-2">
-  {% if page.title == "games" or page.title == "about" %}
+  {% if page.wide %}
     <div class="main" id="main-wide">
   {% else %}
   <div class="main">
@@ -78,7 +78,7 @@
     {% endif %}
     <h2 id="section-1">{{ header_text }}</h2>
     <div class="inner">
-    {% if page.title == "about" %}
+    {% if page.scroller %}
     <div style="max-height: 60vh; overflow-y: auto;">
     {{ content }}
     </div>
@@ -177,7 +177,7 @@
     <br>
     <div class="footer" role="contentinfo">
       <div class="inner" style="text-align:center; padding:0.5em 1em;">
-  <p>&copy; {% assign thisyear = site.time | date: "%Y" %}{% if thisyear == "2025" %}2025{% else %}2025 - {{ thisyear }}{% endif %} Bored Entertainment. All rights reserved.</p>
+        {% include footer.html %}
       </div>
     </div>
     </div>
