@@ -18,5 +18,18 @@ header: "* MESλREDUX - CONTACT *"
     <div id="discord-widget" class="discord-users-loading">Loading online members...</div>
   </div>
 </div>
+<div class="contact-layout">
+  <div class="contactbox">
+    <h4 class="contactbox-title">Legal Info:</h4>
+    <div class="contactbox-body">
+      <ul class="contact-list">
+        <li><a href="{{ "/legal/copyright" | relative_url }}">Copyright Info / Takedown Request Info</a></li>
+        <li><a href="{{ "/legal/cookies" | relative_url }}">Cookie Policy</a></li>
+        <li><a href="{{ "/legal/tos" | relative_url }}">Terms of Service (TOS)</a></li>
+        <li><a href="{{ "/legal/privacy" | relative_url }}">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 <script src="/assets/js/discord-widget.js"></script>
