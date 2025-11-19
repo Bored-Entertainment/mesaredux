@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "terms of service"
+title: "tos"
 header: "* MESλREDUX - TERMS OF SERVICE (TOS) *"
 scroller: true
 wide: true
