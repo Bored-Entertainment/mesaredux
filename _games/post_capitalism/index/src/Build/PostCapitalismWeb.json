@@ -1,0 +1,17 @@
+{
+"companyName": "Colestia",
+"productName": "PostCapitalism",
+"productVersion": "1.21",
+"dataUrl": "PostCapitalismWeb.data.unityweb",
+"asmCodeUrl": "PostCapitalismWeb.asm.code.unityweb",
+"asmMemoryUrl": "PostCapitalismWeb.asm.memory.unityweb",
+"asmFrameworkUrl": "PostCapitalismWeb.asm.framework.unityweb",
+"TOTAL_MEMORY": 268435456,
+"graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#000000",
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.1.0f2"
+}

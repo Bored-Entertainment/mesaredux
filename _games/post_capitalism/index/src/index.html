@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | PostCapitalism</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/PostCapitalismWeb.json", {onProgress: UnityProgress});
+    </script>
+    <style>
+        html {
+
+            scrollbar-width: none;
+        }
+        .element::-webkit-scrollbar {
+          display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="webgl-content">
+      <div id="unityContainer" style="width: 600px; height: 450px"></div>
+    </div>
+  </body>
+</html>

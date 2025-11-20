@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style type="text/css">
+html {height: 70%;}
+body {
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	height: 100%;
+	min-height: 100%;
+	margin: 0;
+	background: rgb(0,0,0);
+}
+h1 {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #962300;
+	font-size: 25px;
+}
+p {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #777;
+	font-size: 12px;
+}
+
+#canvas {
+	width:755.04px; 
+	height:522.72px;
+}
+
+#MMFCanvas {
+	-webkit-box-shadow:  0px 0px 4px 4px rgba(0, 0, 0, 0.25); 
+    box-shadow:  0px 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+</style>
+    <style>
+      .element::-webkit-scrollbar {
+          display: none;
+      }
+      html {
+          scrollbar-width: none;
+      }
+    </style>
+
+  <title>Cavern Sweeper</title>
+
+	<script>
+	   	// Detection of old browsers that do not support the canvas element
+		// Falls back to a default page
+	    if (!document.createElement("canvas").getContext)
+	    {
+			window.open("http://www.clickteam.com/html5-fallback", "_self");
+		}
+	</script>
+	
+  	<!-- EXTRASOURCES -->
+	<!-- Loads the Javascript code...-->
+  	<script src="src/Runtime.js"></script>
+
+</head>
+
+<!-- This is where we create the Canvas element that will contain the application...-->
+<body>
+		    <div id="canvas" style="text-align:center;">
+			    <canvas id="MMFCanvas" width="765.04" height="530.72">
+				    <p>Your browser does not support Canvas.</p>
+			    </canvas>   
+		    </div>
+    <script>
+        window.rs = "src/Runtime.js";
+        window.fs = "641372";
+    </script>
+    <script>
+	    // RUNTIMESTART
+	    // This is where the HTML5 runtime is actually started
+	    window.addEventListener("load", windowLoaded, false);
+		window.addEventListener("keydown", function(e) {
+		// space and arrow keys
+		if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+		e.preventDefault();
+		} }, false);
+		var c = document.getElementById("MMFCanvas");
+		var ctx = c.getContext("2d");
+		ctx.scale(1.85, 1.85);
+	    function windowLoaded()
+	    {
+		    // Calls the runtime
+		    // First parameter : name of the canvas element
+		    // Second parameter : path to the cch file. Images and sounds must lay beside this file
+		    new Runtime("MMFCanvas", "resources/Cavern Sweeper.cch");
+	    }
+	    // RUNTIMESTARTEND
+    </script>
+</body>
+</html>

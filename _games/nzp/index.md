@@ -1,6 +1,6 @@
 ---
 layout: alt
-title: "Nazi Zombies: Portable (COD Zombies demake)"
+title: "Nazi Zombies: Portable"
 type: html
 aspectRatio: "16:9"
 description: "Call of Duty: Zombies remade in the quake engine."
