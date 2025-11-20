@@ -1,4 +1,4 @@
-url: "https://mesaredux.mesagrey.ca" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://mesaredux.com" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "" # the subpath of your site, e.g. /blog
 title: "MESλREDUX" # the name of your site, e.g. ACME Corp.
 excerpt_separator: <!--ex-->

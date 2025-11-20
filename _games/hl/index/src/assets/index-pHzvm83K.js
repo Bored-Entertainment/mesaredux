@@ -4145,7 +4145,7 @@ function storeToRefs(o) {
     }
     return r;
 }
-const SIGNED_URL_WORKER = "https://storage.mesagrey.ca";
+const SIGNED_URL_WORKER = "https://storage.mesaredux.com";
 const getZip = (o, e, r) =>
         new Promise(function (t, n) {
             // Server timeout is 5 minutes — mirror that on the client

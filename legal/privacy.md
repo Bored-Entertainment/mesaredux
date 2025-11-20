@@ -11,7 +11,7 @@ wide: true
 
 _Last updated: November 19, 2025_  
 
-We have compiled this Privacy Policy to inform you how your personal information is collected, used, and protected when you interact with **Bored Entertainment** on our website [MESλREDUX](https://mesaredux.mesagrey.ca). Personally identifiable information (PII) is information that can be used to identify, contact, or locate an individual. Please read carefully to understand our practices regarding your personal information.  
+We have compiled this Privacy Policy to inform you how your personal information is collected, used, and protected when you interact with **Bored Entertainment** on our website [MESλREDUX](https://mesaredux.com). Personally identifiable information (PII) is information that can be used to identify, contact, or locate an individual. Please read carefully to understand our practices regarding your personal information.  
 
 ### Information We Collect
 

@@ -16,7 +16,7 @@ We host our site through a variety of managed platforms such as GitHub Pages.
 
 ### Reporting Copyright Infringement
 
-If you believe your copyrighted content appears on our site without permission, you may submit a removal request to **[copyright@mesaredux.mesagrey.ca](mailto:copyright@mesaredux.mesagrey.ca)** including:
+If you believe your copyrighted content appears on our site without permission, you may submit a removal request to **[copyright@mesaredux.com](mailto:copyright@mesaredux.com)** including:
 
 - Your full name  
 - Contact information  

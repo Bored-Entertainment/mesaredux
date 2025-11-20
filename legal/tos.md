@@ -11,7 +11,7 @@ wide: true
 
 _Last updated November 19, 2025_
 
-Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the [MESλREDUX](https://mesaredux.mesagrey.ca/) website (the "Service") operated by Bored Entertainment ("us", "we", or "our").
+Please read these Terms of Service ("Terms", "Terms of Service") carefully before using the [MESλREDUX](https://mesaredux.com/) website (the "Service") operated by Bored Entertainment ("us", "we", or "our").
 
 Your access to and use of the Service in this website is pegged on the conditions that you accept and comply with these Terms. The terms are applicable to all users, visitors and everyone who use and access our service.
 
@@ -54,4 +54,4 @@ The right to modify or replace any part of these Terms is at our sole discretion
 
 ### Contact Us
 
-If you have any questions about these Terms, please contact us at [contact@mesaredux.mesagrey.ca](mailto:contact@mesaredux.mesagrey.ca).
+If you have any questions about these Terms, please contact us at [contact@mesaredux.com](mailto:contact@mesaredux.com).

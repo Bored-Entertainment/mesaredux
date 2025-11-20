@@ -44,7 +44,7 @@ function getNextExpiryTimestamp() {
 
 function fetchBlurb() {
     console.log('[blurb] Fetching fresh data from API...');
-    return fetch('https://api.mesagrey.ca/blurb', {
+    return fetch('https://api.mesaredux.com/blurb', {
         method: 'GET',
         headers: {
             'x-api-key': '3x;d4wz>]HKv@88p1hFusBvWT*xbN!HN067pea00@kg2&BD1SwjnBWu;J(9g&qR)'

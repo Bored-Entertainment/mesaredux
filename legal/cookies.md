@@ -11,7 +11,7 @@ wide: true
 
 _Last updated November 19, 2025_
 
-This Cookie Policy explains how Bored Entertainment ("Company," "we," "us," and "our") uses cookies and similar technologies to recognize you when you visit our website at [https://mesaredux.mesagrey.ca](https://mesaredux.mesagrey.ca) ("Website"). It explains what these technologies are and why we use them, as well as your rights to control our use of them.
+This Cookie Policy explains how Bored Entertainment ("Company," "we," "us," and "our") uses cookies and similar technologies to recognize you when you visit our website at [https://mesaredux.com](https://mesaredux.com) ("Website"). It explains what these technologies are and why we use them, as well as your rights to control our use of them.
 
 In some cases we may use cookies to collect personal information, or that becomes personal information if we combine it with other information.
 
@@ -46,8 +46,8 @@ These cookies collect information that is used either in aggregate form to help 
 
 | Name          | Provider               | Type               | Expires in | Purpose                                                                 |
 |---------------|------------------------|--------------------|------------|-------------------------------------------------------------------------|
-| blurbExpiry   | mesaredux.mesagrey.ca  | html_local_storage | persistent | Stores the expiration timestamp for the "blurb" message on the homepage, allowing the site to know when to refresh it. |
-| blurbPayload  | mesaredux.mesagrey.ca  | html_local_storage | persistent | Stores the current content of the on-site "blurb" message so it can be shown consistently without reloading from the API server. |
+| blurbExpiry   | mesaredux.com  | html_local_storage | persistent | Stores the expiration timestamp for the "blurb" message on the homepage, allowing the site to know when to refresh it. |
+| blurbPayload  | mesaredux.com  | html_local_storage | persistent | Stores the current content of the on-site "blurb" message so it can be shown consistently without reloading from the API server. |
 
 ### How can I control cookies on my browser?
 
@@ -90,5 +90,5 @@ The date at the top of this Cookie Policy indicates when it was last updated.
 
 If you have any questions about our use of cookies or other technologies, please contact us at:
 
-[contact@mesaredux.mesagrey.ca](mailto:contact@mesaredux.mesagrey.ca)
+[contact@mesaredux.com](mailto:contact@mesaredux.com)
 

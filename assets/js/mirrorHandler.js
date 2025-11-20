@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const mainSite = { label: 'mesaredux.mesagrey.ca', descriptor: 'main site' };
+  const mainSite = { label: 'mesaredux.com', descriptor: 'main site' };
 
   const lists = [
     {

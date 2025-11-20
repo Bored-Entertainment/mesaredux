@@ -2,7 +2,7 @@
 ![Stars](https://img.shields.io/github/stars/Bored-Entertainment/mesaredux?style=for-the-badge)
 ![Forks](https://img.shields.io/github/forks/Bored-Entertainment/mesaredux?style=for-the-badge)
 ![Last Commit](https://img.shields.io/github/last-commit/Bored-Entertainment/mesaredux?style=for-the-badge)
-![Website Uptime](https://img.shields.io/website?style=for-the-badge&up_message=online&url=https%3A%2F%2Fmesaredux.mesagrey.ca)
+![Website Uptime](https://img.shields.io/website?style=for-the-badge&up_message=online&url=https%3A%2F%2Fmesaredux.com)
 <a href="https://discord.gg/DZJ4AmzKWC">![Discord](https://img.shields.io/discord/417916767487393792?style=for-the-badge&logo=discord&label=Discord&color=%235865F2&link=https%3A%2F%2Fdiscord.gg%2FDZJ4AmzKWC)</a>
 <br>
 
@@ -84,7 +84,7 @@ GitHub Pages works well for hosting static mirrors of MESλREDUX.
 </details>
 
 ### Official Links:
-- https://mesaredux.mesagrey.ca - Main site
+- https://mesaredux.com - Main site
 #### Mirrors:
 - https://mesaredux.netlify.app/
 
