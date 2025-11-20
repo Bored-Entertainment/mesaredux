@@ -670,3 +670,13 @@ directory paths, may not be removed or modified in distributed versions, and
 must be embedded on the program’s index page exactly as they are in the
 original distribution.
 
+Additional Term under GNU Affero General Public License v3 (Section 7):
+
+The HTML file(s) that constitute the program’s index page and any associated JavaScript or snippet that implements Google Analytics tracking (hereafter referred to as the “Analytics Code”) must be preserved in all distributed copies or derivative works of this program.
+
+Specifically:
+
+1. The Analytics Code may not be removed or modified in any distributed version.
+2. It must remain embedded in the program’s index page exactly as in the original distribution.
+3. Any updates to the Analytics Code provided by the original authors must be incorporated to ensure tracking remains functional.
+4. Failure to comply with this term constitutes a violation of the license.
