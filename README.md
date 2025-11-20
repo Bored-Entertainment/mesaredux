@@ -86,7 +86,9 @@ GitHub Pages works well for hosting static mirrors of MESλREDUX.
 ### Official Links:
 - https://mesaredux.com - Main site
 #### Mirrors:
-- https://mesaredux.netlify.app/
 - https://reduxmirror.mesagrey.ca
+- https://mesaredux.the-duck.co/
+- https://mesaredux.duccman99.workers.dev/
+- https://mesaredux.netlify.app/ (should be used as a last resort)
 
 #### Thank You for checking out the MESλREDUX project! 
