@@ -6,7 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <style type="text/css">
-html {height: 70%;}
+html {
+	height: 100%;
+
+}
 body {
 	background-repeat: no-repeat;
 	background-attachment: fixed;
@@ -25,10 +28,36 @@ p {
 	color: #777;
 	font-size: 12px;
 }
+#bloctxt {
+	border-left-width: 5px;
+	border-left-style: solid;
+	border-left-color: #000000;
+	padding-left: 10px;
+	position: absolute;
+	top:5%;
+	left: 50%;
+	width: 600px;
+	margin-left: -260px
+}
+#wrapper {
+	padding: 10px;
+	margin: 0 auto;
+}
+#border {
+	background-color: #000000;
+	border: 1px solid #000000;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+	margin: 0 auto;
+	padding: 5px;
+	width:832px;
+	height:576px;
+}
 
 #canvas {
-	width:755.04px; 
-	height:522.72px;
+	width:832px; 
+	height:576px;
 }
 
 #MMFCanvas {
@@ -36,14 +65,6 @@ p {
     box-shadow:  0px 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 </style>
-    <style>
-      .element::-webkit-scrollbar {
-          display: none;
-      }
-      html {
-          scrollbar-width: none;
-      }
-    </style>
 
   <title>Cavern Sweeper</title>
 
@@ -64,11 +85,16 @@ p {
 
 <!-- This is where we create the Canvas element that will contain the application...-->
 <body>
-		    <div id="canvas" style="text-align:center;">
-			    <canvas id="MMFCanvas" width="765.04" height="530.72">
+
+    <div id="wrapper">
+	    <div id="border">
+		    <div id="canvas">
+			    <canvas id="MMFCanvas" width="832" height="576">
 				    <p>Your browser does not support Canvas.</p>
 			    </canvas>   
 		    </div>
+	    </div>
+    </div>  
     <script>
         window.rs = "src/Runtime.js";
         window.fs = "641372";
@@ -84,7 +110,7 @@ p {
 		} }, false);
 		var c = document.getElementById("MMFCanvas");
 		var ctx = c.getContext("2d");
-		ctx.scale(1.85, 1.85);
+		ctx.scale(2, 2);
 	    function windowLoaded()
 	    {
 		    // Calls the runtime

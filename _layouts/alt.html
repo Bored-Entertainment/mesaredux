@@ -50,7 +50,9 @@
             <br>
             <script type="text/javascript" src="/assets/js/aspectRatio.js"></script>
             <script>
-                let aspectRatioInfo = getAspectRatioInfo('{{ page.aspectRatio }}')
+                let scale = '{{ page.gameScale }}'
+                if (scale == ''){scale = 1};
+                let aspectRatioInfo = getAspectRatioInfo('{{ page.aspectRatio }}', 800, 600, scale);
             </script>
     {% if game_type == 'flash' %}
             <div class="fullscreen-center-wrapper" id="fullscreen-wrapper">

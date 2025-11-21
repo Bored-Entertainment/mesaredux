@@ -16,18 +16,22 @@ function getAspectRatioInfo(ratioStr, refWidth = 800, refHeight = 700) {
 		height = refHeight;
 		width = Math.round((w / h) * refHeight);
 	}
-	return {
-		width,
-		height,
-		scaleToWidth: (newWidth) => ({
-			width: newWidth,
-			height: Math.round((h / w) * newWidth)
-		}),
-		scaleToHeight: (newHeight) => ({
-			width: Math.round((w / h) * newHeight),
-			height: newHeight
-		})
-	};
+        // Apply scale factor
+        width = Math.round(width * scale);
+        height = Math.round(height * scale);
+
+        return {
+            width,
+            height,
+            scaleToWidth: (newWidth, scaleFactor = 1) => ({
+                width: Math.round(newWidth * scaleFactor),
+                height: Math.round((h / w) * newWidth * scaleFactor)
+            }),
+            scaleToHeight: (newHeight, scaleFactor = 1) => ({
+                width: Math.round((w / h) * newHeight * scaleFactor),
+                height: Math.round(newHeight * scaleFactor)
+            })
+        };
 }
 
 document.addEventListener("DOMContentLoaded", function () {
