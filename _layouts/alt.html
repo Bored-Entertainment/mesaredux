@@ -14,7 +14,7 @@
     <script type="text/javascript" src="{{ "assets/js/resourceFallback.js" | relative_url }}"></script>
     {% endif %}
   {% if page.type == 'flash' %}
-  <script>
+  <script defer>
     if (window.ResourceFallback && typeof window.ResourceFallback.loadScript === 'function') {
       window.ResourceFallback.loadScript({
         primary: 'https://unpkg.com/@ruffle-rs/ruffle',
