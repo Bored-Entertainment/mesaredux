@@ -1,6 +1,6 @@
 ---
 layout: alt
-title: "Vampire Survivors"
+title: "Vampire Survivors (demo)"
 type: html
 aspectRatio: "16:9"
 description: "Roguelite time survival game with minimalistic gameplay and roguelite elements."

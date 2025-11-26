@@ -1,6 +1,6 @@
 ---
 layout: alt
-title: "Dungeons & Degenerate Gamblers"
+title: "Dungeons & Degenerate Gamblers (demo)"
 type: html
 aspectRatio: "16:9"
 gameScale: 1.2

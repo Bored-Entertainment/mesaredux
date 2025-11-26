@@ -1,6 +1,6 @@
 ---
 layout: alt
-title: "SUPERHOT"
+title: "SUPERHOT (demo)"
 type: html
 aspectRatio: "16:9"
 description: "SUPER. HOT."
