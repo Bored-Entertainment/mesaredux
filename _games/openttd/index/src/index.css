@@ -1,0 +1,67 @@
+html,
+body {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    touch-action: none;
+    -ms-touch-action: none;
+    overflow: hidden;
+}
+
+#background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: black;
+    background: url(background.jpg);
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
+
+#canvas {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                   supported by Chrome, Opera and Firefox */
+    -ms-touch-action: none;
+    touch-action: none;
+    -ms-content-zooming: none;
+
+    visibility: hidden;
+}
+
+#loader-container {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+#loader-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#loader-text {
+    margin-right: 15px;
+    color: white;
+    font-weight: bold;
+}
+
+#loader-img {
+    width: 30px;
+    height: 30px;
+}

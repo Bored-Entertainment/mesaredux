@@ -84,16 +84,22 @@
                 base="" 
                 quality="high"
                 allowscriptaccess="always"
+                
                 allowfullscreen="true"
                 wmode="window"
                 </object>
-            ' allowfullscreen></iframe>
+            ' allowfullscreen allow="fullscreen; autoplay"></iframe>
             </div>
             <button id="fullscreen-btn" style="margin-top:10px;">Fullscreen</button>
             <br>
               <a class="game-action-link" href="{{ page.url | append: 'src/index.html' | relative_url }}" target="_blank">
                 <button class="game-action-btn">CLICK IF BROKEN</button>
               </a>
+    {% elsif game_type == 'src' %}
+            <script>
+              // Simulate an HTTP redirect:
+              window.location.replace("src/index.html");
+            </script>
     {% elsif game_type == 'retroarch' %}
              <div class="fullscreen-center-wrapper" id="fullscreen-wrapper">
              <iframe id="game-iframe" srcdoc='
