@@ -1,6 +1,6 @@
 ---
 layout: alt
-title: "Fireboy & Watergirl In the Forest Temple"
+title: "Fireboy & Watergirl 1"
 type: html
 aspectRatio: "16:9"
 description: "Guide Fireboy and Watergirl through cooperative temple puzzles, flipping switches and dodging hazards together."
