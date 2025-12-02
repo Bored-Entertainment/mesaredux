@@ -1,0 +1,11 @@
+{
+  "companyName": "Snubs",
+  "productName": "Slime Rancher Prototype",
+  "dataUrl": "slimeBUILDS.data",
+  "wasmCodeUrl": "slimeBUILDS.wasm",
+  "wasmFrameworkUrl": "slimeBUILDS.framework.js",
+  "TOTAL_MEMORY": 536870912,
+  "graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+  "webglContextAttributes": { "preserveDrawingBuffer": false },
+  "splashScreenStyle": "Dark"
+}

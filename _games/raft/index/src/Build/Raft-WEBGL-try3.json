@@ -1,0 +1,9 @@
+{
+"TOTAL_MEMORY": 268435456,
+"dataUrl": "Raft-WEBGL.data.unityweb",
+"asmCodeUrl": "Raft-WEBGL.asm.code.unityweb",
+"asmMemoryUrl": "Raft-WEBGL.asm.memory.unityweb",
+"asmFrameworkUrl": "Raft-WEBGL.asm.framework.unityweb",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#000000"
+}
