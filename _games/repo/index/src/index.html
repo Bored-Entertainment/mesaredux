@@ -7,7 +7,7 @@
     <title>Unity WebGL Player | R.E.P.O</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
-    <style>
+<style>
         @font-face {
         font-family: Seraphim;
         src: url('/assets/Seraphimb1.ttf');
@@ -19,7 +19,7 @@
             overflow: hidden;
             height: 100%;
             width: 100%;
-            background: #060606;
+            background-image: url('/assets/images/lmbda.png');
             font-family: "Seraphim";
         }
 
@@ -43,6 +43,7 @@
             text-align: center;
             color: #fff;
             transition: opacity 300ms ease;
+
         }
 
         #loading-overlay.hidden {
@@ -54,10 +55,8 @@
         .loading-card {
             width: min(420px, 90vw);
             padding: 32px 28px;
-            background: rgba(0, 0, 0, 0.55);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 18px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65);
+            background-color: #070707;
+            border: 1px solid #ff4500;            
             display: flex;
             flex-direction: column;
             gap: 18px;

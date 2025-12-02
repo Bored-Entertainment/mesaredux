@@ -7,8 +7,107 @@
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <link rel="manifest" href="manifest.webmanifest">
+        <style>
+        @font-face {
+        font-family: Seraphim;
+        src: url('/assets/Seraphimb1.ttf');
+        }
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+            font-family: "Seraphim";
+        }
+
+        #unity-container {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        #loading-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 16px;
+            text-align: center;
+            color: #fff;
+            transition: opacity 300ms ease;
+
+        }
+
+        #loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 300ms ease;
+        }
+
+        .loading-card {
+            width: min(420px, 90vw);
+            padding: 32px 28px;
+            background-color: #070707;
+            border: 1px solid #ff4500;            
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .loading-logo {
+            width: 180px;
+            max-width: 60%;
+            margin: 0 auto 8px;
+            display: block;
+        }
+
+        .loading-title {
+            font-size: 1.2rem;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+        }
+
+        .loading-detail {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.75);
+            min-height: 1.4em;
+        }
+
+        .loading-track {
+            width: 100%;
+            height: 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            overflow: hidden;
+        }
+
+        .loading-progress {
+            width: 0%;
+            height: 100%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #ff4500, #ff7b00);
+            transition: width 120ms ease-out;
+        }
+    </style>
   </head>
   <body>
+    <div id="loading-overlay">
+        <div class="loading-card">
+            <img src="/assets/images/banner.png" alt="mesaredux" class="loading-logo">
+            <div id="loading-status" class="loading-title">preparing download</div>
+            <div class="loading-detail" id="loading-detail">requesting source files…</div>
+            <div class="loading-track">
+                <div class="loading-progress" id="loading-progress"></div>
+            </div>
+        </div>
+    </div>
     <div id="unity-container">
       <canvas id="unity-canvas" width=1000 height=600 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
@@ -31,6 +130,30 @@
       var loadingBar = document.querySelector("#unity-loading-bar");
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
       var warningBanner = document.querySelector("#unity-warning");
+      
+      var overlay = document.querySelector("#loading-overlay");
+      var overlayStatus = document.querySelector("#loading-status");
+      var overlayDetail = document.querySelector("#loading-detail");
+      var overlayProgress = document.querySelector("#loading-progress");
+      var overlayPhase = "remote";
+
+      var remotePartsLoaded = 0;
+
+      function clamp01(value) {
+          return Math.min(1, Math.max(0, value));
+      }
+
+      function updateOverlay(statusText, progressValue, detailText) {
+          if (statusText) {
+              overlayStatus.textContent = statusText;
+          }
+          if (typeof progressValue === "number") {
+              overlayProgress.style.width = (clamp01(progressValue) * 100) + "%";
+          }
+          if (typeof detailText === "string") {
+              overlayDetail.textContent = detailText;
+          }
+      }
 
       // Shows a temporary message banner/ribbon for a few seconds, or
       // a permanent error message on top of the canvas if type=='error'.
@@ -85,16 +208,25 @@
         document.getElementsByTagName('head')[0].appendChild(meta);
       }
 
-      loadingBar.style.display = "block";
-
+      loadingBar.style.display = "none";
+      overlayPhase = "unity";
+      updateOverlay("Loading game", 0, "Initializing engine… [Game may take a long time to load]");
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
+          if (overlayPhase === "unity") {
+                        updateOverlay("Loading game", progress, Math.round(progress * 100) + "% complete [Game may take a long time to load]");
+                    }
         }).then((unityInstance) => {
-          loadingBar.style.display = "none";
+          overlayPhase = "done";
+                    overlay.classList.add("hidden");
+                    setTimeout(() => overlay.remove(), 350);
         }).catch((message) => {
+          overlayPhase = "error";
+          updateOverlay("Load error", 1, message);
+          overlay.classList.remove("hidden");
           alert(message);
         });
       };
