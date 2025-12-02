@@ -8,6 +8,10 @@
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
     <style>
+        @font-face {
+        font-family: Seraphim;
+        src: url('/assets/Seraphimb1.ttf');
+        }
         html,
         body {
             margin: 0;
@@ -15,6 +19,8 @@
             overflow: hidden;
             height: 100%;
             width: 100%;
+            background: #060606;
+            font-family: "Seraphim";
         }
 
         #unity-container {
@@ -24,11 +30,87 @@
             top: 0;
             left: 0;
         }
+
+        #loading-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 16px;
+            text-align: center;
+            color: #fff;
+            transition: opacity 300ms ease;
+        }
+
+        #loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 300ms ease;
+        }
+
+        .loading-card {
+            width: min(420px, 90vw);
+            padding: 32px 28px;
+            background: rgba(0, 0, 0, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65);
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .loading-logo {
+            width: 180px;
+            max-width: 60%;
+            margin: 0 auto 8px;
+            display: block;
+        }
+
+        .loading-title {
+            font-size: 1.2rem;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+        }
+
+        .loading-detail {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.75);
+            min-height: 1.4em;
+        }
+
+        .loading-track {
+            width: 100%;
+            height: 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            overflow: hidden;
+        }
+
+        .loading-progress {
+            width: 0%;
+            height: 100%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #ff4500, #ff7b00);
+            transition: width 120ms ease-out;
+        }
     </style>
 </head>
 
 <body>
-    <div id="loading-text" style="color: black; font-family: cursive; font-size: 48px; text-align: center; margin-top: 20px;">LOADING...</div>
+    <div id="loading-overlay">
+        <div class="loading-card">
+            <img src="/assets/images/banner.png" alt="mesaredux" class="loading-logo">
+            <div id="loading-status" class="loading-title">preparing download</div>
+            <div class="loading-detail" id="loading-detail">requesting source files…</div>
+            <div class="loading-track">
+                <div class="loading-progress" id="loading-progress"></div>
+            </div>
+        </div>
+    </div>
     <div id="unity-container" class="unity-desktop" hidden>
         <canvas id="unity-canvas" tabindex="-1"></canvas>
         <div id="unity-loading-bar">
@@ -46,6 +128,32 @@
         var progressBarFull = document.querySelector("#unity-progress-bar-full");
         var fullscreenButton = document.querySelector("#unity-fullscreen-button");
         var warningBanner = document.querySelector("#unity-warning");
+
+        var overlay = document.querySelector("#loading-overlay");
+        var overlayStatus = document.querySelector("#loading-status");
+        var overlayDetail = document.querySelector("#loading-detail");
+        var overlayProgress = document.querySelector("#loading-progress");
+        var overlayPhase = "remote";
+
+        var STORAGE_REQUEST_ENDPOINT = "https://storage.mesaredux.com/?requestFile=";
+        var REMOTE_BASE_PATH = "mesaredux/unity/repo/";
+        var remotePartsLoaded = 0;
+
+        function clamp01(value) {
+            return Math.min(1, Math.max(0, value));
+        }
+
+        function updateOverlay(statusText, progressValue, detailText) {
+            if (statusText) {
+                overlayStatus.textContent = statusText;
+            }
+            if (typeof progressValue === "number") {
+                overlayProgress.style.width = (clamp01(progressValue) * 100) + "%";
+            }
+            if (typeof detailText === "string") {
+                overlayDetail.textContent = detailText;
+            }
+        }
 
         function unityShowBanner(msg, type) {
             function updateBannerVisibility() {
@@ -65,7 +173,30 @@
             updateBannerVisibility();
         }
 
-        function mergeFiles(fileParts) {
+        function fetchSignedUrl(remotePath) {
+            return fetch(STORAGE_REQUEST_ENDPOINT + encodeURIComponent(remotePath)).then((response) => {
+                if (!response.ok) {
+                    throw new Error("Failed to request signed URL for " + remotePath);
+                }
+                return response.json();
+            }).then((body) => {
+                if (!body.url) {
+                    throw new Error("Signed URL missing for " + remotePath);
+                }
+                return body.url;
+            });
+        }
+
+        function fetchRemotePart(remotePath) {
+            return fetchSignedUrl(remotePath).then((signedUrl) => fetch(signedUrl)).then((response) => {
+                if (!response.ok) {
+                    throw new Error("Failed to download part " + remotePath);
+                }
+                return response.arrayBuffer();
+            });
+        }
+
+        function mergeFiles(fileParts, onPartComplete) {
             return new Promise((resolve, reject) => {
                 let buffers = [];
 
@@ -76,8 +207,11 @@
                         resolve(mergedFileUrl);
                         return;
                     }
-                    fetch(fileParts[index]).then((response) => response.arrayBuffer()).then((data) => {
+                    fetchRemotePart(fileParts[index]).then((data) => {
                         buffers.push(data);
+                        if (typeof onPartComplete === "function") {
+                            onPartComplete(index + 1, fileParts.length);
+                        }
                         fetchPart(index + 1);
                     }).catch(reject);
                 }
@@ -92,9 +226,22 @@
             }
             return parts;
         }
+        function handleRemotePartComplete() {
+            remotePartsLoaded++;
+            updateOverlay(
+                "downloading source",
+                remotePartsLoaded / TOTAL_REMOTE_PARTS,
+                "fetched part " + remotePartsLoaded + " / " + TOTAL_REMOTE_PARTS
+            );
+        }
+
+        var wasmParts = getParts(REMOTE_BASE_PATH + "NewestBuild.wasm.gz", 1, 3);
+        var dataParts = getParts(REMOTE_BASE_PATH + "NewestBuild.data.gz", 1, 16);
+        var TOTAL_REMOTE_PARTS = wasmParts.length + dataParts.length;
+
         Promise.all([
-            mergeFiles(getParts("Build/NewestBuild.wasm.gz", 1, 3)),
-            mergeFiles(getParts("Build/NewestBuild.data.gz", 1, 16))
+            mergeFiles(wasmParts, handleRemotePartComplete),
+            mergeFiles(dataParts, handleRemotePartComplete)
         ]).then(([wasmUrl, dataUrl]) => {
             container.hidden = false;
             var buildUrl = "Build";
@@ -125,20 +272,33 @@
                 resizeCanvas();
                 window.addEventListener('resize', resizeCanvas);
             }
-            loadingBar.style.display = "block";
+            loadingBar.style.display = "none";
+            overlayPhase = "unity";
+            updateOverlay("Loading game", 0, "Initializing engine…");
             var script = document.createElement("script");
             script.src = loaderUrl;
             script.onload = () => {
                 createUnityInstance(canvas, config, (progress) => {
                     progressBarFull.style.width = 100 * progress + "%";
+                    if (overlayPhase === "unity") {
+                        updateOverlay("Loading game", progress, Math.round(progress * 100) + "% complete");
+                    }
                 }).then((unityInstance) => {
-                    loadingBar.style.display = "none";
-                    document.querySelector("#loading-text").remove();
+                    overlayPhase = "done";
+                    overlay.classList.add("hidden");
+                    setTimeout(() => overlay.remove(), 350);
                 }).catch((message) => {
+                    overlayPhase = "error";
+                    updateOverlay("Load error", 1, message);
+                    overlay.classList.remove("hidden");
                     alert(message);
                 });
             };
             document.body.appendChild(script);
+        }).catch((error) => {
+            overlayPhase = "error";
+            updateOverlay("Download failed", 1, error.message || error);
+            alert(error.message || error);
         });
     </script>
 </body>
