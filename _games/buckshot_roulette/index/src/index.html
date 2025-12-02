@@ -37,15 +37,30 @@
         };
         const GODOT_THREADS_ENABLED = false;
         const engine = new Engine(GODOT_CONFIG);
+        const originalFetch = window.fetch;
+        const nativeFetch = (input, init) => originalFetch.call(window, input, init);
+        const STORAGE_ENDPOINT = 'https://storage.mesaredux.com/?requestFile=';
+        const STORAGE_PREFIX = 'mesaredux/godot/buckshot/';
+        const PACK_FILE_NAME = 'buckshot-roulette.pck';
+        const PACK_PARTS = 17;
+        const WASM_FILE_NAME = 'buckshot-roulette.wasm';
+        const WASM_PARTS = 3;
 
         function run() {
             const loadingText = document.getElementById('loading-text');
             const statusOverlay = document.getElementById('status');
             const statusProgress = document.getElementById('status-progress');
             const statusNotice = document.getElementById('status-notice');
-            loadingText.remove();
+            if (loadingText) {
+                loadingText.remove();
+            }
             let initializing = true;
             let statusMode = '';
+            let downloadedBytes = 0;
+            let wasmBlobUrl = null;
+            const expectedPackSize = GODOT_CONFIG.fileSizes[PACK_FILE_NAME] || 0;
+            const expectedWasmSize = GODOT_CONFIG.fileSizes[WASM_FILE_NAME] || 0;
+            const expectedTotalBytes = expectedPackSize + expectedWasmSize;
 
             function setStatusMode(mode) {
                 if (statusMode === mode || !initializing) {
@@ -85,6 +100,114 @@
                 setStatusMode('notice');
                 initializing = false;
             }
+
+            function resetProgressToIndeterminate() {
+                if (!statusProgress) {
+                    return;
+                }
+                statusProgress.removeAttribute('value');
+                statusProgress.removeAttribute('max');
+            }
+
+            function updateDownloadProgress(bytes) {
+                if (!statusProgress || expectedTotalBytes <= 0 || bytes <= 0) {
+                    return;
+                }
+                if (!statusProgress.hasAttribute('max')) {
+                    statusProgress.max = expectedTotalBytes;
+                }
+                downloadedBytes += bytes;
+                statusProgress.value = Math.min(downloadedBytes, expectedTotalBytes);
+            }
+
+            function fetchSignedUrl(fileName) {
+                const requestUrl = `${STORAGE_ENDPOINT}${encodeURIComponent(`${STORAGE_PREFIX}${fileName}`)}`;
+                return nativeFetch(requestUrl).then((response) => {
+                    if (!response.ok) {
+                        throw new Error(`Failed to request ${fileName} URL (${response.status})`);
+                    }
+                    return response.json();
+                }).then((data) => {
+                    if (!data || typeof data.url !== 'string') {
+                        throw new Error(`The response for ${fileName} is invalid.`);
+                    }
+                    return data.url;
+                });
+            }
+
+            function readResponseBuffer(response, onChunk) {
+                if (!response.body || typeof response.body.getReader !== 'function') {
+                    return response.arrayBuffer().then((buffer) => {
+                        if (typeof onChunk === 'function') {
+                            onChunk(buffer.byteLength);
+                        }
+                        return buffer;
+                    });
+                }
+                const reader = response.body.getReader();
+                const chunks = [];
+                let loaded = 0;
+                function pump() {
+                    return reader.read().then(({ done, value }) => {
+                        if (done) {
+                            const combined = new Uint8Array(loaded);
+                            let offset = 0;
+                            for (let i = 0; i < chunks.length; i += 1) {
+                                combined.set(chunks[i], offset);
+                                offset += chunks[i].length;
+                            }
+                            return combined.buffer;
+                        }
+                        chunks.push(value);
+                        loaded += value.length;
+                        if (typeof onChunk === 'function') {
+                            onChunk(value.length);
+                        }
+                        return pump();
+                    });
+                }
+                return pump();
+            }
+
+            function downloadPartBuffer(partName) {
+                return fetchSignedUrl(partName).then((partUrl) => nativeFetch(partUrl)).then((response) => {
+                    if (!response.ok) {
+                        throw new Error(`Failed to download ${partName} (${response.status})`);
+                    }
+                    return readResponseBuffer(response, (chunkSize) => {
+                        updateDownloadProgress(chunkSize);
+                    });
+                });
+            }
+
+            function concatBuffers(buffers) {
+                const totalLength = buffers.reduce((sum, buffer) => sum + buffer.byteLength, 0);
+                const combined = new Uint8Array(totalLength);
+                let offset = 0;
+                buffers.forEach((buffer) => {
+                    combined.set(new Uint8Array(buffer), offset);
+                    offset += buffer.byteLength;
+                });
+                return combined.buffer;
+            }
+
+            function downloadFileFromParts(baseName, partCount) {
+                const buffers = [];
+                let index = 1;
+                function fetchNext() {
+                    if (index > partCount) {
+                        return Promise.resolve(concatBuffers(buffers));
+                    }
+                    const partName = `${baseName}.part${index}`;
+                    return downloadPartBuffer(partName).then((buffer) => {
+                        buffers.push(buffer);
+                        index += 1;
+                        return fetchNext();
+                    });
+                }
+                return fetchNext();
+            }
+
             const missing = Engine.getMissingFeatures({
                 threads: GODOT_THREADS_ENABLED,
             });
@@ -96,7 +219,6 @@
                     } catch (err) {
                         serviceWorkerRegistrationPromise = Promise.reject(new Error('Service worker registration failed.'));
                     }
-                    // There's a chance that installing the service worker would fix the issue
                     Promise.race([
                         serviceWorkerRegistrationPromise.then((registration) => {
                             if (registration != null) {
@@ -104,38 +226,103 @@
                             }
                             return registration;
                         }).then(() => engine.installServiceWorker()),
-                        // For some reason, `getRegistration()` can stall
                         new Promise((resolve) => {
                             setTimeout(() => resolve(), 2000);
                         }),
                     ]).then(() => {
-                        // Reload if there was no error.
                         window.location.reload();
                     }).catch((err) => {
                         console.error('Error while registering service worker:', err);
                     });
                 } else {
-                    // Display the message as usual
                     const missingMsg = 'Error\nThe following features required to run Godot projects on the Web are missing:\n';
                     displayFailureNotice(missingMsg + missing.join('\n'));
                 }
             } else {
                 setStatusMode('progress');
-                engine.startGame({
-                    'onProgress': function (current, total) {
+                if (statusProgress) {
+                    if (expectedTotalBytes > 0) {
+                        statusProgress.max = expectedTotalBytes;
+                        statusProgress.value = 0;
+                    } else {
+                        resetProgressToIndeterminate();
+                    }
+                }
+                const exeName = GODOT_CONFIG.executable || 'buckshot-roulette';
+                const packPath = `${exeName}.pck`;
+                const wasmKey = `${exeName}.wasm`;
+                Promise.all([
+                    downloadFileFromParts(PACK_FILE_NAME, PACK_PARTS),
+                    downloadFileFromParts(WASM_FILE_NAME, WASM_PARTS),
+                ]).then(([packBuffer, wasmBuffer]) => {
+                    if (statusProgress) {
+                        resetProgressToIndeterminate();
+                    }
+                    const packSize = packBuffer.byteLength;
+                    const wasmSize = wasmBuffer.byteLength;
+                    if (packSize > 0) {
+                        GODOT_CONFIG.fileSizes[packPath] = packSize;
+                    }
+                    if (wasmSize > 0) {
+                        GODOT_CONFIG.fileSizes[wasmKey] = wasmSize;
+                    }
+                    const args = Array.isArray(GODOT_CONFIG.args) ? GODOT_CONFIG.args.slice() : [];
+                    const flagIndex = args.indexOf('--main-pack');
+                    if (flagIndex !== -1) {
+                        args.splice(flagIndex, 1);
+                        if (flagIndex < args.length) {
+                            args.splice(flagIndex, 1);
+                        }
+                    }
+                    args.unshift(packPath);
+                    args.unshift('--main-pack');
+
+                    function onProgress(current, total) {
+                        if (!statusProgress) {
+                            return;
+                        }
                         if (current > 0 && total > 0) {
                             statusProgress.value = current;
                             statusProgress.max = total;
                         } else {
-                            statusProgress.removeAttribute('value');
-                            statusProgress.removeAttribute('max');
+                            resetProgressToIndeterminate();
                         }
-                    },
+                    }
+
+                    engine.config.update({
+                        'args': args,
+                        'mainPack': packPath,
+                        'onProgress': onProgress,
+                    });
+                    GODOT_CONFIG.args = args;
+                    GODOT_CONFIG.mainPack = packPath;
+                    GODOT_CONFIG.onProgress = onProgress;
+
+                    const wasmBlob = new Blob([wasmBuffer], { type: 'application/wasm' });
+                    wasmBlobUrl = URL.createObjectURL(wasmBlob);
+                    window.fetch = function patchedFetch(resource, init) {
+                        const requestUrl = typeof resource === 'string' ? resource : (resource && resource.url) || '';
+                        if (requestUrl.endsWith(wasmKey)) {
+                            return nativeFetch(wasmBlobUrl, init);
+                        }
+                        return nativeFetch(resource, init);
+                    };
+
+                    return engine.preloadFile(packBuffer, packPath).then(() => {
+                        Engine.load(exeName, wasmSize || GODOT_CONFIG.fileSizes[wasmKey]);
+                        return engine.start();
+                    }).finally(() => {
+                        window.fetch = originalFetch;
+                        if (wasmBlobUrl) {
+                            URL.revokeObjectURL(wasmBlobUrl);
+                            wasmBlobUrl = null;
+                        }
+                    });
                 }).then(() => {
                     setStatusMode('hidden');
-                }, displayFailureNotice);
+                }).catch(displayFailureNotice);
             }
-        };
+        }
         window.godotRunStart = run;
     </script>
 </body>
