@@ -1,0 +1,154 @@
+@font-face {
+  font-family: 'Determination';
+  src: url('fonts/determination.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  cursor: url('dog.cur'), auto;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  color: #fff;
+  font-family: 'Determination', monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  overflow-x: hidden;
+  cursor: url('dog.cur'), auto;
+}
+
+.container {
+  padding: 20px;
+  max-width: 700px;
+  width: 100%;
+  animation: fadeIn 1.2s ease;
+}
+
+.logo {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 30px;
+  filter: grayscale(100%) contrast(1000%);
+  animation: logoPop 1.2s ease;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.desc {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  cursor: url('dog.cur'), auto;
+}
+
+.button {
+  padding: 10px 25px;
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  font-family: 'Determination', monospace;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 0;
+  transition: none;
+  cursor: url('dog.cur'), auto;
+}
+
+.button:hover {
+  background: #fff;
+  color: #000;
+  cursor: url('dog.cur'), auto;
+}
+
+.chapter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: all 0.4s ease;
+  cursor: url('dog.cur'), auto;
+}
+
+.chapter-buttons.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  cursor: url('dog.cur'), auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.game-frame {
+  margin-top: 20px;
+  border: 4px solid #fff;
+  padding: 5px;
+  background: #000;
+  box-shadow: 0 0 10px #fff;
+  animation: popIn 0.4s ease;
+  cursor: url('dog.cur'), auto;
+}
+
+iframe {
+  width: 100%;
+  height: 400px;
+  background: #000;
+  border: none;
+  cursor: url('dog.cur'), auto;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes logoPop {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.credits {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 220px;
+  background: #000;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 15px;
+  font-size: 0.9rem;
+  font-family: 'Determination', monospace;
+  box-shadow: 0 0 10px #fff;
+  z-index: 999;
+}
+
