@@ -890,30 +890,8 @@ body.custom-scrollbar-dragging {
 .discord-status.status-offline{background:#4f545c}
 .discord-username{font-size:var(--dw-font-small);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:125px}
 .discord-users-footer{padding:.3rem .45rem;background:#161616;border-top:1px solid #222;display:flex;justify-content:flex-end}
-.discord-join-link{
-  color:#fff !important;
-  background:linear-gradient(135deg,#ff4500 80%,#ff7b00 100%);
-  border:1px solid #ff4500;
-  text-decoration:none;
-  font-weight:600;
-  font-size:.65rem;
-  letter-spacing:.4px;
-  padding:.25rem .55rem;
-  border-radius:6px;
-  box-shadow:0 2px 4px -1px rgba(0,0,0,.18),0 0 0 1px rgba(255,69,0,.12);
-  transition:background .18s,border-color .18s,transform .18s,color .18s;
-  text-shadow:0 1px 2px rgba(0,0,0,0.18);
-}
-.discord-join-link:hover{
-  background:linear-gradient(135deg,#ff7b00 80%,#ff4500 100%);
-  border-color:#ff7b00;
-  color:#fff;
-}
-.discord-join-link:active{
-  transform:translateY(1px);
-  filter:brightness(0.95);
-}
 .discord-users-error{padding:.55rem .5rem;color:#ff6b6b;font-size:.7rem;}
+#discord-join-link{font-size:0.9em}
 @media (max-width:600px){.discord-users{margin:1rem .75rem 0 .75rem;max-width:240px}.discord-username{max-width:140px}}
 /* Basic wrapper alignment */
 #discord-widget-wrapper{display:flex;justify-content:flex-end}
@@ -988,7 +966,7 @@ body.custom-scrollbar-dragging {
   filter:brightness(0.95);
 }
 
-.copy-badge-button{
+.gradient-button{
   color:#fff !important;
   background:linear-gradient(135deg,#ff4500 80%,#ff7b00 100%);
   border:1px solid #ff4500;
@@ -1003,17 +981,17 @@ body.custom-scrollbar-dragging {
   text-shadow:0 1px 2px rgba(0,0,0,0.18);
   font-family:Seraphim;
 }
-.copy-badge-button:hover{
+.gradient-button:hover{
   background:linear-gradient(135deg,#ff7b00 80%,#ff4500 100%);
   border-color:#ff7b00;
   color:#fff;
 }
-.copy-badge-button:active{
+.gradient-button:active{
   transform:translateY(1px);
   filter:brightness(0.95);
 }
 
-.copy-badge-button.audio-control-button{
+.gradient-button.audio-control-button{
   font-size:0.6rem;
   padding:.18rem .4rem;
   min-width:2.5rem;

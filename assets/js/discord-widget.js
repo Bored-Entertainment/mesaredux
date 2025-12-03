@@ -26,7 +26,7 @@
       </div>
       <div class="discord-users-body" role="list"></div>
       <div class="discord-users-footer">
-        <a href="#" target="_blank" rel="noopener" class="discord-join-link" data-fallback="#">Join the server</a>
+        <a href="#" target="_blank" rel="noopener" class="gradient-button" id="discord-join-link" data-fallback="#">Join the server</a>
       </div>
     `;
     return root;
@@ -78,7 +78,7 @@
     countEl.textContent = `${totalOnline} Online`; // simple total
     // Update invite link from JSON (instant_invite) with graceful fallback
     const invite = data.instant_invite;
-    const linkEl = root.querySelector('.discord-join-link');
+    const linkEl = root.querySelector('#discord-join-link');
     if(linkEl){
       const fallback = linkEl.getAttribute('data-fallback');
       if(invite && /^https?:\/\//.test(invite)){
