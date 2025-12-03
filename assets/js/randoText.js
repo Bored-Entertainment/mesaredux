@@ -27,9 +27,17 @@ fetch('/assets/js/json/lines.json')
       }
 
       const refreshButton = document.getElementById('refresh');
+      // keep css font scaling aligned with the current quote length.
+      const updateTextLength = length => {
+        const safeLength = Math.max(length, 1);
+        document.documentElement.style.setProperty('--text-length', `${safeLength}`);
+      };
+
       const setRandomQuote = () => {
         const quote = json[Math.floor(Math.random() * json.length)];
-        target.textContent = `"${quote}"`;
+        const quoteText = typeof quote === 'string' ? quote : String(quote ?? '');
+        target.textContent = `"${quoteText}"`;
+        updateTextLength(quoteText.length);
       };
 
       setRandomQuote();

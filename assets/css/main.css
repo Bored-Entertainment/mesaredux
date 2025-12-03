@@ -1072,6 +1072,10 @@ body #boredring .webring-icon {
 
   :root {
     --value: 50%;
+    --text-length: 1;
+    --quip-min-size: 0.7em;
+    --quip-max-size: 1em;
+    --quip-scale-factor: 0.0035em;
   }
 
   /* firefox */
@@ -1139,12 +1143,18 @@ body #boredring .webring-icon {
   }
 
   .quip {
-    font-size: 0.8em;
+    --quip-adjustment: calc(var(--text-length) * var(--quip-scale-factor));
+    font-size: clamp(
+      var(--quip-min-size),
+      calc(var(--quip-max-size) - var(--quip-adjustment)),
+      var(--quip-max-size)
+    );
     vertical-align: sub;
-    max-height: 7vh;
+    height: 7vh;
     overflow-y: auto;
     overflow-x: hidden;
   }
+
 
   .header-inner {
   position: relative;
