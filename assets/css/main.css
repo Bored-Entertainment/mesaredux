@@ -1141,7 +1141,7 @@ body #boredring .webring-icon {
   .quip {
     font-size: 0.8em;
     vertical-align: sub;
-    max-height: 10vh;
+    max-height: 7vh;
     overflow-y: auto;
     overflow-x: hidden;
   }
