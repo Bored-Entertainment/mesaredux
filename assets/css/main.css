@@ -1073,7 +1073,7 @@ body #boredring .webring-icon {
   :root {
     --value: 50%;
     --text-length: 1;
-    --quip-min-size: 0.7em;
+    --quip-min-size: 0.8em;
     --quip-max-size: 1em;
     --quip-scale-factor: 0.0035em;
   }
@@ -1149,10 +1149,16 @@ body #boredring .webring-icon {
       calc(var(--quip-max-size) - var(--quip-adjustment)),
       var(--quip-max-size)
     );
-    vertical-align: sub;
     height: 7vh;
     overflow-y: auto;
     overflow-x: hidden;
+    display: grid;
+    grid-template-rows: 1fr;
+    align-items: center;
+  }
+
+  .quip p {
+    margin: 0;
   }
 
 
