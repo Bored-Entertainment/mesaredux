@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // thanks harper
     /////// harper code
     var volumeslider = document.querySelector("#volume-slider") 
-    volumeslider.addEventListener('change', event=> {
+    volumeslider.addEventListener('input', event=> {
       console.log(volumeslider.value)
       audio.volume = volumeslider.value / 100
       /////// grey code (singular)
