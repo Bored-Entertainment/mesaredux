@@ -19,15 +19,24 @@ fetch('/assets/js/json/lines.json')
       return;
     }
 
-    const quote = json[Math.floor(Math.random() * json.length)];
-
     onReady(() => {
       const target = document.getElementById('line');
       if (!target) {
         console.warn('randoText: element with id "line" not found');
         return;
       }
-      target.textContent = `"${quote}"`;
+
+      const refreshButton = document.getElementById('refresh');
+      const setRandomQuote = () => {
+        const quote = json[Math.floor(Math.random() * json.length)];
+        target.textContent = `"${quote}"`;
+      };
+
+      setRandomQuote();
+
+      if (refreshButton) {
+        refreshButton.addEventListener('click', setRandomQuote);
+      }
     });
   })
   .catch(error => {

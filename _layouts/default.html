@@ -123,7 +123,7 @@
     </code>
     </div>
     <br>
-    <button type="button" class="copy-badge-button" data-target="badge-embed-code">
+    <button type="button" class="copy-badge-button" data-target="badge-embed-code" id="copy">
       copy to clipboard
     </button>
   </div>
@@ -148,6 +148,11 @@
     <div class="quip">
       <p id="line"></p>
     </div>
+    </div>
+    <div style="max-width: fit-content; margin-left: auto; margin-right: auto;">
+      <button type="button" class="copy-badge-button" id="refresh" style="font-size: 0.8em">
+      refresh q.u.i.p.
+    </button>
     </div>
     </div></div>
     <div class="box">
@@ -183,7 +188,7 @@
     </div>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      var copyButtons = document.querySelectorAll('.copy-badge-button');
+      var copyButtons = document.querySelectorAll('#copy');
       if (copyButtons.length) {
         copyButtons.forEach(function(button) {
           var originalLabel = button.textContent.trim();
