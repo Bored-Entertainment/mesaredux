@@ -4,10 +4,11 @@
 ![Last Commit](https://img.shields.io/github/last-commit/Bored-Entertainment/mesaredux?style=for-the-badge)
 ![Website Uptime](https://img.shields.io/website?style=for-the-badge&up_message=online&url=https%3A%2F%2Fmesaredux.com)
 <a href="https://discord.gg/DZJ4AmzKWC">![Discord](https://img.shields.io/discord/417916767487393792?style=for-the-badge&logo=discord&label=Discord&color=%235865F2&link=https%3A%2F%2Fdiscord.gg%2FDZJ4AmzKWC)</a>
-<br>
+<be>
+
+<img src="https://raw.githubusercontent.com/Bored-Entertainment/mesaredux/refs/heads/main/assets/images/banner.png" style="width: 40%;">
 
 # MESλREDUX
-:3
 
 #### The team behind blockbuster sites such as [The Mesa Complex](https://github.com/Bored-Entertainment/themesacomplex), [Filegrounds](https://the-duck.co/filegrounds), [Swordslasher.com](https://swordslasher.com/), and [BoredHTML](https://bored.pisaucer.com/) proudly presents this project—a definitive and scalable redux of The Mesa Complex, representing the culmination of our last six years of work!
 
