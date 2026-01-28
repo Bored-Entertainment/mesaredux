@@ -36,8 +36,6 @@ exclude:
   - "Gemfile"
   - "Gemfile.lock"
   - ".github"
-  - "README.md"
-  - "LICENSE"
 
 jekyll-minifier:
   exclude:
