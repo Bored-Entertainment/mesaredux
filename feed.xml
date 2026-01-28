@@ -1,0 +1,24 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>{% capture updates_json %}{% include_relative assets/js/json/updates.json %}{% endcapture %}{% assign updates = updates_json | strip | split: '"' %}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ site.title | xml_escape }}: UPDATE LOG</title>
+    <description>the full log of all updates ever pushed to {{ site.title | xml_escape }}.</description>
+    <link>{{ site.url }}{{ site.baseurl }}/</link>
+    <atom:link href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" rel="self" type="application/rss+xml"/>
+    <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+    <generator>Jekyll v{{ jekyll.version }}</generator>
+    {% assign prev_date = "" %}{% assign date_count = 0 %}{% assign current_date_total = 0 %}{% for update in updates reversed %}{% assign trimmed = update | strip %}{% if trimmed.size > 10 and trimmed contains " - " %}{% assign parts = trimmed | split: " - " %}{% assign date_str = parts[0] %}{% assign author = parts | last %}{% if date_str != prev_date %}{% assign current_date_total = 0 %}{% for u in updates %}{% assign t = u | strip %}{% if t.size > 10 and t contains " - " %}{% assign p = t | split: " - " %}{% if p[0] == date_str %}{% assign current_date_total = current_date_total | plus: 1 %}{% endif %}{% endif %}{% endfor %}{% assign date_count = current_date_total %}{% assign prev_date = date_str %}{% else %}{% assign date_count = date_count | minus: 1 %}{% endif %}{% if date_count > 1 %}{% capture title_prefix %}Update {{ date_count }}: {% endcapture %}{% else %}{% assign title_prefix = "Update: " %}{% endif %}{% if parts.size > 2 %}{% assign desc_parts = parts | slice: 1, parts.size | pop %}{% assign desc = desc_parts | join: " - " %}{% else %}{% assign desc = parts[1] %}{% endif %}
+      <item>
+        <title>{{ title_prefix }}{{ date_str }}</title>
+        <description>{{ desc | xml_escape }}</description>
+        <pubDate>{{ date_str }}</pubDate>{% if parts.size > 2 %}
+        <author>{{ author | xml_escape }}</author>{% endif %}
+        <guid isPermaLink="false">{{ title_prefix | append: date_str | slugify }}</guid>
+      </item>
+    {% endif %}{% endfor %}
+  </channel>
+</rss>
