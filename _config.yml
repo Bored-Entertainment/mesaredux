@@ -12,17 +12,33 @@ collections:
 
 compress_images:
   images_path:
-    - "_games/**/thumb.png"
-    - "_games/**/**/thumb.png"
-    - "_games/**/**/**/thumb.png"
+    - "**/*.{png,jpg,jpeg,svg,gif}"
+    - "!assets/images/**"
+    - "assets/images/ubgu-member.svg"
+    - "assets/images/placeholder.png"
+    - "assets/images/badges/**/*.{png,jpg,jpeg,svg,gif}"
+    - "assets/images/rss_ani.gif"
+
 imageoptim:
-  gifsicle: true
+  gifsicle:
+    level: 3
   jpegoptim:
     strip: "all"
   jpegtran: true
-  oxipng: false
+  oxipng: 
+    level: 6
+  advpng: 
+    level: 4
+  optipng:
+    level: 7
+    strip: true
+  pngcrush :
+    brute: false
+    blacken: false
+    chunks: "allb"
+  svgo: 
+    allow_lossy: false
   allow_lossy: false
-svgo: false
 
 
 plugins:
@@ -39,6 +55,9 @@ exclude:
   - ".github"
   - "README.md"
   - "LICENSE"
+  - "node_modules"
+  - "package.json"
+  - "package-lock.json"
 
 jekyll-minifier:
   exclude:
