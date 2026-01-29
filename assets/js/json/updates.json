@@ -58,5 +58,7 @@
   "Dec. 2, 2025 - Sorted out game delivery a bit more - grey",
   "Dec. 3, 2025 - Turned the QOTD box into the Q.U.I.P. BOX (Quite Unanimously Incredible Passages!!!) - grey",
   "Jan. 19, 2026 - WE'RE BACK!! For reasons out of our control the site was taken down, but we are back for the foreseeable future!",
-  "Jan. 28 2026 - Added a RSS feed! feel free to subscribe to get updated when we add new games !! ;') and you also gain the ability to see every update we've ever pushed !! - grey"
+  "Jan. 28 2026 - Added a RSS feed! feel free to subscribe to get updated when we add new games !! ;') and you also gain the ability to see every update we've ever pushed !! - grey",
+  "Jan 29 2026 - Reworked how Javascript is loaded on the site to hopefully improve performance and reliability. - grey",
+  "Jan 29 2026 - Also fixed an oversight with EmulatorJS loading and its interaction with the resource fallback script. - grey",
 ]
