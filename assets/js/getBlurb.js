@@ -1,3 +1,5 @@
+---
+---
 function onReady(callback) {
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', callback, { once: true });
@@ -109,7 +111,7 @@ function displayBlurb(payload) {
 
         const showRegion = country === 'United States' || country === 'Canada';
         const location = showRegion ? `${city}, ${region}` : `${city}, ${country}`;
-        const brand = 'MESλREDUX';
+        const brand = '{{ site.title }}';
         const rankingPhrase = rank === 1 ? 'biggest source' : `${ordinalRank} biggest source`;
         const shoutoutText = `shoutout ${location} for being the ${rankingPhrase} of traffic for ${brand} this week!`;
         const lowerShoutout = shoutoutText.toLowerCase();
