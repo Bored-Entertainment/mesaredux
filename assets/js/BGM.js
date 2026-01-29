@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
 
-    const baseUrl = 'https://mesareudx.mesagrey.ca/';
+    const baseUrl = 'https://mesareudx.com/';
     const defaultLocalSrc = audio.getAttribute('data-local-src') || '/assets/music/whosthere.mp3';
     const playlistSrc = audio.getAttribute('data-track-list');
 
