@@ -6,12 +6,11 @@
     <meta charset="utf-8">
     <title>{{ page.title }} - {{ site.title }}</title>
     <link rel="stylesheet" href="{{ "assets/css/alt.css" | relative_url }}">
-    <script type="text/javascript" src="/assets/js/customScrollbar.js" defer></script>
     {% if page.title == "404" %}
     <script type="text/javascript" src="/assets/js/randoText404.js" defer></script>
     <script type="text/javascript" src="/assets/js/BGM.js" defer></script>
     {% else %}
-    <script type="text/javascript" src="{{ "assets/js/resourceFallback.js" | relative_url }}"></script>
+    <script type="text/javascript" src="{{ "assets/js/gameMain.js" | relative_url }}"></script>
     {% endif %}
   {% if page.type == 'flash' %}
   <script defer>
@@ -25,8 +24,6 @@
   </script>
   {% endif %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}"
-        href="{{ "/feed.xml" | relative_url }}" />
   {% include meta.html %}
 </head>
 {% assign game_type = page.type | default: 'html' %}
@@ -48,7 +45,6 @@
             <br>
             {% include breadcrumbs.html %}
             <br>
-            <script type="text/javascript" src="/assets/js/aspectRatio.js"></script>
             <script>
                 let scale = '{{ page.gameScale }}'
                 if (scale == ''){scale = 1};
@@ -268,8 +264,6 @@
             </div>
             {% endif %}
             {% endif %}
-            <link rel="stylesheet" href="{{ "assets/css/gameWrapper.css" | relative_url }}">
-            <script type="text/javascript" src="/assets/js/gameWrapper.js"></script>
         </div>
     </div>
       <div class="footer" role="contentinfo">

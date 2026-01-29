@@ -32,4 +32,4 @@ header: "* MESλREDUX - CONTACT *"
   </div>
 </div>
 
-<script src="/assets/js/discord-widget.js"></script>
+<script src="/assets/js/discordWidget.js"></script>

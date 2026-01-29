@@ -1,3 +1,6 @@
+// global mesaredux javascript
+
+// custom scrollbar
 'use strict';
 
 (function() {

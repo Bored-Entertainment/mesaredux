@@ -1,10 +1,12 @@
+---
+---
 document.addEventListener('DOMContentLoaded', () => {
   const anchor = document.getElementById('mirror-alert');
   if (!anchor) {
     return;
   }
 
-  const mainDomain = 'mesaredux.com';
+  const mainDomain = '{{ site.domain }}';
   const manifestPath = `/assets/js/json/officialmirrors.json`;
   const buildInfoPath = `/assets/js/json/buildinfo.json`;
   const latestBuildInfoPath = `https://${mainDomain}/assets/js/json/buildinfo.json`;
