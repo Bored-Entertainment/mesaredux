@@ -103,30 +103,50 @@
     {% elsif game_type == 'retroarch' %}
              <div class="fullscreen-center-wrapper" id="fullscreen-wrapper">
              <iframe id="game-iframe" srcdoc='
-             <!DOCTYPE html>
-                <html lang="en">
-                <head>
-                    <style>
-                        body, html {
-                            margin: 0;
-                            padding: 0;
-                        }
-                    </style>
-                </head>
-                <body>
-                  <div style="width:100%;height:100%;max-width:100%">
-                      <div id="ejsplayer"></div>
-                  </div>
-                    <script>
-                      EJS_player = "#ejsplayer";
-                      EJS_core = "{{ page.core }}";
-                      EJS_pathtodata = "/assets/libs/emulatorjs/data";
-                      EJS_startOnLoaded = true;
-                      EJS_gameUrl = "{{ page.url | append: 'src/game.zip' | relative_url }}";
-                    </script>
-                    <script src="/assets/libs/emulatorjs/data/loader.js"></script>
-                 </body>
-              </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; }
+  #ejsplayer { width: 100%; height: 100%; }
+</style>
+<script src="{{ "/assets/js/resourceFallback.js" | relative_url }}"></script>
+</head>
+<body>
+<div id="ejsplayer"></div>
+<script>
+  (function () {
+    EJS_player = "#ejsplayer";
+    EJS_core = "{{ page.core }}";
+    EJS_pathtodata = "/assets/libs/emulatorjs/data";
+    EJS_startOnLoaded = true;
+    EJS_gameUrl = "{{ page.url | append: "src/game.zip" | relative_url }}";
+
+    function loadEmulatorJS() {
+      if (!window.ResourceFallback || typeof window.ResourceFallback.loadScript !== "function") {
+        setTimeout(loadEmulatorJS, 50);
+        return;
+      }
+
+      window.ResourceFallback.loadScript({
+        primary: "https://cdn.emulatorjs.org/stable/data/loader.js",
+        fallback: "{{ "/assets/libs/emulatorjs/data/loader.js" | relative_url }}",
+        name: "EmulatorJS"
+      }).catch(function (error) {
+        console.error("Failed to load EmulatorJS", error);
+      });
+    }
+
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+      loadEmulatorJS();
+    } else {
+      window.addEventListener("DOMContentLoaded", loadEmulatorJS);
+    }
+  })();
+</script>
+</body>
+</html>
             ' allow="fullscreen" allowfullscreen></iframe>
             </div>
             <button id="fullscreen-btn" style="margin-top:10px;">Fullscreen</button>
