@@ -12,8 +12,8 @@ collections:
 
 compress_images:
   images_path:
-    - "**/*.{png,jpg,jpeg,svg,gif}"
-    - "!assets/images/**"
+    - "_games/**/*.{png,jpg,jpeg,svg,gif}"
+    - "assets/favicons/**/*.{png,jpg,jpeg,svg,gif}"
     - "assets/images/ubgu-member.svg"
     - "assets/images/placeholder.png"
     - "assets/images/badges/**/*.{png,jpg,jpeg,svg,gif}"
@@ -63,6 +63,7 @@ exclude:
 jekyll-minifier:
   exclude:
     - "games/**/index/src/**"
+    - "_site/**"
   compress_css: true
   compress_javascript: true
   compress_json: true    
