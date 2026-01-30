@@ -14,7 +14,7 @@
   {% include gtag.html %}
 <body>
 
-  <audio id="BGM" preload="auto" loop data-track-list="{{ "/assets/js/json/playlist.json" | relative_url }}"></audio>
+  <audio id="BGM" preload="auto" loop data-track-list="{{ "/assets/js/json/music/playlist.json" | relative_url }}"></audio>
   {% if page.wide %}
   <div class="wrapper" id="wrapper-wide">
   {% else %}
@@ -128,10 +128,11 @@
     <h4>♫ NOW PLAYING: <marquee><i id="now-playing">loading...</i></marquee></h4>
     <div class="inner">
       <div class="audio-controls">
-        <button type="button" class="gradient-button audio-control-button" id="bgm-play-toggle">pause</button>
-        <button type="button" class="gradient-button audio-control-button" id="bgm-mute-toggle">mute</button>
-        <br> <label for="volume-slider">volume:</label> <br>
-        <input type="range" name="volume-slider" id="volume-slider" min="0.0" max="100.0">
+        <button type="button" class="gradient-button audio-control-button" id="bgm-prev" title="Previous">⏮</button>
+        <button type="button" class="gradient-button audio-control-button" id="bgm-play-toggle" title="Play/Pause">⏸</button>
+        <button type="button" class="gradient-button audio-control-button" id="bgm-next" title="Next">⏭</button>
+        <button type="button" class="gradient-button audio-control-button audio-mute-button" id="bgm-mute-toggle" title="Mute">�</button>
+        <label class="volume-control" for="volume-slider">volume: <input type="range" name="volume-slider" id="volume-slider" min="0.0" max="100.0"></label>
       </div>
     </div>
         <a href="https://harpulator.bandcamp.com/album/sar" style="font-size: 0.95em; text-align: center; display: block; text-decoration: underline;">get the album on bandcamp!</a>

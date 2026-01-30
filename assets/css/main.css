@@ -998,13 +998,36 @@ body.custom-scrollbar-dragging {
   text-transform:lowercase;
 }
 
+.gradient-button.audio-mute-button{
+  min-width:1.8rem;
+  padding:.18rem .25rem;
+}
+
 .audio-controls{
   display:flex;
   flex-wrap:wrap;
   align-items:center;
   justify-content:center;
-  gap:.4rem;
+  gap:.3rem;
   margin-top:5px;
+}
+
+.audio-controls .gradient-button.audio-control-button{
+  flex:0 0 auto;
+}
+
+.audio-controls .audio-mute-button{
+  font-size: 0.7em;
+}
+
+.audio-controls .volume-control{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:.15rem;
+  flex-basis:100%;
+  justify-content:center;
+  margin-top:.25rem;
 }
 
 body #boredring {
@@ -1090,13 +1113,7 @@ body #boredring .webring-icon {
 
   #volume-slider::-moz-range-track {
     height: 4px;
-    background: #ddd;
-    border-radius: 2px;
-  }
-
-  #volume-slider::-moz-range-progress {
-    background: #ff4500;
-    height: 4px;
+    background: linear-gradient(to right, #ff4500 var(--value, 50%), #ddd var(--value, 50%));
     border-radius: 2px;
   }
 

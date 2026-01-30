@@ -1,0 +1,14 @@
+{
+  "tracks": [
+    {
+      "title": "findher.ogg",
+      "src": "/assets/music/eggs/lostgirl/findher.ogg",
+      "artist": "???"
+    },
+   {
+      "title": "Lost Girl",
+      "src": "/assets/music/eggs/lostgirl/lostgirl.mp3",
+      "artist": "???"
+    }
+  ]
+}

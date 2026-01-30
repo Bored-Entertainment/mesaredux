@@ -1,0 +1,40 @@
+{
+  "tracks": [
+    {
+      "title": "Throw Money Everywhere",
+      "artist": "Kanye West",
+      "src": "/assets/music/eggs/main/throwmoneyeverywhere.mp3"
+    },
+    {
+      "title": "Bittersweet Poetry",
+      "artist": "Kanye West",
+      "src": "/assets/music/eggs/main/bittersweetpoetry.mp3"
+    },
+    {
+      "title": "Valentines Day '25 Freestyle",
+      "artist": "JPEGMAFIA",
+      "src": "/assets/music/eggs/main/valentinesday.mp3"
+    },
+    {
+      "title": "Boy You Should Know!",
+      "artist": "JPEGMAFIA",
+      "src": "/assets/music/eggs/main/boyushuldkno.mp3"
+    },
+    {
+      "title": "A Way of Life",
+      "artist": "Mayumi Fujita",
+      "src": "/assets/music/eggs/main/awayoflife.mp3"
+    },
+    {
+      "title": "Heaven",
+      "artist": "Shihoko Hirata",
+      "src": "/assets/music/eggs/main/heaven.mp3"
+    },
+    {
+      "title": "Through The Wire",
+      "artist": "Kanye West",
+      "src": "/assets/music/eggs/main/thruthewire.mp3"
+    }
+
+  ]
+}

@@ -151,19 +151,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var playToggle = document.getElementById('bgm-play-toggle');
   var muteToggle = document.getElementById('bgm-mute-toggle');
+  var prevButton = document.getElementById('bgm-prev');
+  var nextButton = document.getElementById('bgm-next');
+  var volumeslider = document.querySelector("#volume-slider");
+  var volumeBeforeMute = 50; // Store volume before muting
 
   var syncPlayLabel = function() {
     if (!playToggle) {
       return;
     }
-    playToggle.textContent = audio.paused ? 'play' : 'pause';
+    playToggle.textContent = audio.paused ? '▶' : '⏸';
   };
 
   var syncMuteLabel = function() {
     if (!muteToggle) {
       return;
     }
-    muteToggle.textContent = audio.muted ? 'unmute' : 'mute';
+    muteToggle.textContent = audio.muted ? '🔇' : '🔊';
+  };
+
+  var syncVolumeSlider = function() {
+    if (!volumeslider) {
+      return;
+    }
+    var displayValue = audio.muted ? 0 : (audio.volume * 100);
+    volumeslider.value = displayValue;
+    document.documentElement.style.setProperty('--value', `${displayValue}%`);
   };
 
   function getTrackLabel() { 
@@ -210,8 +223,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (muteToggle) {
     muteToggle.addEventListener('click', function() {
+      if (!audio.muted) {
+        // Store current volume before muting
+        volumeBeforeMute = audio.volume * 100;
+      }
       audio.muted = !audio.muted;
       syncMuteLabel();
+      syncVolumeSlider();
+    });
+  }
+
+  if (prevButton) {
+    prevButton.addEventListener('click', function() {
+      if (window.bgmControls && window.bgmControls.playPrevious) {
+        window.bgmControls.playPrevious();
+      }
+    });
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener('click', function() {
+      if (window.bgmControls && window.bgmControls.playNext) {
+        window.bgmControls.playNext();
+      }
     });
   }
 
@@ -222,25 +256,33 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   audio.addEventListener('loadedmetadata', updateNowPlaying);
   audio.addEventListener('pause', syncPlayLabel);
-  audio.addEventListener('volumechange', syncMuteLabel);
+  audio.addEventListener('volumechange', function() {
+    syncMuteLabel();
+    syncVolumeSlider();
+  });
   audio.addEventListener('trackmetadatachange', updateNowPlaying);
 
   updateNowPlaying();
   syncPlayLabel();
   syncMuteLabel();
+  syncVolumeSlider();
 
-  const root = document.documentElement;
-
-    //nice comments, grey
-    // thanks harper
-    /////// harper code
-    var volumeslider = document.querySelector("#volume-slider") 
-    volumeslider.addEventListener('input', event=> {
-      console.log(volumeslider.value)
-      audio.volume = volumeslider.value / 100
+  //nice comments, grey
+  // thanks harper
+  /////// harper code
+  if (volumeslider) {
+    volumeslider.addEventListener('input', function() {
+      // unmute if muted and user adjusts volume
+      if (audio.muted && volumeslider.value > 0) {
+        audio.muted = false;
+        syncMuteLabel();
+      }
+      audio.volume = volumeslider.value / 100;
+      volumeBeforeMute = volumeslider.value; // update stored volume
       /////// grey code (singular)
-      root.style.setProperty('--value', `${volumeslider.value}%`);
-    })
+      document.documentElement.style.setProperty('--value', `${volumeslider.value}%`);
+    });
+  }
 });
 // update box logic
 fetch('/assets/js/json/updates.json')
