@@ -58,6 +58,7 @@ exclude:
   - "node_modules"
   - "package.json"
   - "package-lock.json"
+  - "_site"
 
 jekyll-minifier:
   exclude:
