@@ -40,7 +40,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install svgo
+          npm install svgo -g
           sudo apt-get install -y advancecomp gifsicle jhead jpegoptim libjpeg-progs optipng pngcrush pngquant
 
 
