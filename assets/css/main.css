@@ -116,13 +116,7 @@ center {
   height: auto;
   }
   
-/***
-  Not give any style rules by default. Move the padding from the 'box' class here if you want boxes with specially styled headers or images that 
-  don't follow the margins of the main text. (For an example of that: see skin #1.)
-  ***/
-/* (removed empty .inner ruleset from source to satisfy linter) */
-  
-/* For narrow screens. Makes the sidebars narrower, and makes width of the 
+/* for narrow screens. Makes the sidebars narrower, and makes width of the 
  * center/main div 50% of the viewport width.
  */
 @media(max-width:1180px) {
@@ -262,7 +256,7 @@ center {
   }
   
   
-/* For narrow screens: slightly narrows sidebars, and makes the width
+/* for narrow screens: slightly narrows sidebars, and makes the width
  * of the main/center div flexible (sized relative to viewport width.)
  */
 @media(max-width:880px) {
@@ -285,7 +279,7 @@ center {
     }
   }
 
-/*Mobile compatibility. Just turns it all into a vertical layout.*/  
+/*mobile compatibility. Just turns it all into a vertical layout.*/
 @media(orientation:portrait) {
   .wrapper, #wrapper-wide {
     width: 96vw;

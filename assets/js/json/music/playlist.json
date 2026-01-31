@@ -35,6 +35,12 @@
       "artist": "Camille Leon",
       "src": "/assets/music/ost/twolords.mp3",
       "date": "19-10-25"
+    },
+    {
+      "title": "simple stuff",
+      "artist": "Bixbybox",
+      "src": "/assets/music/ost/simple stuff.mp3",
+      "date": "31-01-26"
     }
   ]
 }
