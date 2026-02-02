@@ -6,7 +6,7 @@ scroller: true
 wide: true
 ---
 
-<a class="back" style="font-size: 0.8rem" href="https://raw.githubusercontent.com/Bored-Entertainment/mesaredux/main/legal//privacy.md"> view as plaintext</a>
+<a class="back" style="font-size: 0.8rem" href="https://raw.githubusercontent.com/Bored-Entertainment/mesaredux/main/legal/privacy.md"> view as plaintext</a>
 <a class="back" href="/" style="font-size: 0.8rem">home</a>
 
 _Last updated: November 19, 2025_  
