@@ -4,25 +4,25 @@
       "title": "mesa jar jar",
       "artist": "harper",
       "src": "/assets/music/ost/jarjar.mp3",
-      "date": "7-10-25"
+      "date": "07-10-25"
     },
     {
       "title": "oxygen fire",
       "artist": "harper",
       "src": "/assets/music/ost/oxygen fire.mp3",
-      "date": "8-10-25"
+      "date": "08-10-25"
     },
     {
       "title": "snake enemy",
       "artist": "harper",
       "src": "/assets/music/ost/snake enemy.mp3",
-      "date": "8-10-25"
+      "date": "08-10-25"
     },
     {
       "title": "check your faucets",
       "artist": "harper",
       "src": "/assets/music/ost/check your faucets.mp3",
-      "date": "9-10-25"
+      "date": "09-10-25"
     },
     {
       "title": "generational run",
@@ -41,6 +41,24 @@
       "artist": "Bixbybox",
       "src": "/assets/music/ost/simple stuff.mp3",
       "date": "31-01-26"
+    },
+    {
+      "title": "lost forest",
+      "artist": "Bixbybox",
+      "src": "/assets/music/ost/lost forest.mp3",
+      "date": "05-02-26"
+    },
+    {
+      "title": "home",
+      "artist": "Bixbybox",
+      "src": "/assets/music/ost/home.mp3",
+      "date": "05-02-26"
+    },
+    {
+      "title": "rat goons",
+      "artist": "Bixbybox",
+      "src": "/assets/music/ost/rat goons.mp3",
+      "date": "05-02-26"
     }
   ]
 }
