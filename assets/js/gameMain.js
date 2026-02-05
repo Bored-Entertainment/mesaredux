@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // game wrapper logic
 
-(function () {
+document.addEventListener("DOMContentLoaded", function () {
     var wrapper = document.getElementById('fullscreen-wrapper');
     var iframe = document.getElementById('game-iframe');
     var fullscreenButton = document.getElementById('fullscreen-btn');
@@ -318,7 +318,7 @@ document.addEventListener("DOMContentLoaded", function () {
             setTimeout(applyFullscreenScale, 50);
         }
     });
-})();
+});
 // resource fallback logic
 
 /*
