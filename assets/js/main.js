@@ -70,15 +70,20 @@ function displayBlurb(payload) {
         return;
     }
 
+    const invalidValues = ['(not set)'];
+
     const validEntries = entries
         .map((entry, index) => ({ entry, index }))
         .filter(({ entry, index }) => {
             const city = entry?.weektopCity?.trim?.();
             const region = entry?.weektopRegion?.trim?.();
             const country = entry?.weektopCountry?.trim?.();
-            const isValid = Boolean(city && region && country);
+            const isValid = Boolean(city && region && country)
+                && !invalidValues.includes(city.toLowerCase())
+                && !invalidValues.includes(region.toLowerCase())
+                && !invalidValues.includes(country.toLowerCase());
             if (!isValid) {
-                console.warn(`blurb: skipping entry at source index ${index} due to missing data`);
+                console.warn(`blurb: skipping entry at source index ${index} due to missing/invalid data`);
             }
             return isValid;
         })
@@ -94,6 +99,16 @@ function displayBlurb(payload) {
         console.warn('blurb: no valid entries remain after filtering');
         return;
     }
+
+    // expose the filtered list for console debugging via blurblist()
+    window.blurblist = function() {
+        console.table(validEntries.map(e => ({
+            rank: e.rank,
+            city: e.weektopCity,
+            region: e.weektopRegion,
+            country: e.weektopCountry
+        })));
+    };
 
     const topTwenty = validEntries.slice(0, 20);
     if (!topTwenty.length) {
