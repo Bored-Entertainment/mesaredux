@@ -118,6 +118,7 @@
     EJS_pathtodata = "/assets/libs/emulatorjs/data";
     EJS_startOnLoaded = true;
     EJS_gameUrl = "{{ page.url | append: "src/game.zip" | relative_url }}";
+    EJS_threads = true;
 
     function loadEmulatorJS() {
       if (!window.ResourceFallback || typeof window.ResourceFallback.loadScript !== "function") {
