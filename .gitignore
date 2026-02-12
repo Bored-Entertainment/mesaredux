@@ -13,3 +13,4 @@ vendor/
 _games/ripper.sh
 _games/mkgamedr.sh
 **/ripper.sh
+server.js
