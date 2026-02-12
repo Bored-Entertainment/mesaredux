@@ -37,6 +37,198 @@ function getAspectRatioInfo(ratioStr, refWidth = 800, refHeight = 700, scale = 1
         };
 }
 
+// Remote game loading 4 ejs
+// onProgress(info) is called with { stage, message, loaded, total } during download
+function downloadRemoteGame(remoteSlug, filename, onProgress) {
+    filename = filename || 'game.zip';
+    onProgress = onProgress || function () {};
+    var endpoint = 'https://storage.mesaredux.com/?requestFile=mesaredux/roms' + remoteSlug + filename;
+
+    onProgress({ stage: 'request', message: 'Requesting download link\u2026' });
+
+    return fetch(endpoint)
+        .then(function (response) {
+            if (!response.ok) {
+                throw new Error('Failed to request remote game URL (' + response.status + ')');
+            }
+            return response.json();
+        })
+        .then(function (data) {
+            if (!data || typeof data.url !== 'string') {
+                throw new Error('The remote game URL response is invalid.');
+            }
+            onProgress({ stage: 'download', message: 'Starting download\u2026' });
+            return data.url;
+        })
+        .then(function (signedUrl) {
+            return fetch(signedUrl);
+        })
+        .then(function (response) {
+            if (!response.ok) {
+                throw new Error('Failed to download remote game file (' + response.status + ')');
+            }
+            var contentLength = parseInt(response.headers.get('content-length') || '', 10);
+            var total = Number.isFinite(contentLength) && contentLength > 0 ? contentLength : 0;
+
+            if (!response.body || typeof response.body.getReader !== 'function') {
+                onProgress({ stage: 'download', message: 'Downloading\u2026', loaded: 0, total: 0 });
+                return response.blob();
+            }
+
+            var reader = response.body.getReader();
+            var chunks = [];
+            var loaded = 0;
+
+            function pump() {
+                return reader.read().then(function (result) {
+                    if (result.done) {
+                        var blob = new Blob(chunks);
+                        onProgress({ stage: 'download', message: 'Download complete', loaded: loaded, total: loaded });
+                        return blob;
+                    }
+                    chunks.push(result.value);
+                    loaded += result.value.length;
+                    var pct = total > 0 ? Math.round((loaded / total) * 100) : 0;
+                    var sizeStr = formatBytes(loaded) + (total > 0 ? ' / ' + formatBytes(total) : '');
+                    var msg = 'Downloading\u2026 ' + (total > 0 ? pct + '% ' : '') + '(' + sizeStr + ')';
+                    onProgress({ stage: 'download', message: msg, loaded: loaded, total: total });
+                    return pump();
+                });
+            }
+            return pump();
+        })
+        .then(function (zipBlob) {
+            return extractZipBlob(zipBlob, onProgress);
+        })
+        .then(function (romBlob) {
+            onProgress({ stage: 'ready', message: 'ROM ready' });
+            return URL.createObjectURL(romBlob);
+        });
+    }
+// zip extraction using DecompressionStream
+// extracts this way to avoid the 1.3gb memory limit that the emujs wasm thingamabob has when trying to decompress large zips in-memory
+function extractZipBlob(zipBlob, onProgress) {
+    onProgress = onProgress || function () {};
+
+    function readSlice(offset, length) {
+        return zipBlob.slice(offset, offset + length).arrayBuffer()
+            .then(function (buf) { return new DataView(buf); });
+    }
+
+    var eocdSearchLen = Math.min(zipBlob.size, 65557);
+    return zipBlob.slice(zipBlob.size - eocdSearchLen).arrayBuffer().then(function (eocdBuf) {
+        var v = new DataView(eocdBuf);
+        var eocdPos = -1;
+        for (var i = eocdBuf.byteLength - 22; i >= 0; i--) {
+            if (v.getUint32(i, true) === 0x06054b50) { eocdPos = i; break; }
+        }
+        if (eocdPos === -1) {
+            onProgress({ stage: 'decompress', message: 'File is not a ZIP, skipping extraction' });
+            return zipBlob;
+        }
+
+        var cdOffset = v.getUint32(eocdPos + 16, true);
+        var cdSize   = v.getUint32(eocdPos + 12, true);
+
+        return zipBlob.slice(cdOffset, cdOffset + Math.min(cdSize, 300)).arrayBuffer();
+    }).then(function (result) {
+        if (result instanceof Blob) return result;
+
+        var cd = new DataView(result);
+        if (cd.getUint32(0, true) !== 0x02014b50) {
+            throw new Error('ZIP: invalid Central Directory header');
+        }
+
+        var compression     = cd.getUint16(10, true);
+        var compressedSize   = cd.getUint32(20, true);
+        var uncompressedSize = cd.getUint32(24, true);
+        var fnLen            = cd.getUint16(28, true);
+        var localOffset      = cd.getUint32(42, true);
+
+        var fnBytes = new Uint8Array(result, 46, Math.min(fnLen, 200));
+        var fileName = '';
+        for (var n = 0; n < fnBytes.length; n++) fileName += String.fromCharCode(fnBytes[n]);
+
+        return readSlice(localOffset, 30).then(function (lh) {
+            var localFnLen    = lh.getUint16(26, true);
+            var localExtraLen = lh.getUint16(28, true);
+            var dataStart     = localOffset + 30 + localFnLen + localExtraLen;
+
+            return {
+                compression: compression,
+                compressedSize: compressedSize,
+                uncompressedSize: uncompressedSize,
+                dataStart: dataStart,
+                fileName: fileName
+            };
+        });
+    }).then(function (entry) {
+        if (entry instanceof Blob) return entry; // wasn't a zip
+
+        onProgress({
+            stage: 'decompress',
+            message: 'Decompressing ' + entry.fileName + '\u2026',
+            loaded: 0, total: entry.uncompressedSize
+        });
+
+        var dataSlice = zipBlob.slice(entry.dataStart, entry.dataStart + entry.compressedSize);
+
+        if (entry.compression === 0) {
+            onProgress({
+                stage: 'decompress',
+                message: 'Extraction complete',
+                loaded: entry.uncompressedSize, total: entry.uncompressedSize
+            });
+            return dataSlice;
+        }
+        if (entry.compression !== 8) {
+            throw new Error('Unsupported ZIP compression method ' + entry.compression);
+        }
+
+        if (typeof DecompressionStream === 'undefined') {
+            throw new Error('Browser does not support DecompressionStream — cannot extract ROM');
+        }
+
+        var ds = new DecompressionStream('deflate-raw');
+        var decompressedStream = dataSlice.stream().pipeThrough(ds);
+        var reader = decompressedStream.getReader();
+        var chunks = [];
+        var decompressed = 0;
+        var expectedSize = entry.uncompressedSize;
+
+        function pump() {
+            return reader.read().then(function (result) {
+                if (result.done) {
+                    onProgress({
+                        stage: 'decompress',
+                        message: 'Decompression complete',
+                        loaded: decompressed, total: decompressed
+                    });
+                    return new Blob(chunks);
+                }
+                chunks.push(result.value);
+                decompressed += result.value.length;
+                var pct = expectedSize > 0 ? Math.round((decompressed / expectedSize) * 100) : 0;
+                var msg = 'Decompressing\u2026 ' + pct + '% (' + formatBytes(decompressed)
+                        + ' / ' + formatBytes(expectedSize) + ')';
+                onProgress({
+                    stage: 'decompress', message: msg,
+                    loaded: decompressed, total: expectedSize
+                });
+                return pump();
+            });
+        }
+        return pump();
+    });
+}
+
+function formatBytes(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+    if (bytes < 1073741824) return (bytes / 1048576).toFixed(1) + ' MB';
+    return (bytes / 1073741824).toFixed(2) + ' GB';
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     
     let iframe = document.getElementById("game-iframe");
@@ -322,8 +514,8 @@ document.addEventListener("DOMContentLoaded", function () {
 // resource fallback logic
 
 /*
- * Lightweight loader that retries resource URLs until one succeeds.
- * Keeps logic generic so future assets can reuse the same fallback behaviour.
+ * lightweight loader that retries resource URLs until one succeeds.
+ * keeps logic generic so future assets can reuse the same fallback behaviour.
  */
 (function (global) {
     'use strict';

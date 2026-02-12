@@ -45,6 +45,17 @@
             <br>
             {% include breadcrumbs.html %}
             <br>
+            {% if game_type == 'retroarch' %}
+            <script>
+              (function () {
+                var params = new URLSearchParams(window.location.search);
+                if (params.get('t') !== '1') {
+                  params.set('t', '1');
+                  window.location.replace(window.location.pathname + '?' + params.toString());
+                }
+              })();
+            </script>
+            {% endif %}
             <script>
                 let scale = '{{ page.gameScale }}'
                 if (scale == ''){scale = 1};
@@ -106,19 +117,139 @@
 <style>
   html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #000; overflow: hidden; }
   #ejsplayer { width: 100%; height: 100%; }
+  #ejs-loading-screen {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: #111; color: #ccc; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; z-index: 9999;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    transition: opacity 0.4s ease;
+  }
+  #ejs-loading-screen.hidden { opacity: 0; pointer-events: none; }
+  #ejs-loading-title { font-size: 1.4em; font-weight: 600; margin-bottom: 1.2em; color: #fff; }
+  #ejs-loading-status { font-size: 0.95em; margin-bottom: 0.8em; min-height: 1.4em; text-align: center; }
+  #ejs-loading-bar-wrap {
+    width: 60%; max-width: 400px; height: 12px;
+    background: #222; border-radius: 6px; overflow: hidden; border: 1px solid #333;
+  }
+  #ejs-loading-bar {
+    height: 100%; width: 0%; background: linear-gradient(90deg, #4a6cf7, #6e8efb);
+    border-radius: 6px; transition: width 0.2s ease;
+  }
+  #ejs-loading-bar.indeterminate {
+    width: 40% !important; animation: ejs-slide 1.2s ease-in-out infinite;
+  }
+  @keyframes ejs-slide {
+    0%   { margin-left: 0%;  }
+    50%  { margin-left: 60%; }
+    100% { margin-left: 0%;  }
+  }
+  #ejs-loading-detail { font-size: 0.8em; color: #777; margin-top: 0.6em; min-height: 1.2em; }
+  .ejs-spinner {
+    width: 28px; height: 28px; border: 3px solid #333; border-top-color: #6e8efb;
+    border-radius: 50%; animation: ejs-spin 0.8s linear infinite; margin-bottom: 1em;
+  }
+  @keyframes ejs-spin { to { transform: rotate(360deg); } }
+  /* Error overlay */
+  #ejs-loading-screen.error-state { background: #1a1010; }
+  #ejs-loading-screen.error-state .ejs-spinner { display: none; }
+  #ejs-error-icon {
+    display: none; font-size: 2.4em; margin-bottom: 0.6em; line-height: 1;
+  }
+  #ejs-loading-screen.error-state #ejs-error-icon { display: block; }
+  #ejs-loading-screen.error-state #ejs-loading-title { color: #f87171; }
+  #ejs-loading-screen.error-state #ejs-loading-status { color: #fca5a5; }
+  #ejs-loading-screen.error-state #ejs-loading-bar-wrap { display: none; }
+  #ejs-loading-screen.error-state #ejs-loading-detail {
+    color: #a3a3a3; margin-top: 1em; max-width: 420px; text-align: center; line-height: 1.5;
+  }
 </style>
 <script src="{{ "/assets/js/gameMain.js" | relative_url }}"></script>
 </head>
 <body>
+<div id="ejs-loading-screen">
+  <div id="ejs-error-icon">⚠️</div>
+  <div class="ejs-spinner"></div>
+  <div id="ejs-loading-title">{{ page.title }}</div>
+  <div id="ejs-loading-status">Initialising&hellip;</div>
+  <div id="ejs-loading-bar-wrap"><div id="ejs-loading-bar"></div></div>
+  <div id="ejs-loading-detail"></div>
+</div>
 <div id="ejsplayer"></div>
 <script>
   (function () {
+    var loadingStatus = document.getElementById("ejs-loading-status");
+    var loadingBar = document.getElementById("ejs-loading-bar");
+    var loadingDetail = document.getElementById("ejs-loading-detail");
+    var loadingScreen = document.getElementById("ejs-loading-screen");
+
+    function setStatus(msg) { if (loadingStatus) loadingStatus.textContent = msg; }
+    function setDetail(msg) { if (loadingDetail) loadingDetail.textContent = msg; }
+    function setProgress(pct) {
+      if (loadingBar) {
+        loadingBar.classList.remove("indeterminate");
+        loadingBar.style.width = Math.min(pct, 100) + "%";
+      }
+    }
+    function setIndeterminate() {
+      if (loadingBar) {
+        loadingBar.style.width = "";
+        loadingBar.classList.add("indeterminate");
+      }
+    }
+
+    function hideLoading() {
+      if (loadingScreen) {
+        loadingScreen.classList.add("hidden");
+        setTimeout(function () { loadingScreen.style.display = "none"; }, 500);
+      }
+    }
+
+    function showError(title, detail) {
+      if (loadingScreen) loadingScreen.classList.add("error-state");
+      setStatus(title || "Failed to load game");
+      setDetail(detail || "");
+      if (loadingBar) loadingBar.style.width = "0%";
+    }
+
+    function checkUrlExists(url) {
+      return fetch(url, { method: "HEAD" }).then(function (r) {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return url;
+      });
+    }
+
+    function onProgress(info) {
+      setStatus(info.message || "");
+      if (info.stage === "download" && info.total > 0) {
+        setProgress(Math.round((info.loaded / info.total) * 100));
+        setDetail(formatBytes(info.loaded) + " / " + formatBytes(info.total));
+      } else if (info.stage === "download") {
+        setDetail(info.loaded ? formatBytes(info.loaded) + " downloaded" : "");
+      }
+      if (info.stage === "decompress" && info.total > 0) {
+        setProgress(Math.round((info.loaded / info.total) * 100));
+        setDetail(formatBytes(info.loaded) + " / " + formatBytes(info.total));
+      } else if (info.stage === "decompress") {
+        setIndeterminate();
+      }
+      if (info.stage === "ready") { setProgress(100); setDetail(""); }
+    }
+
     EJS_player = "#ejsplayer";
     EJS_core = "{{ page.core }}";
     EJS_pathtodata = "/assets/libs/emulatorjs/data";
     EJS_startOnLoaded = true;
-    EJS_gameUrl = "{{ page.url | append: "src/game.zip" | relative_url }}";
     EJS_threads = true;
+
+    EJS_onGameStart = function () {
+      setStatus("Game ready");
+      setProgress(100);
+      setDetail("");
+      hideLoading();
+    };
+
+    var remoteSlug = "{{ page.remoteSlug }}";
+    var localGameUrl = "{{ page.url | append: "src/game.zip" | relative_url }}";
 
     function loadEmulatorJS() {
       if (!window.ResourceFallback || typeof window.ResourceFallback.loadScript !== "function") {
@@ -126,19 +257,66 @@
         return;
       }
 
+      setStatus("Loading emulator\u2026");
+      setIndeterminate();
+      setDetail("EmulatorJS core: " + EJS_core);
+
       window.ResourceFallback.loadScript({
         primary: "https://cdn.emulatorjs.org/stable/data/loader.js",
         fallback: "{{ "/assets/libs/emulatorjs/data/loader.js" | relative_url }}",
         name: "EmulatorJS"
+      }).then(function () {
+        setStatus("Decompressing & initialising\u2026");
+        setDetail("Extracting ROM and loading core");
       }).catch(function (error) {
+        setStatus("Failed to load emulator");
+        setDetail(error.message || "Unknown error");
         console.error("Failed to load EmulatorJS", error);
       });
     }
 
-    if (document.readyState === "complete" || document.readyState === "interactive") {
-      loadEmulatorJS();
+    function boot() {
+      if (document.readyState === "complete" || document.readyState === "interactive") {
+        loadEmulatorJS();
+      } else {
+        window.addEventListener("DOMContentLoaded", loadEmulatorJS);
+      }
+    }
+
+    if (remoteSlug && typeof downloadRemoteGame === "function") {
+      downloadRemoteGame(remoteSlug, "game.zip", onProgress).then(function (blobUrl) {
+        EJS_gameUrl = blobUrl;
+        boot();
+      }).catch(function (remoteErr) {
+        console.error("Remote ROM fetch failed, falling back to local", remoteErr);
+        setStatus("Remote failed, trying local\u2026");
+        setDetail(remoteErr.message || "");
+        setProgress(0);
+        checkUrlExists(localGameUrl).then(function () {
+          EJS_gameUrl = localGameUrl;
+          boot();
+        }).catch(function () {
+          console.error("Local ROM also unavailable");
+          showError(
+            "Game not available",
+            "The ROM file could not be found on the remote server and no local copy exists. " +
+            "This game may have been removed or the server may be temporarily unreachable. " +
+            "Try refreshing the page or check back later."
+          );
+        });
+      });
     } else {
-      window.addEventListener("DOMContentLoaded", loadEmulatorJS);
+      setStatus("Loading game\u2026");
+      setIndeterminate();
+      checkUrlExists(localGameUrl).then(function () {
+        EJS_gameUrl = localGameUrl;
+        boot();
+      }).catch(function () {
+        showError(
+          "Game not available",
+          "The game file could not be found. It may have been removed or the path is incorrect."
+        );
+      });
     }
   })();
 </script>
