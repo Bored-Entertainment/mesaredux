@@ -59,6 +59,7 @@ exclude:
   - "package.json"
   - "package-lock.json"
   - "_site"
+  - "server.js"
 
 jekyll-minifier:
   exclude:
