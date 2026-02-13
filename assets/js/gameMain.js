@@ -294,6 +294,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var isFlashPage = gameType === 'flash';
     var isDosPage = gameType === 'dos';
+    var isEJSPage = gameType === 'retroarch';
     var borderWasInline = !!(iframe.style && iframe.style.border && iframe.style.border.trim() !== '');
     var originalBorderValue = borderWasInline ? iframe.style.border : '';
     var borderHiddenForFullscreen = false;
@@ -462,6 +463,24 @@ document.addEventListener("DOMContentLoaded", function () {
         return false;
     }
 
+    function tryEnterEJSFullscreen() {
+        if (!isEJSPage || !iframe || !iframe.contentWindow) {
+            return false;
+        }
+
+        try {
+            var emu = iframe.contentWindow.EJS_emulator;
+            if (emu && typeof emu.toggleFullscreen === 'function') {
+                emu.toggleFullscreen(true);
+                return true;
+            }
+        } catch (err) {
+            console.error('Failed to invoke EmulatorJS fullscreen method.', err);
+        }
+
+        return false;
+    }
+
     function tryEnterDosFullscreen() {
         if (!isDosPage || !iframe || !iframe.contentWindow) {
             return false;
@@ -497,6 +516,14 @@ document.addEventListener("DOMContentLoaded", function () {
             var usedRuffle = tryEnterRuffleFullscreen();
             if (!usedRuffle) {
                 console.warn('Ruffle fullscreen unavailable, falling back to browser fullscreen.');
+                if (requestNativeFullscreen()) {
+                    setTimeout(applyFullscreenScale, 50);
+                }
+            }
+        } else if (isEJSPage) {
+            var ejsHandled = tryEnterEJSFullscreen();
+            if (!ejsHandled) {
+                console.warn('EmulatorJS fullscreen unavailable, falling back to browser fullscreen.');
                 if (requestNativeFullscreen()) {
                     setTimeout(applyFullscreenScale, 50);
                 }
