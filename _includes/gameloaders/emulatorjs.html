@@ -137,6 +137,8 @@
     EJS_pathtodata = "/assets/libs/emulatorjs/data";
     EJS_startOnLoaded = true;
     EJS_threads = true;
+    EJS_gameName = "{{ page.title }}";
+    EJS_gameID = "{{ page.title | slugify }}";
 
     EJS_onGameStart = function () {
       setStatus("Game ready");
