@@ -59,12 +59,13 @@
   "Dec. 3, 2025 - Turned the QOTD box into the Q.U.I.P. BOX (Quite Unanimously Incredible Passages!!!) - grey",
   "Jan. 19, 2026 - WE'RE BACK!! For reasons out of our control the site was taken down, but we are back for the foreseeable future!",
   "Jan. 28 2026 - Added a RSS feed! feel free to subscribe to get updated when we add new games !! ;') and you also gain the ability to see every update we've ever pushed !! - grey",
-  "Jan 29 2026 - Reworked how Javascript is loaded on the site to hopefully improve performance and reliability. - grey",
-  "Jan 29 2026 - Also fixed an oversight with EmulatorJS loading and its interaction with the resource fallback script. - grey",
-  "Jan 30 2026 - Optimized nearly every image used on the site, including game assets to improve load times even further. - grey",
-  "Jan 30 2026 - Made music player more awesome and have more features ! also added easter eggs so try and find them ! - grey",
-  "Feb 11 2026 - I SOMEHOW broke all dos and retroarch games , #fixed doe. ALSO we're starting 2 think about fixing run 3 and redoing the entire games and gameslist page. - grey",
-  "Feb 12 2026 - Added remote EmulatorJS support for retroarch games, and added the PSP Persona games to the site. - grey",
-  "Feb 27 2026 - Added the 5th generation Pokemon games. - grey",
-  "Feb 27 2026 - Added the Pokemon Stadium games, the Mother / Earthbound triology, and TLOZ Ocarina of Time and Majora`s Mask. - grey"
+  "Jan. 29 2026 - Reworked how Javascript is loaded on the site to hopefully improve performance and reliability. - grey",
+  "Jan. 29 2026 - Also fixed an oversight with EmulatorJS loading and its interaction with the resource fallback script. - grey",
+  "Jan. 30 2026 - Optimized nearly every image used on the site, including game assets to improve load times even further. - grey",
+  "Jan. 30 2026 - Made music player more awesome and have more features ! also added easter eggs so try and find them ! - grey",
+  "Feb. 11 2026 - I SOMEHOW broke all dos and retroarch games , #fixed doe. ALSO we're starting 2 think about fixing run 3 and redoing the entire games and gameslist page. - grey",
+  "Feb. 12 2026 - Added remote EmulatorJS support for retroarch games, and added the PSP Persona games to the site. - grey",
+  "Feb. 27 2026 - Added the 5th generation Pokemon games. - grey",
+  "Feb. 27 2026 - Added the Pokemon Stadium games, the Mother / Earthbound triology, and TLOZ Ocarina of Time and Majora`s Mask. - grey",
+  "Mar. 16 2026 - Swapped out the old webring for the new and improved TRUTHSEEKER'S RING! yay woohoo yay !!! check it out if you'd like ;'O - grey"
 ]
