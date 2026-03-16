@@ -12,15 +12,17 @@ header3: "<div style='display: flex; justify-content: space-between; align-items
 <div id="mirror-alert"></div>
 
 #### The team behind blockbuster sites such as **The Mesa Complex**, [Swordslasher.com](https://swordslasher.com/), and [BoredHTML](https://bored.pisaucer.com/) proudly presents this project—a definitive and scalable redux of The Mesa Complex, representing the culmination of our last six years of work!
-<div class="seekerring-frame" style="margin-top: 10px;">
-<style>
-:root {
---seekerwidth: 25rem; 
---seekerheight: 4.5rem;
-}
-</style>
-<link rel="stylesheet" href="https://ring.truthofseekers.net/assets/css/seekerframe.css">
-<iframe src="https://ring.truthofseekers.net/embed/mesaredux.html"></iframe>
-</div>
+{%- if site.url contains 'https://mesaredux.com' -%}
+    <div class="seekerring-frame" style="margin-top: 10px;">
+    <style>
+    :root {
+    --seekerwidth: 25rem; 
+    --seekerheight: 4.5rem;
+    }
+    </style>
+    <link rel="stylesheet" href="https://ring.truthofseekers.net/assets/css/seekerframe.css">
+    <iframe src="https://ring.truthofseekers.net/embed/mesaredux.html"></iframe>
+    </div>
+{%- endif -%}
 
 <script src="/assets/js/mirrorAlert.js" defer></script>
