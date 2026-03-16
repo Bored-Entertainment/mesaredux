@@ -160,7 +160,7 @@
         {% for image in site.static_files %}
         {% if image.path contains '/assets/images/badges/links' %}
           <a href="https://{{ image.name | replace: '.png', '' | replace: '.gif', '' | replace: '.jpg', '' }}">
-            <img id="badge" src="{{ image.path }}" alt="{{ image.name }}">
+            <img id="badge" src="{{ image.path }}" alt="{{ image.name }}" target ="_blank">
           </a>
         {% endif %}
         {% endfor %}
