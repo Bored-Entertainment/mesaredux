@@ -12,7 +12,7 @@ header3: "<div style='display: flex; justify-content: space-between; align-items
 <div id="mirror-alert"></div>
 
 #### The team behind blockbuster sites such as **The Mesa Complex**, [Swordslasher.com](https://swordslasher.com/), and [BoredHTML](https://bored.pisaucer.com/) proudly presents this project—a definitive and scalable redux of The Mesa Complex, representing the culmination of our last six years of work!
-{%- if site.url contains 'https://mesaredux.com' -%}
+{%- if site.url == 'https://mesaredux.com' -%}
     <div class="seekerring-frame" style="margin-top: 10px;">
     <style>
     :root {
