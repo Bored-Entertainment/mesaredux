@@ -34,5 +34,4 @@ For those who've been following us, but even moreso for those who have not—MES
 
 - [The EmulatorJS Project](https://emulatorjs.org/) - for their Open Source web implementation of RetroArch.
 
-
 - [Jekyll](https://jekyllcodex.org/) - for being the best Static Site Generator a guy could ask for. We might have a love-hate relationship, but that won't stop us from shoutting you out. 
