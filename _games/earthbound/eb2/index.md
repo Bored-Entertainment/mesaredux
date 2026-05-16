@@ -1,6 +1,6 @@
 ---
 layout: alt
-title: "Mother 3 / Earthbound 2"
+title: "Mother 3 / Earthbound 3"
 type: retroarch
 core: gba
 aspectRatio: "16:7.75"
