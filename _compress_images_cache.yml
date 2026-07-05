@@ -3310,3 +3310,14 @@ _games/Zelda/index/thumb.png: thumb.png
 _games/Zelda/mm/index/thumb.png: thumb.png
 _games/Zelda/oot/index/thumb.png: thumb.png
 _games/makenx/index/thumb.png: thumb.png
+_games/carom_carousel/index.apple-touch-icon.png: index.apple-touch-icon.png
+_games/carom_carousel/index.icon.png: index.icon.png
+_games/carom_carousel/index.png: index.png
+_games/carom_carousel/src/index.apple-touch-icon.png: index.apple-touch-icon.png
+_games/carom_carousel/src/index.icon.png: index.icon.png
+_games/carom_carousel/src/index.png: index.png
+_games/carom_carousel/thumb.png: thumb.png
+_games/carom_carousel/index/src/index.apple-touch-icon.png: index.apple-touch-icon.png
+_games/carom_carousel/index/src/index.icon.png: index.icon.png
+_games/carom_carousel/index/src/index.png: index.png
+_games/carom_carousel/index/thumb.png: thumb.png
